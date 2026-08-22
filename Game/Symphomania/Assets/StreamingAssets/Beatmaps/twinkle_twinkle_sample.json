@@ -1,0 +1,70 @@
+{
+  "song": {
+    "title": "Twinkle Twinkle Little Star (Loader Smoke Test)",
+    "composer": "Traditional",
+    "source": "hand-built sample fixture for BeatmapLoader",
+    "time_signature": "4/4",
+    "tempo_changes": [
+      {"beat": 0.0, "bpm": 120},
+      {"beat": 8.0, "bpm": 100}
+    ],
+    "duration_seconds": 2.0
+  },
+  "instruments": {
+    "trumpet": {
+      "controller": "trumpet",
+      "notes": [
+        {"id": 1, "measure": 1, "start_beat": 0.0, "start_time": 0.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "C4", "input": {"valves": {"1": false, "2": false, "3": false}, "breath": true}},
+        {"id": 2, "measure": 1, "start_beat": 1.0, "start_time": 0.5, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "D4", "input": {"valves": {"1": true, "2": false, "3": false}, "breath": true}},
+        {"id": 3, "measure": 1, "start_beat": 2.0, "start_time": 1.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "E4", "input": {"valves": {"1": true, "2": true, "3": false}, "breath": true}}
+      ]
+    },
+    "saxophone": {
+      "controller": "saxophone",
+      "notes": [
+        {"id": 1, "measure": 1, "start_beat": 0.0, "start_time": 0.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "C4", "input": {"holes": {"1": false, "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "register": false, "breath": true}},
+        {"id": 2, "measure": 1, "start_beat": 1.0, "start_time": 0.5, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "D4", "input": {"holes": {"1": true, "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "register": false, "breath": true}},
+        {"id": 3, "measure": 1, "start_beat": 2.0, "start_time": 1.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "F#4",
+         "input": {"holes": {"1": true, "2": true, "3": false, "4": false, "5": false, "6": false, "7": false}, "register": false, "breath": true},
+         "warning": "No valid switch combination for F#4 in the 8-switch diatonic chart; approximated as F4."}
+      ]
+    },
+    "violin": {
+      "controller": "violin",
+      "notes": [
+        {"id": 1, "measure": 1, "start_beat": 0.0, "start_time": 0.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "G3", "input": {"switches": {"1": false, "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "bow_active": true, "suggested_bow_direction": "down"}},
+        {"id": 2, "measure": 1, "start_beat": 1.0, "start_time": 0.5, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "A3", "input": {"switches": {"1": true, "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "bow_active": true, "suggested_bow_direction": "up"}},
+        {"id": 3, "measure": 1, "start_beat": 2.0, "start_time": 1.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "B3", "input": {"switches": {"1": true, "2": true, "3": false, "4": false, "5": false, "6": false, "7": false}, "bow_active": true, "suggested_bow_direction": "down"}}
+      ]
+    },
+    "trombone": {
+      "controller": "trombone",
+      "notes": [
+        {"id": 1, "measure": 1, "start_beat": 0.0, "start_time": 0.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "Bb2", "input": {"slide_position": 1, "breath": true}},
+        {"id": 2, "measure": 1, "start_beat": 1.0, "start_time": 0.5, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "C3", "input": {"slide_position": 3, "breath": true}},
+        {"id": 3, "measure": 1, "start_beat": 2.0, "start_time": 1.0, "duration_beats": 1.0, "duration_time": 0.5,
+         "pitch": "D3", "input": {"slide_position": 5, "breath": true}}
+      ]
+    },
+    "drum_kit": {
+      "controller": "drum_kit",
+      "hits": [
+        {"id": 1, "measure": 1, "time": 0.0, "beat": 0.0, "pad": 1, "pad_name": "Kick", "velocity": 0.9},
+        {"id": 2, "measure": 1, "time": 0.5, "beat": 1.0, "pad": 2, "pad_name": "Snare", "velocity": 0.8},
+        {"id": 3, "measure": 1, "time": 1.0, "beat": 2.0, "pad": 3, "pad_name": "Hi-Hat", "velocity": 0.6},
+        {"id": 4, "measure": 1, "time": 1.5, "beat": 3.0, "pad": 2, "pad_name": "Snare", "velocity": 0.85}
+      ]
+    }
+  }
+}
