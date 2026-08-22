@@ -106,3 +106,1490 @@ Initialize engine version: 6000.3.22f1 (1c726e1fb402)
 [Subsystems] Discovering subsystems at path D:/unity installs/6000.3.22f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path D:/making games/Symphomania/Symphomania-UQCS-2026/Game/Symphomania/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-ashin"
+[Licensing::IpcConnector] LicenseClient-ashin channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ashin-6000.3.22" at "2026-08-22T17:37:57.3850922Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 19288, path: "D:/unity installs/6000.3.22f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              ca9b8b835c724cbfaa79922929e9d4b8
+  Correlation Id:          3279f036bb5b517e92730f55935fd566
+  External correlation Id: 6561442658317865863
+  Machine Id:              gCFSV3nwC0sNkojRTB5wDtsOe+k=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ashin-6000.3.22" (connect: 0.01s, validation: 0.00s, handshake: 0.01s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ashin-6000.3.22-notifications" at "2026-08-22T17:37:57.3916673Z"
+[Licensing::Module] Licensing Background thread has ended after 1.90s
+d3d12: failed to query info queue interface (0x80004002).
+Direct3D:
+    Version:         Direct3D 12 [level 12.2]
+    Renderer:        NVIDIA GeForce RTX 3050 Laptop GPU (ID=0x25a2)
+    Vendor:          NVIDIA
+    VRAM:            3962 MB
+    App VRAM Budget: 3367 MB
+    Driver:          32.0.15.9597
+Initialize mono
+Mono path[0] = 'D:/unity installs/6000.3.22f1/Editor/Data/Managed'
+Mono path[1] = 'D:/unity installs/6000.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/unity installs/6000.3.22f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56020
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/unity installs/6000.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-5CWM-YB93-D5G9-UNMG-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 16768085830141-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: D:/unity installs/6000.3.22f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.004512 seconds.
+- Loaded All Assemblies, in  0.535 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.480 seconds
+Domain Reload Profiling: 1014ms
+	BeginReloadAssembly (196ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (51ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (51ms)
+	LoadAllAssembliesAndSetupDomain (220ms)
+		LoadAssemblies (195ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (215ms)
+			TypeCache.Refresh (213ms)
+				TypeCache.ScanAssembly (197ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (480ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (422ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (56ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (93ms)
+			ProcessInitializeOnLoadAttributes (162ms)
+			ProcessInitializeOnLoadMethodAttributes (106ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-5CWM-YB93-D5G9-UNMG-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 16768085830141-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Curl error 3: URL rejected: Malformed input to a URL function
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.054 seconds
+Refreshing native plugins compatible for Editor in 2.63 ms, found 5 plugins.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 3.25 ms, found 5 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.927 seconds
+Domain Reload Profiling: 1979ms
+	BeginReloadAssembly (247ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (34ms)
+	RebuildCommonClasses (44ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (42ms)
+	LoadAllAssembliesAndSetupDomain (705ms)
+		LoadAssemblies (512ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (356ms)
+			TypeCache.Refresh (244ms)
+				TypeCache.ScanAssembly (225ms)
+			BuildScriptInfoCaches (97ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (928ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (757ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (164ms)
+			ProcessInitializeOnLoadAttributes (427ms)
+			ProcessInitializeOnLoadMethodAttributes (155ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 3.68 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Curl error 3: URL rejected: Malformed input to a URL function
+Unloading 7221 unused Assets / (5.2 MB). Loaded Objects now: 8033.
+Memory consumption went from 169.0 MB to 163.8 MB.
+Total: 11.974500 ms (FindLiveObjects: 1.034000 ms CreateObjectMapping: 1.109500 ms MarkObjects: 6.543800 ms  DeleteObjects: 3.285800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 205843.524658 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples
+  artifactKey: Guid(edbe3b1ced4911b4b83f23147092d0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StreamingAssets/InstrumentSamples using Guid(edbe3b1ced4911b4b83f23147092d0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b53d768c9118d936fd53961c60c19933') in 0.0082368 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.877074 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples
+  artifactKey: Guid(edbe3b1ced4911b4b83f23147092d0c3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentSamples using Guid(edbe3b1ced4911b4b83f23147092d0c3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '80895bb032d3c00092fd62c142977d43') in 0.0414189 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.143598 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Trumpet
+  artifactKey: Guid(b0c27967fc284534f8e15dbccc3260eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StreamingAssets/InstrumentSamples/Trumpet using Guid(b0c27967fc284534f8e15dbccc3260eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '780021a3489b1f8b240017bb7b7016cd') in 0.0010854 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.210365 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Trumpet
+  artifactKey: Guid(b0c27967fc284534f8e15dbccc3260eb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentSamples/Trumpet using Guid(b0c27967fc284534f8e15dbccc3260eb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3ccdfcedebe5e14d9edd281af5d3a3a0') in 0.0040639 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.178628 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Saxophone
+  artifactKey: Guid(3002528132906b648a4386fb0bb6faec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StreamingAssets/InstrumentSamples/Saxophone using Guid(3002528132906b648a4386fb0bb6faec) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '236245ffdf858229ef5ee019abe4edfd') in 0.0036784 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.269521 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Saxophone
+  artifactKey: Guid(3002528132906b648a4386fb0bb6faec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentSamples/Saxophone using Guid(3002528132906b648a4386fb0bb6faec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f1c79ca256407db02e52072861f7ef85') in 0.0037285 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.143561 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Drumkit
+  artifactKey: Guid(7cc1a302667135c4eb9eed63b4309cb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StreamingAssets/InstrumentSamples/Drumkit using Guid(7cc1a302667135c4eb9eed63b4309cb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fdd365fd4a697fc3170e819c22262222') in 0.0006298 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.904213 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Drumkit
+  artifactKey: Guid(7cc1a302667135c4eb9eed63b4309cb7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentSamples/Drumkit using Guid(7cc1a302667135c4eb9eed63b4309cb7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6fa580682cd4de7212eb2253c6e5d668') in 0.0039318 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.193067 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Trombone
+  artifactKey: Guid(40f7ea3bd941982419a731a795c5c8b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StreamingAssets/InstrumentSamples/Trombone using Guid(40f7ea3bd941982419a731a795c5c8b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '10dbb166cfa1edc0f14ac3e8d306524e') in 0.0006333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.375205 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Trombone
+  artifactKey: Guid(40f7ea3bd941982419a731a795c5c8b7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentSamples/Trombone using Guid(40f7ea3bd941982419a731a795c5c8b7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '698668597c0e4b4674d76c6161297bb4') in 0.0040786 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.217217 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Violin
+  artifactKey: Guid(2c1b48aadf8b72d4093b3628228e3b21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StreamingAssets/InstrumentSamples/Violin using Guid(2c1b48aadf8b72d4093b3628228e3b21) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4540e9a0d841da884e6ca695fdfc69e6') in 0.0036426 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.906941 seconds.
+  path: Assets/StreamingAssets/InstrumentSamples/Violin
+  artifactKey: Guid(2c1b48aadf8b72d4093b3628228e3b21) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentSamples/Violin using Guid(2c1b48aadf8b72d4093b3628228e3b21) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dcf29d21d8f05a82a0cfe64923bced60') in 0.0034428 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 29.776992 seconds.
+  path: Assets/StreamingAssets/InstrumentArt
+  artifactKey: Guid(21ba1522ff137ef439e2d2928b88fe43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StreamingAssets/InstrumentArt using Guid(21ba1522ff137ef439e2d2928b88fe43) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ab3a1f12d41aed26794a13419bab76f5') in 0.0039137 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.905308 seconds.
+  path: Assets/StreamingAssets/InstrumentArt
+  artifactKey: Guid(21ba1522ff137ef439e2d2928b88fe43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentArt using Guid(21ba1522ff137ef439e2d2928b88fe43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '60e52e38abb56a4dac7b3bf00adb8ec9') in 0.003481 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 334.488845 seconds.
+  path: Assets/StreamingAssets/InstrumentArt/Trumpet.png
+  artifactKey: Guid(4d035bd894eba6b4d9d2324e316464fd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentArt/Trumpet.png using Guid(4d035bd894eba6b4d9d2324e316464fd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4cd9a588c9492392286e913d6b982862') in 0.0224431 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/StreamingAssets/InstrumentArt/DrumKit.png
+  artifactKey: Guid(9198376217a0950479b771ab6309cc96) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentArt/DrumKit.png using Guid(9198376217a0950479b771ab6309cc96) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a5f1c996372370775359be783ea91be9') in 0.0044473 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/StreamingAssets/InstrumentArt/Violin.png
+  artifactKey: Guid(7f943cbbc83032c40922142893964e82) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/StreamingAssets/InstrumentArt/Violin.png using Guid(7f943cbbc83032c40922142893964e82) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8d0708222f0ea2db85e49cfa3a1660c9') in 0.0054567 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 672.853536 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice10_A.wav
+  artifactKey: Guid(bfdf663ed1b0eb84f8e35206572ed28e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice10_A.wav using Guid(bfdf663ed1b0eb84f8e35206572ed28e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '442df65152e45fe4a6457e0f518a3028') in 0.0899234 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed/Toy Keyboard Synth Reed07_F#.wav
+  artifactKey: Guid(5dd87f93357bebc47b4ced8312562ef3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed/Toy Keyboard Synth Reed07_F#.wav using Guid(5dd87f93357bebc47b4ced8312562ef3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd0a44047a4b491f6e2ddcc45e389c3b6') in 0.0497474 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Rhythm Loops/Bossa Nova.wav
+  artifactKey: Guid(80756973984c37d48aba61956a743b4d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Rhythm Loops/Bossa Nova.wav using Guid(80756973984c37d48aba61956a743b4d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2dc723afa517bf2bd13029a553e35a34') in 0.0603631 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_05_E.wav
+  artifactKey: Guid(25f9f7fddb248674ead9477818feb1bd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_05_E.wav using Guid(25f9f7fddb248674ead9477818feb1bd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd4effcdc15d7569d60f4275cfbaec053') in 0.0462774 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_08_G.wav
+  artifactKey: Guid(e6e4ab5e7dd82c24f9e47330ab3cabc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_08_G.wav using Guid(e6e4ab5e7dd82c24f9e47330ab3cabc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f8cb6403821173e4da67b06c326f0334') in 0.0424607 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Rhythm Loops/Slow Rock.wav
+  artifactKey: Guid(cdf41e27c5e14644aa200f1341f23509) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Rhythm Loops/Slow Rock.wav using Guid(cdf41e27c5e14644aa200f1341f23509) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '54f4417698838835e121e19299cd49f8') in 0.0582786 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano01_C.wav
+  artifactKey: Guid(c8f81947948e0cd47b80110f6a65e140) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano01_C.wav using Guid(c8f81947948e0cd47b80110f6a65e140) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bd77c3471952ff5177720bdf60c48969') in 0.0413921 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_03_D.wav
+  artifactKey: Guid(20ce56e92d997e347a2c837cc7b9e9ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_03_D.wav using Guid(20ce56e92d997e347a2c837cc7b9e9ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c3dc9f8001ae525cd8e46e3c4e9c86de') in 0.0512941 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Rhythm Loops/Disco.wav
+  artifactKey: Guid(7192e632b7ac0ad499a13e730d05ebe8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Rhythm Loops/Disco.wav using Guid(7192e632b7ac0ad499a13e730d05ebe8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '975028f042f5dcc3862209f4db0e0183') in 0.0725425 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano05_E.wav
+  artifactKey: Guid(2afb441bcb2ffeb4c8efa9fbdf1edbc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano05_E.wav using Guid(2afb441bcb2ffeb4c8efa9fbdf1edbc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5cebf7b2ee2305a2ed48e8ccc2cfe208') in 0.0426082 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/11. Jazz Organ 1/Toy Keyboard Jazz Organ 1_05_E.wav
+  artifactKey: Guid(306174c236de0c349830613990752e06) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/11. Jazz Organ 1/Toy Keyboard Jazz Organ 1_05_E.wav using Guid(306174c236de0c349830613990752e06) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e72fd90bd81403157fbc1087825f1905') in 0.0417877 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar03_D.wav
+  artifactKey: Guid(6425fb9af3db51c47ae4ff964d785f47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar03_D.wav using Guid(6425fb9af3db51c47ae4ff964d785f47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd85bd30f684dd88e6def4b0023425639') in 0.0452269 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_10_A.wav
+  artifactKey: Guid(7b510091b8643cd48b5626c62a4de655) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_10_A.wav using Guid(7b510091b8643cd48b5626c62a4de655) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '09ab61907d036763094856e1cf2a1fc9') in 0.0427163 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord02_C#.wav
+  artifactKey: Guid(8fc0f124e87b90a4fbd6e87849a7523f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord02_C#.wav using Guid(8fc0f124e87b90a4fbd6e87849a7523f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '95bdfcc259b28aab2e70b0a66a2c2f97') in 0.0475356 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord
+  artifactKey: Guid(0d7c2243df47d6d44b06d91df7255baf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord using Guid(0d7c2243df47d6d44b06d91df7255baf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '76fb1d93553286681045fb777caf6c22') in 0.0054965 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar06_F.wav
+  artifactKey: Guid(2f4c3e31978766d4ca651af15909fb64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar06_F.wav using Guid(2f4c3e31978766d4ca651af15909fb64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ad37cfd9ab43b73eba343e2818607ff1') in 0.0459706 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano07_F#.wav
+  artifactKey: Guid(1a7b00472a3140b44b9b9f5fc5340e0b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano07_F#.wav using Guid(1a7b00472a3140b44b9b9f5fc5340e0b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bdcb5156b2f1a2dc5a32388160be986d') in 0.0375576 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar11_A#.wav
+  artifactKey: Guid(c66b06377e579aa4ba0ca4f71697b7c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar11_A#.wav using Guid(c66b06377e579aa4ba0ca4f71697b7c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '052c419794fbed59bc2394a57358e6e5') in 0.0398277 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ01_C.wav
+  artifactKey: Guid(c0a847ae4da57f14abd93114d1afe42c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ01_C.wav using Guid(c0a847ae4da57f14abd93114d1afe42c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '955ddc6666cf86198502eb4248173593') in 0.0473458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/20. Synth Guitar/Toy Keyboard Synth Guitar02_C#.wav
+  artifactKey: Guid(aa52409450b9de643a70d0d9c296aa44) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/20. Synth Guitar/Toy Keyboard Synth Guitar02_C#.wav using Guid(aa52409450b9de643a70d0d9c296aa44) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8ae8a07098a7cfa4c9a69dd5e26cfab9') in 0.0400431 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel/Toy Keyboard Glockenspiel07_F#.wav
+  artifactKey: Guid(73060a210bf0bc4449e4156528011735) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel/Toy Keyboard Glockenspiel07_F#.wav using Guid(73060a210bf0bc4449e4156528011735) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7b4fc302bab0c4b59f30fd1f15d6aa3b') in 0.0343814 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/15. Double Reed/Toy Keyboard Double Reed10_A.wav
+  artifactKey: Guid(1a17a555de628c843991580114a48702) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/15. Double Reed/Toy Keyboard Double Reed10_A.wav using Guid(1a17a555de628c843991580114a48702) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '77b98f4194d716bfa340ca065674b578') in 0.0459756 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Rhythm Loops/Rock.wav
+  artifactKey: Guid(829c8eb02d361d24da68e3bbfd2c0daa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Rhythm Loops/Rock.wav using Guid(829c8eb02d361d24da68e3bbfd2c0daa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fdf7485e291db52722c54cea87f0a209') in 0.0628807 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_04_D#.wav
+  artifactKey: Guid(5eda6df00f967e5468fd020a4ddd2812) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_04_D#.wav using Guid(5eda6df00f967e5468fd020a4ddd2812) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0d33deb6f8e0bbbf5cc370b7c932342e') in 0.0406593 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Percussion One Shots/Bass Drum.wav
+  artifactKey: Guid(abcc40db6af299340b9526ce5b073ac2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Percussion One Shots/Bass Drum.wav using Guid(abcc40db6af299340b9526ce5b073ac2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e74d321b4a2dccd30e13109af903bc27') in 0.0302963 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_03_D.wav
+  artifactKey: Guid(56021b6612c9b8c4fbaa3b6a324e6a7e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_03_D.wav using Guid(56021b6612c9b8c4fbaa3b6a324e6a7e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '46ac678f5b05cd588f4ac6b42a8b60c6') in 0.0363125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel
+  artifactKey: Guid(3f3a22c58098a04418ca04338cc91144) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel using Guid(3f3a22c58098a04418ca04338cc91144) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b127b548eba3b2db7c0a05a0c073ccb2') in 0.0037735 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ04_D#.wav
+  artifactKey: Guid(3e928a8465ab4d94a9e2eeef92784fd1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ04_D#.wav using Guid(3e928a8465ab4d94a9e2eeef92784fd1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1b487f38cd50dd03ec33962fb06fb4d5') in 0.0446455 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel/Toy Keyboard Glockenspiel09_G#.wav
+  artifactKey: Guid(6250ab7aa21facd4caf194f69d0b5b36) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel/Toy Keyboard Glockenspiel09_G#.wav using Guid(6250ab7aa21facd4caf194f69d0b5b36) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7a3d12bf1d6f74a8fce35fb7687ece08') in 0.0339278 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano02_C#.wav
+  artifactKey: Guid(fea4a8b8680ed9846bb4ed3740c7c332) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano02_C#.wav using Guid(fea4a8b8680ed9846bb4ed3740c7c332) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '75503aa96b7e14c3a1af3e275fe42f1b') in 0.0394118 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_09_G#.wav
+  artifactKey: Guid(d01d8cdb9aa62f64fb15861375159ce6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_09_G#.wav using Guid(d01d8cdb9aa62f64fb15861375159ce6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '91f98419c7051f9094e77825dcf0ac57') in 0.0416601 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/5. Flute/Toy Keyboard Flute09_G#.wav
+  artifactKey: Guid(bb8d991b18db762418e7d76b26ce58c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/5. Flute/Toy Keyboard Flute09_G#.wav using Guid(bb8d991b18db762418e7d76b26ce58c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '53dd2c06cb8d07ad211a3bf1fdb13312') in 0.0496901 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano04_D#.wav
+  artifactKey: Guid(17d6f376f7f5fcb4aa98286092d1ae1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano04_D#.wav using Guid(17d6f376f7f5fcb4aa98286092d1ae1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3f755e15d41904d026073da644bdaabc') in 0.0460137 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/9. Bells/Toy Keyboard Bells04_D#.wav
+  artifactKey: Guid(43884364023e0624e825b680bf5d415b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/9. Bells/Toy Keyboard Bells04_D#.wav using Guid(43884364023e0624e825b680bf5d415b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a8da5e4090916299de547ab5e25b0997') in 0.0437074 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1
+  artifactKey: Guid(c628ad027c409e2488661e780b9ac0bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1 using Guid(c628ad027c409e2488661e780b9ac0bb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e26a5c449639ffe2d1fbcc202df4ba1d') in 0.0045839 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/9. Bells/Toy Keyboard Bells11_A#.wav
+  artifactKey: Guid(9228be3159d5a9e43b54894f7c75f2c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/9. Bells/Toy Keyboard Bells11_A#.wav using Guid(9228be3159d5a9e43b54894f7c75f2c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7dd4e1594e7ecff4680974c43067e648') in 0.0433057 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Percussion One Shots/Hand Clap.wav
+  artifactKey: Guid(226258b753e59a8488d9701a26b0936c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Percussion One Shots/Hand Clap.wav using Guid(226258b753e59a8488d9701a26b0936c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5154e82ae9d0c0f2606104313ea6a67c') in 0.0332846 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin10_A.wav
+  artifactKey: Guid(4d56fddaf3b346f4ebaade1f07a824d6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin10_A.wav using Guid(4d56fddaf3b346f4ebaade1f07a824d6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7170f75d2d4ac334e281f69c3d42bb25') in 0.0483136 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_12_B.wav
+  artifactKey: Guid(45972ff387e014e45819abf515405f0e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_12_B.wav using Guid(45972ff387e014e45819abf515405f0e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6b33a0bb6b109bdb7ac8394cb1af8238') in 0.0385693 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone11_A#.wav
+  artifactKey: Guid(c876749f89782fa4393e3901c935a49b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone11_A#.wav using Guid(c876749f89782fa4393e3901c935a49b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2b5d769bd5f7fe4565c7a6f0f9784f41') in 0.0363303 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_02_C#.wav
+  artifactKey: Guid(bea3d53cafce6034698abcbf1f641b68) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_02_C#.wav using Guid(bea3d53cafce6034698abcbf1f641b68) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '328dde6039c4679406e4c5745546204f') in 0.0451959 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_09_G#.wav
+  artifactKey: Guid(22820903cf7da2b42a0107768ab876b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_09_G#.wav using Guid(22820903cf7da2b42a0107768ab876b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'db5e2da725074c47f4dc673139ed228f') in 0.5083265 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/11. Jazz Organ 1/Toy Keyboard Jazz Organ 1_06_F.wav
+  artifactKey: Guid(c5dd17f2a0051054bad309ed126683c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/11. Jazz Organ 1/Toy Keyboard Jazz Organ 1_06_F.wav using Guid(c5dd17f2a0051054bad309ed126683c4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '92d5e2726c73887ef1206e3478166eb5') in 0.04095 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord07_F#.wav
+  artifactKey: Guid(0c8d968d8687a0a4b8a9edbfafbae166) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord07_F#.wav using Guid(0c8d968d8687a0a4b8a9edbfafbae166) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '15ceec3057f684dfa7845191bc55517a') in 0.0348085 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Rhythm Loops/Pops 1.wav
+  artifactKey: Guid(71d9e843cb403d54c80efcc03fdc2aa2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Rhythm Loops/Pops 1.wav using Guid(71d9e843cb403d54c80efcc03fdc2aa2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c89a88df2e22c038545162e524cc5513') in 0.0631815 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe03_D.wav
+  artifactKey: Guid(787441b3d8b1d1e408cf676ef52db07c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe03_D.wav using Guid(787441b3d8b1d1e408cf676ef52db07c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cebdd0aaab247d4bc5321b46185bbfc2') in 0.0551086 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_10_A.wav
+  artifactKey: Guid(26b99b291ea1a254c952948079b2e882) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_10_A.wav using Guid(26b99b291ea1a254c952948079b2e882) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '91a6cfaacb3409e234fb3bb0a7f508b7') in 0.0381769 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_09_G#.wav
+  artifactKey: Guid(98425cb73fd66984d81ed563dc8cd464) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_09_G#.wav using Guid(98425cb73fd66984d81ed563dc8cd464) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '00b2528ef7b6d6c28dd4124a7c492d45') in 0.0399124 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ
+  artifactKey: Guid(7a07dd19d082129429532737bd3fbff3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ using Guid(7a07dd19d082129429532737bd3fbff3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '544a16e82780beb6382a3196ce631a83') in 0.0044929 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice12_B.wav
+  artifactKey: Guid(046a96cc1b1951747ae015eb8b810787) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice12_B.wav using Guid(046a96cc1b1951747ae015eb8b810787) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8b796cd6172630daec338bb2e07a031c') in 0.0476647 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_04_D#.wav
+  artifactKey: Guid(f3cbbaa1806514444a9578e957b6e845) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/18. Synth Sound 2/Toy Keyboard Synth Sound 2_04_D#.wav using Guid(f3cbbaa1806514444a9578e957b6e845) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2e37e9f7e69837e6f838ccef8a30fb63') in 0.0379204 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano02_C#.wav
+  artifactKey: Guid(822957fd76ab0f04b89d055027b9bf6e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano02_C#.wav using Guid(822957fd76ab0f04b89d055027b9bf6e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8a5d7787d440d6517965d11cc5811321') in 0.038092 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone12_B.wav
+  artifactKey: Guid(7c3da3cb083d1ed40a11b6f36df8b38c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone12_B.wav using Guid(7c3da3cb083d1ed40a11b6f36df8b38c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fa70d735062253efeb08bccc6f363951') in 0.0320244 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin
+  artifactKey: Guid(235599b9f0fdbc840bc16d72702d6121) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin using Guid(235599b9f0fdbc840bc16d72702d6121) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '08ad1e24441d069d436b5fe9c10de5f9') in 0.0043171 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar01_C.wav
+  artifactKey: Guid(2476428373a8a674fb44c58d6c064698) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar01_C.wav using Guid(2476428373a8a674fb44c58d6c064698) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '669a2021f0516678289d910bca3f491a') in 0.0483374 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed
+  artifactKey: Guid(9c1fbb6b014545a4e83d2570fb036c44) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed using Guid(9c1fbb6b014545a4e83d2570fb036c44) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7ebfb67158ee35f8e47061f72c0dd7d8') in 0.0046696 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord/Toy Keyboard Harpsichord06_F.wav
+  artifactKey: Guid(f01c87f25b404544bae97d3dcbe824d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord/Toy Keyboard Harpsichord06_F.wav using Guid(f01c87f25b404544bae97d3dcbe824d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f953f18467aaf6d8b5b57a18277e716e') in 0.0379341 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ06_F.wav
+  artifactKey: Guid(e56856e53e326c94e856eeff2c2d817f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ06_F.wav using Guid(e56856e53e326c94e856eeff2c2d817f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '238b02af3d287e366f44dd6462e81d48') in 0.043191 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ08_G.wav
+  artifactKey: Guid(024ff2a1f69c6f243b1f002c0bd7fff3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ08_G.wav using Guid(024ff2a1f69c6f243b1f002c0bd7fff3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e6a050f40d196d642189869eef78844') in 0.0491584 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/9. Bells/Toy Keyboard Bells02_C#.wav
+  artifactKey: Guid(fdcde9e4cff5ded45a9324782c37f6e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/9. Bells/Toy Keyboard Bells02_C#.wav using Guid(fdcde9e4cff5ded45a9324782c37f6e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '21973393305371fa4aca68353f9d0eb9') in 0.0376366 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord/Toy Keyboard Harpsichord04_D#.wav
+  artifactKey: Guid(021916d2e62395145a11cf97d2a4c470) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord/Toy Keyboard Harpsichord04_D#.wav using Guid(021916d2e62395145a11cf97d2a4c470) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0c8569f9c49f76ab179e4b0d8d740176') in 0.0390348 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ10_A.wav
+  artifactKey: Guid(045d48e90e11eb4429cf5f6914108999) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ10_A.wav using Guid(045d48e90e11eb4429cf5f6914108999) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '101a18b256e355adc5ac6651df768022') in 0.0464206 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano12_B.wav
+  artifactKey: Guid(ddabc28269dc0ac44bb95d9b613a0d6f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano12_B.wav using Guid(ddabc28269dc0ac44bb95d9b613a0d6f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1b52c46844e37e5d8b027cf3c47614d7') in 0.0426322 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe01_C.wav
+  artifactKey: Guid(05d4de507d0e5ef4d8feb60dea66e8a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe01_C.wav using Guid(05d4de507d0e5ef4d8feb60dea66e8a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6e00555d93042de25e42a6efea5b2a14') in 0.0455045 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice08_G.wav
+  artifactKey: Guid(8052c89d87e75274184059404a4d5799) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice08_G.wav using Guid(8052c89d87e75274184059404a4d5799) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0a1f50875ed58b97a994b2c531a4131a') in 0.0445773 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe
+  artifactKey: Guid(c802ef7ea8ba175478873d91591009da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe using Guid(c802ef7ea8ba175478873d91591009da) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c5141ca634660bd5ba41aeaeb5a7ca61') in 0.004246 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ12_B.wav
+  artifactKey: Guid(cb5caabc8dde7c941bad2a9681b4c6e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/8. Pipe Organ/Toy Keyboard Pipe Organ12_B.wav using Guid(cb5caabc8dde7c941bad2a9681b4c6e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c5ddfee0cfea4a4bd25904638cfcbeb3') in 0.0458208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed/Toy Keyboard Synth Reed12_B.wav
+  artifactKey: Guid(d98b8be625d129544b85e875b0f0566b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed/Toy Keyboard Synth Reed12_B.wav using Guid(d98b8be625d129544b85e875b0f0566b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '22826c25735ea375e09dc8141de716c6') in 0.0555989 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone06_F.wav
+  artifactKey: Guid(bd2dfe278db2b8c4998c635df9b3b6ca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone06_F.wav using Guid(bd2dfe278db2b8c4998c635df9b3b6ca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '08f5dda7c2accf949ac05cf1b53e87aa') in 0.040439 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Percussion One Shots/Low Bongo.wav
+  artifactKey: Guid(c227806a3cc148f45ab48b0ea9cc74a9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Percussion One Shots/Low Bongo.wav using Guid(c227806a3cc148f45ab48b0ea9cc74a9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0c03f908713622eda090aecf14960f13') in 0.0333133 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/11. Jazz Organ 1
+  artifactKey: Guid(4911684f14da3a94c88315eb6b190e4b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/11. Jazz Organ 1 using Guid(4911684f14da3a94c88315eb6b190e4b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2c541e2816a5dc8ada1a6f860dd04af4') in 0.0041421 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord/Toy Keyboard Harpsichord08_G.wav
+  artifactKey: Guid(d23c7cd091bf4a249afd04ff59280e99) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/13. Harpsichord/Toy Keyboard Harpsichord08_G.wav using Guid(d23c7cd091bf4a249afd04ff59280e99) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '79351e22276a8fecd3c84bfe61fa4938') in 0.0378319 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar04_D#.wav
+  artifactKey: Guid(2fa8e70a97f10944fac3ced59b8febb4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar04_D#.wav using Guid(2fa8e70a97f10944fac3ced59b8febb4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4235ef7fc460e0ca5d9766f6233b1698') in 0.0385333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord11_A#.wav
+  artifactKey: Guid(e7cc9d771f8494f44a9f83aa2ddf974d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord11_A#.wav using Guid(e7cc9d771f8494f44a9f83aa2ddf974d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c1aa077a44028cda6f3bd2fcbb99b00a') in 0.0357785 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/5. Flute/Toy Keyboard Flute11_A#.wav
+  artifactKey: Guid(1540a3d89417a1742874b3328dacce15) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/5. Flute/Toy Keyboard Flute11_A#.wav using Guid(1540a3d89417a1742874b3328dacce15) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a6626028e91feb5bc677766f2e7b6097') in 0.039331 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_08_G.wav
+  artifactKey: Guid(de20020d22af2a049b27851bf5e51027) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/12. Jazz Organ 2/Toy Keyboard Jazz Organ 2_08_G.wav using Guid(de20020d22af2a049b27851bf5e51027) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'aa52a646615be6f366abf6228c70f662') in 0.0461235 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe02_C#.wav
+  artifactKey: Guid(6165b7b9a0ee8784ba95a637affd0da4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe02_C#.wav using Guid(6165b7b9a0ee8784ba95a637affd0da4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0c1040eadcdcb383b4df1cffbe0ddcd6') in 0.0475595 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe04_D#.wav
+  artifactKey: Guid(9a6ab289c9cec5c49bcbc3bbe9db744f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe04_D#.wav using Guid(9a6ab289c9cec5c49bcbc3bbe9db744f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e867adde6c33ba31f8d727e4aff2965d') in 0.0485238 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano09_G#.wav
+  artifactKey: Guid(4b1bfe8cade38124baf5a5413d3b220c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano09_G#.wav using Guid(4b1bfe8cade38124baf5a5413d3b220c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cf3e41f9048cb48b4698c90f8a367687') in 0.0429673 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice09_G#.wav
+  artifactKey: Guid(dab94398068244a4482d29f35de5c4ba) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/7. Human Voice/Toy Keyboard Human Voice09_G#.wav using Guid(dab94398068244a4482d29f35de5c4ba) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '51b0e19d67870b937825ad81a39e6359') in 0.0498036 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_03_D.wav
+  artifactKey: Guid(e0ad5b650eea57d4bb81ac0ea7086bc3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_03_D.wav using Guid(e0ad5b650eea57d4bb81ac0ea7086bc3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3991f1e33ed1d575b0d81d93c7dcfd17') in 0.0396357 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Rhythm Loops/March.wav
+  artifactKey: Guid(cdcdc76e79c48d948a306d433bd57027) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Rhythm Loops/March.wav using Guid(cdcdc76e79c48d948a306d433bd57027) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0267de1321efbd19d2d0f97f2046cc86') in 0.072056 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone02_C#.wav
+  artifactKey: Guid(564893845e4102e45a77ec4217f2f686) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone02_C#.wav using Guid(564893845e4102e45a77ec4217f2f686) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dcb91d691f7707a6b51be4dc51ee2e4c') in 0.0403095 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel/Toy Keyboard Glockenspiel12_B.wav
+  artifactKey: Guid(30b249168a8c97c41adbce299df10722) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/10. Glockenspiel/Toy Keyboard Glockenspiel12_B.wav using Guid(30b249168a8c97c41adbce299df10722) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ca282f5e8248cdc0b6bdbb6e5cc1275e') in 0.0425799 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano08_G.wav
+  artifactKey: Guid(66c428d42a6ffb4428eed91c67bc571b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano08_G.wav using Guid(66c428d42a6ffb4428eed91c67bc571b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '014143a30ea9035e06628578706ca3c1') in 0.0483468 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Percussion One Shots/Agogo.wav
+  artifactKey: Guid(60b24649ffcc0814b824379a6cb1c518) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Percussion One Shots/Agogo.wav using Guid(60b24649ffcc0814b824379a6cb1c518) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dc6557d7db4ea660a4cad58e84868603') in 0.0314267 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord12_B.wav
+  artifactKey: Guid(2046ba777d3bfaa4387fdc60fee958a2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/14. Clavichord/Toy Keyboard Clavichord12_B.wav using Guid(2046ba777d3bfaa4387fdc60fee958a2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dad523ba99826b1cbf3430d9422c6e2d') in 0.0375323 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar07_F#.wav
+  artifactKey: Guid(d2fcfdcb91c11b145b36f2a0fc576593) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar07_F#.wav using Guid(d2fcfdcb91c11b145b36f2a0fc576593) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a1391bb8fe111f1f3d2be4f1a3fed91c') in 0.0438339 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe07_F#.wav
+  artifactKey: Guid(255dff7a9701b9748b055794a2865772) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/6. Panpipe/Toy Keyboard Panpipe07_F#.wav using Guid(255dff7a9701b9748b055794a2865772) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '69659f8e36b7df6e7201d1f2a67f1e4e') in 0.0468171 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin05_E.wav
+  artifactKey: Guid(9af583615252d6b42821f52411b68e3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin05_E.wav using Guid(9af583615252d6b42821f52411b68e3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c01d662e20ffa4eb60da194912f351e8') in 0.0464216 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/20. Synth Guitar/Toy Keyboard Synth Guitar05_E.wav
+  artifactKey: Guid(50dbd5b3e9756204e87c471b4da7f28a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/20. Synth Guitar/Toy Keyboard Synth Guitar05_E.wav using Guid(50dbd5b3e9756204e87c471b4da7f28a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7af2f724e489c6a529d2e591b411c8df') in 0.0455923 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano11_A#.wav
+  artifactKey: Guid(5c28836f47bad7244aebbb7a889369e8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/2. E. Piano/Toy Keyboard E. Piano11_A#.wav using Guid(5c28836f47bad7244aebbb7a889369e8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '692c53acf2a030b6ed97d15ba0db9df4') in 0.0389377 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Rhythm Loops/Waltz.wav
+  artifactKey: Guid(67f88280a24368b41bc9f870bebee01a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Rhythm Loops/Waltz.wav using Guid(67f88280a24368b41bc9f870bebee01a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0c95dec24632b6ccc5ce8670984a7980') in 0.0878828 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B.wav
+  artifactKey: Guid(7202656ad3d0cf743887d80782fcdf93) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B.wav using Guid(7202656ad3d0cf743887d80782fcdf93) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a3877882862e7f0eec3482ef849befd6') in 0.0468611 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/15. Double Reed/Toy Keyboard Double Reed01_C.wav
+  artifactKey: Guid(ff11177dfaa14ca409971f75061bf71c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/15. Double Reed/Toy Keyboard Double Reed01_C.wav using Guid(ff11177dfaa14ca409971f75061bf71c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '05ad3a96eb9c545941464e1aa5e45625') in 0.0486612 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_08_G.wav
+  artifactKey: Guid(f5bc02643aab24b41b2a55fbf8e5b61d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/17. Synth Sound 1/Toy Keyboard Synth Sound 1_08_G.wav using Guid(f5bc02643aab24b41b2a55fbf8e5b61d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8900d7e75ddb4d3b280bac56481bfd69') in 0.0426547 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano08_G.wav
+  artifactKey: Guid(715b158ced990ce4c82bae602dddb87e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano08_G.wav using Guid(715b158ced990ce4c82bae602dddb87e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8b13d25b429f47f5ca20d2fdf9886a36') in 0.0402733 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Percussion One Shots/Hi Bongo.wav
+  artifactKey: Guid(07d85545364967d4abcc242925999c98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Percussion One Shots/Hi Bongo.wav using Guid(07d85545364967d4abcc242925999c98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c6aa3a3b0b8c274d127cd1b8b0c18568') in 0.0339745 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/5. Flute/Toy Keyboard Flute12_B.wav
+  artifactKey: Guid(f7720061e4bb1ab4595d2db85a3c164d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/5. Flute/Toy Keyboard Flute12_B.wav using Guid(f7720061e4bb1ab4595d2db85a3c164d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2c9e307a72af73ddb35baaca682cdc6c') in 0.0400618 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar10_A.wav
+  artifactKey: Guid(ceb0b826d3a2c7c4b85b71061eb0160e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/19. Electric Guitar/Toy Keyboard Electric Guitar10_A.wav using Guid(ceb0b826d3a2c7c4b85b71061eb0160e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd4e90497f716d07a535b9d19483a32b2') in 0.0432531 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/15. Double Reed/Toy Keyboard Double Reed08_G.wav
+  artifactKey: Guid(8d1c3ad2b428ee346840bf37a91f3881) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/15. Double Reed/Toy Keyboard Double Reed08_G.wav using Guid(8d1c3ad2b428ee346840bf37a91f3881) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '65f93b2733168605d9f45a867120dc9d') in 0.0580682 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed/Toy Keyboard Synth Reed09_G#.wav
+  artifactKey: Guid(ec85dc1c9a1072843b2875d80c4b6f94) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/16. Synth Reed/Toy Keyboard Synth Reed09_G#.wav using Guid(ec85dc1c9a1072843b2875d80c4b6f94) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '006b6b94e6d0d0ad1919f9a554a1f554') in 0.0495685 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 134.837352 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano03_D.wav
+  artifactKey: Guid(7c0f89e2c5583ee4b90b62c2f01c7469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/1. Piano/Toy Keyboard Piano03_D.wav using Guid(7c0f89e2c5583ee4b90b62c2f01c7469) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c7ae16f3b995fe6f975c804b01e81070') in 0.1238247 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 70.256813 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone01_C.wav
+  artifactKey: Guid(10ac4ac3e5d6c8a41bc240ee443171f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/3. Vibraphone/Toy Keyboard Vibraphone01_C.wav using Guid(10ac4ac3e5d6c8a41bc240ee443171f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dbfc16a7980c655213c602292602199e') in 0.0138616 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.961972 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin01_C.wav
+  artifactKey: Guid(cee253876074eea4291a1f9f9752e7b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin01_C.wav using Guid(cee253876074eea4291a1f9f9752e7b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '84ed6d6d4cc1e59d22c6478eba8107d0') in 0.0263232 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.170972 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin02_C#.wav
+  artifactKey: Guid(c8c7b8ab2364c10459bf754476402f58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin02_C#.wav using Guid(c8c7b8ab2364c10459bf754476402f58) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '39987fa0caae37311aa044a5f678f154') in 0.0327013 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 3.67 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7193 unused Assets / (4.8 MB). Loaded Objects now: 8034.
+Memory consumption went from 167.3 MB to 162.5 MB.
+Total: 23.849400 ms (FindLiveObjects: 2.043200 ms CreateObjectMapping: 1.245600 ms MarkObjects: 17.357700 ms  DeleteObjects: 3.201200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-5CWM-YB93-D5G9-UNMG-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 16768085830141-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+ADTM: Control thread waiting for realtime thread timed out, have to lock...
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  2.183 seconds
+Refreshing native plugins compatible for Editor in 3.11 ms, found 5 plugins.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.828 seconds
+Domain Reload Profiling: 3016ms
+	BeginReloadAssembly (1389ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (21ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1092ms)
+	RebuildCommonClasses (51ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (693ms)
+		LoadAssemblies (607ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (292ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (263ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (830ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (636ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (167ms)
+			ProcessInitializeOnLoadAttributes (373ms)
+			ProcessInitializeOnLoadMethodAttributes (85ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Refreshing native plugins compatible for Editor in 3.22 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7208 unused Assets / (5.2 MB). Loaded Objects now: 8037.
+Memory consumption went from 172.7 MB to 167.5 MB.
+Total: 12.159000 ms (FindLiveObjects: 0.985000 ms CreateObjectMapping: 1.121100 ms MarkObjects: 6.498300 ms  DeleteObjects: 3.553000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.12 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7204 unused Assets / (5.0 MB). Loaded Objects now: 8048.
+Memory consumption went from 175.4 MB to 170.4 MB.
+Total: 12.664100 ms (FindLiveObjects: 1.220600 ms CreateObjectMapping: 1.616900 ms MarkObjects: 6.571600 ms  DeleteObjects: 3.253200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+ADTM: Control thread waiting for realtime thread timed out, have to lock...
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.992 seconds
+Refreshing native plugins compatible for Editor in 3.13 ms, found 5 plugins.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.815 seconds
+Domain Reload Profiling: 2811ms
+	BeginReloadAssembly (1286ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (15ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1057ms)
+	RebuildCommonClasses (42ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (623ms)
+		LoadAssemblies (488ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (291ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (263ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (816ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (623ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (147ms)
+			ProcessInitializeOnLoadAttributes (385ms)
+			ProcessInitializeOnLoadMethodAttributes (81ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Refreshing native plugins compatible for Editor in 2.90 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7219 unused Assets / (4.7 MB). Loaded Objects now: 8051.
+Memory consumption went from 178.0 MB to 173.2 MB.
+Total: 11.956400 ms (FindLiveObjects: 0.993500 ms CreateObjectMapping: 1.037000 ms MarkObjects: 7.181000 ms  DeleteObjects: 2.743400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 3580.970697 seconds.
+  path: Assets
+  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c391582d739b6e62a5220f35cbb167ac') in 0.0024017 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.796071 seconds.
+  path: Assets/Resources
+  artifactKey: Guid(dcaff6f9a17e1b84185f048e4eb4050e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources using Guid(dcaff6f9a17e1b84185f048e4eb4050e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b4a24c57bc659624c3b59dfa0aff6b0b') in 0.0033353 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.889477 seconds.
+  path: Assets/Resources
+  artifactKey: Guid(dcaff6f9a17e1b84185f048e4eb4050e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources using Guid(dcaff6f9a17e1b84185f048e4eb4050e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '85631e313fedddc02f67c5b0fd487740') in 0.0471857 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.830514 seconds.
+  path: Assets/Resources/InstrumentSamples
+  artifactKey: Guid(8a190ba299651d944bc9ad67f55254b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/InstrumentSamples using Guid(8a190ba299651d944bc9ad67f55254b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ec127b41a64b94acd3aa43ae75f52b12') in 0.0034574 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.905864 seconds.
+  path: Assets/Resources/InstrumentSamples
+  artifactKey: Guid(8a190ba299651d944bc9ad67f55254b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples using Guid(8a190ba299651d944bc9ad67f55254b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd97dcb4f531617777476ff93f468bafb') in 0.0034993 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.248323 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin
+  artifactKey: Guid(5ca3dfc838ce9b844971aea933697701) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/InstrumentSamples/Violin using Guid(5ca3dfc838ce9b844971aea933697701) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '662da9f37ae30466d6f2394219661510') in 0.0008666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.900910 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin
+  artifactKey: Guid(5ca3dfc838ce9b844971aea933697701) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples/Violin using Guid(5ca3dfc838ce9b844971aea933697701) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e4eb1b72fc1aaf5db3dbc12e17f5cffb') in 0.0037259 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.943393 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin
+  artifactKey: Guid(235599b9f0fdbc840bc16d72702d6121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin using Guid(235599b9f0fdbc840bc16d72702d6121) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'be856154f5caf3321c47d638eb752178') in 0.0007915 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.595939 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B.wav
+  artifactKey: Guid(7202656ad3d0cf743887d80782fcdf93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B.wav using Guid(7202656ad3d0cf743887d80782fcdf93) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2ab87abd1efb60a9f5db7343578a3efb') in 0.0687458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.223429 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin11_A#.wav
+  artifactKey: Guid(51f72b8ebe21e614cb3ee9e2a4931719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin11_A#.wav using Guid(51f72b8ebe21e614cb3ee9e2a4931719) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f974a437ff42ec1337b9c923c57b71b6') in 0.0267888 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.275997 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B 1.wav
+  artifactKey: Guid(7b688420d030634489a12b8e3bdfdd8d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B 1.wav using Guid(7b688420d030634489a12b8e3bdfdd8d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '220af67ad83db78ad58a60c41a03f8e4') in 0.0851528 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin10_A 1.wav
+  artifactKey: Guid(31c3bb9df46775f49aa0bfb2f0f2ae50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin10_A 1.wav using Guid(31c3bb9df46775f49aa0bfb2f0f2ae50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7168815d7a22212574d7a379ededf045') in 0.0519165 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.680166 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B 1.wav
+  artifactKey: Guid(7b688420d030634489a12b8e3bdfdd8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin12_B 1.wav using Guid(7b688420d030634489a12b8e3bdfdd8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a12c337afd442b6a0120195abb37edca') in 0.0292481 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.128704 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin11_A# 1.wav
+  artifactKey: Guid(3979b28c6e67d3d478ceb693c7faeaf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin11_A# 1.wav using Guid(3979b28c6e67d3d478ceb693c7faeaf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd047c6141bf5f2a82516ae81b1240c1b') in 0.026989 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.947436 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin10_A 1.wav
+  artifactKey: Guid(31c3bb9df46775f49aa0bfb2f0f2ae50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin10_A 1.wav using Guid(31c3bb9df46775f49aa0bfb2f0f2ae50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '48133128305406ec782760b4a96739b6') in 0.0289541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.055058 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin09_G# 1.wav
+  artifactKey: Guid(5a7d0f429975e494cbde26480267318b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin09_G# 1.wav using Guid(5a7d0f429975e494cbde26480267318b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50cccb5861c7098b258b136bed6d9eae') in 0.0301506 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.684086 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin09_G#.wav
+  artifactKey: Guid(eab1bd038f0c9b649bb1467102e6d843) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin09_G#.wav using Guid(eab1bd038f0c9b649bb1467102e6d843) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cf2d72e48bd91ced02ac1d761c370311') in 0.028154 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.623364 seconds.
+  path: Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin03_D.wav
+  artifactKey: Guid(1f92c8dd69c6d0940910e1798830115e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/STK Sound/Toy Keyboard/Instrument Octaves/4. Violin/Toy Keyboard Violin03_D.wav using Guid(1f92c8dd69c6d0940910e1798830115e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd95ea4034ca9da5bcbac3c9ff3607be2') in 0.0330064 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.994196 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin12_B.wav
+  artifactKey: Guid(a360ee8ec9eae0e47bd25906fc93f231) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin12_B.wav using Guid(a360ee8ec9eae0e47bd25906fc93f231) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1b985eb8ef3a4b4760efd612cd384bf2') in 0.047455 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin09_G#.wav
+  artifactKey: Guid(c9ba22c6596fc1b42a89edb1c4d1fc7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin09_G#.wav using Guid(c9ba22c6596fc1b42a89edb1c4d1fc7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '998f51aa4c8cd789d1aa6ac0972e6988') in 0.0473243 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin03_D.wav
+  artifactKey: Guid(f36d071c185cc7b4e9c32edc17febb7a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin03_D.wav using Guid(f36d071c185cc7b4e9c32edc17febb7a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '59b20b7e2bb4e99548137e2f2c1ac45c') in 0.0482706 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin04_D#.wav
+  artifactKey: Guid(ed4d76e66e5508c40a5c405ee0c6672b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin04_D#.wav using Guid(ed4d76e66e5508c40a5c405ee0c6672b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd05f4629bea95be6cdd5801e8e1c6f0d') in 0.046024 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin06_F.wav
+  artifactKey: Guid(9af3354b94a98bd43bb2e5e9c7fdfdb6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin06_F.wav using Guid(9af3354b94a98bd43bb2e5e9c7fdfdb6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8a064f65cedb777b484ff3e7446055af') in 0.0442531 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin10_A.wav
+  artifactKey: Guid(cc1fbedebbe33724aaa25013b97efbcc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/InstrumentSamples/Violin/Toy Keyboard Violin10_A.wav using Guid(cc1fbedebbe33724aaa25013b97efbcc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dd8c9d669475297d61571eeead1a5031') in 0.0512329 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

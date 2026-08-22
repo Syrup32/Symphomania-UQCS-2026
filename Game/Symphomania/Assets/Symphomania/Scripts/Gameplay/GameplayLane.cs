@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Symphomania.Controllers;
 using Symphomania.Session;
@@ -26,9 +27,21 @@ namespace Symphomania.Gameplay
         HitJudge _judge;
         RhythmConductor _conductor;
         Action<InstrumentType, JudgeEvent> _onJudged;
-        AudioSource _audio;
+        AudioSource _audio;      // synthesized (NoteAudio) hits - short one-shots, played via PlayOneShot
+        AudioSource _sampleAudio; // real-sample (InstrumentSampleLibrary) hits - see PlayTrimmedSample
+        Coroutine _sampleTrimRoutine;
 
         const float WorldOffsetSpacing = 80f; // wide margin vs. any lane's orthographic view width, even for a 2-column-plus-trombone-banner aspect ratio on an ultrawide monitor
+
+        // A real sample (e.g. a "toy keyboard" asset-store voice) is often a
+        // long held-note recording, not a quick percussive hit - too drawn
+        // out for instant hit feedback. Rather than requiring you to
+        // pre-trim/re-export every audio file, playback itself is capped to
+        // this long and fades out over the last sampleFadeSeconds of that,
+        // matching the same "quick, no click" shape NoteAudio's synthesized
+        // tones already have baked into their own envelope.
+        const float SampleTrimSeconds = 0.35f;
+        const float SampleFadeSeconds = 0.1f;
 
         public void Initialize(SessionSlot slot, RhythmConductor conductor, int laneIndex, float hitWindowSeconds,
                                 Action<InstrumentType, JudgeEvent> onJudged)
@@ -93,6 +106,16 @@ namespace Symphomania.Gameplay
             _audio = gameObject.AddComponent<AudioSource>();
             _audio.playOnAwake = false;
             _audio.spatialBlend = 0f;
+
+            // A separate AudioSource for real-sample playback, rather than
+            // reusing _audio, so PlayTrimmedSample's volume-fade coroutine
+            // can never bleed into a synthesized PlayOneShot's loudness (or
+            // vice versa) - PlayOneShot scales by AudioSource.volume too, so
+            // sharing one source between "ramping volume down for a fade" and
+            // "fire and forget one-shots" would fight over that same knob.
+            _sampleAudio = gameObject.AddComponent<AudioSource>();
+            _sampleAudio.playOnAwake = false;
+            _sampleAudio.spatialBlend = 0f;
         }
 
         void Update()
@@ -117,24 +140,53 @@ namespace Symphomania.Gameplay
                     // dropped in for this instrument (see
                     // InstrumentSampleLibrary's doc comment for where those
                     // live); otherwise fall back to NoteAudio's synthesized
-                    // voice for this instrument. AudioSource.pitch is reset
-                    // every time since PlayOneShot honors whatever pitch is
-                    // currently set - a stale pitch-shift from a previous
-                    // sampled hit would otherwise leak into a later
-                    // synthesized (or differently-shifted) one.
+                    // voice for this instrument.
                     if (InstrumentSampleLibrary.TryGetNearest(Instrument, evt.Pitch, out var sampleClip, out var playbackPitch))
                     {
-                        _audio.pitch = playbackPitch;
-                        _audio.PlayOneShot(sampleClip);
+                        if (_sampleTrimRoutine != null) StopCoroutine(_sampleTrimRoutine);
+                        _sampleTrimRoutine = StartCoroutine(PlayTrimmedSample(sampleClip, playbackPitch));
                     }
                     else
                     {
-                        _audio.pitch = 1f;
                         var clip = NoteAudio.ClipForPitch(Instrument, evt.Pitch);
                         if (clip != null) _audio.PlayOneShot(clip);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Plays a real sample (typically a several-second held-note
+        /// recording) but only lets SampleTrimSeconds of it actually sound,
+        /// fading the last SampleFadeSeconds of that down to silence rather
+        /// than hard-cutting it (which would click). Overlapping this
+        /// lane's own previous call is handled by the caller stopping the
+        /// prior coroutine first - _sampleAudio itself is single-voice, which
+        /// is fine here since these are monophonic wind/string instruments
+        /// (the drum kit's clicks stay on NoteAudio/_audio, unaffected).
+        /// </summary>
+        IEnumerator PlayTrimmedSample(AudioClip clip, float pitch)
+        {
+            _sampleAudio.pitch = pitch;
+            _sampleAudio.volume = 1f;
+            _sampleAudio.clip = clip;
+            _sampleAudio.time = 0f;
+            _sampleAudio.Play();
+
+            float sustain = SampleTrimSeconds - SampleFadeSeconds;
+            if (sustain > 0f) yield return new WaitForSeconds(sustain);
+
+            float t = 0f;
+            while (t < SampleFadeSeconds && _sampleAudio.isPlaying)
+            {
+                t += Time.deltaTime;
+                _sampleAudio.volume = Mathf.Lerp(1f, 0f, t / SampleFadeSeconds);
+                yield return null;
+            }
+
+            _sampleAudio.Stop();
+            _sampleAudio.volume = 1f; // restore for the next hit
+            _sampleTrimRoutine = null;
         }
     }
 }

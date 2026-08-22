@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: bb8d991b18db762418e7d76b26ce58c4
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 226534
+  packageName: Toy Keyboard | Digital Instruments & Rhythms
+  packageVersion: 1.0
+  assetPath: Assets/STK Sound/Toy Keyboard/Instrument Octaves/5. Flute/Toy Keyboard
+    Flute09_G#.wav
+  uploadId: 510339

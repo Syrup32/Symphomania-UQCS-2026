@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using Symphomania.Controllers;
 
@@ -20,17 +21,47 @@ namespace Symphomania.Gameplay
     /// exist under StreamingAssets, GameplayLane prefers them automatically -
     /// nothing else needs to change.
     ///
-    /// Layout: StreamingAssets/InstrumentSamples/<Instrument>/<Pitch>.wav -
-    /// e.g. ".../InstrumentSamples/Trumpet/C4.wav", ".../Violin/F#3.wav". You
-    /// don't need one file per semitone - one sample every minor third or so
-    /// per instrument is plenty; TryGetNearest finds the closest available
-    /// sample and reports the semitone distance so the caller can pitch-shift
-    /// it (via AudioSource.pitch) to the exact note. An instrument with no
-    /// folder (or an empty one) just falls back to NoteAudio's synthesized
-    /// tone - this is entirely additive, never required.
+    /// Two ways to supply real audio, both scanned automatically - use
+    /// whichever fits what you have:
+    ///
+    /// 1) Your own WAV recordings, dropped straight in the filesystem at
+    ///    StreamingAssets/InstrumentSamples/<Instrument>/<Pitch>.wav - e.g.
+    ///    ".../InstrumentSamples/Trumpet/C4.wav", ".../Violin/F#3.wav".
+    ///
+    /// 2) Already-imported Unity AudioClips - e.g. a purchased asset-store
+    ///    instrument pack - placed (or left, if that's where they already
+    ///    live) under Assets/Resources/InstrumentSamples/<Instrument>/, any
+    ///    filename, as long as it ENDS in an underscore then a note letter
+    ///    with an optional '#' (e.g. "Toy Keyboard Violin02_C#", matching
+    ///    that kind of pack's own naming). These filenames don't carry an
+    ///    octave number (a one-octave "toy keyboard" voice doesn't need one),
+    ///    so every clip found this way is assumed to be the SAME octave - see
+    ///    ResourceOctaveAssumption below; retune that constant if the pitch-
+    ///    shifted result sounds off (too chipmunk-y = assumption too low, too
+    ///    deep/muddy = too high).
+    ///
+    /// You don't need one file per semitone either way - one sample every
+    /// minor third or so per instrument is plenty; TryGetNearest finds the
+    /// closest available sample and reports the semitone distance so the
+    /// caller can pitch-shift it (via AudioSource.pitch) to the exact note.
+    /// An instrument with nothing in either location just falls back to
+    /// NoteAudio's synthesized tone - this is entirely additive, never
+    /// required.
     /// </summary>
     public static class InstrumentSampleLibrary
     {
+        /// <summary>
+        /// Assumed octave for any sample found via the Resources path (see
+        /// class doc comment item 2) - those filenames don't carry an octave
+        /// number, so this is a guess, not something read from the asset.
+        /// Middle-of-the-keyboard toy/synth voices are commonly centered
+        /// around here; adjust by ear if pitch-shifted notes sound off.
+        /// </summary>
+        const int ResourceOctaveAssumption = 4;
+
+        // Matches a trailing "_<letter><optional #>" - e.g. "...02_C#" -> ("C", "#").
+        static readonly Regex TrailingNoteLetter = new Regex(@"_([A-Ga-g])(#)?$", RegexOptions.Compiled);
+
         class Entry
         {
             public int Midi;
@@ -82,10 +113,23 @@ namespace Symphomania.Gameplay
             if (_scanned.Contains(instrument)) return;
             _scanned.Add(instrument);
 
-            string dir = Path.Combine(Application.streamingAssetsPath, "InstrumentSamples", instrument.ToString());
-            if (!Directory.Exists(dir)) return; // no samples supplied for this instrument - fine, NoteAudio covers it
-
             var entries = new List<Entry>();
+            ScanStreamingAssetsWavs(instrument, entries);
+            ScanResourcesClips(instrument, entries);
+
+            if (entries.Count > 0)
+            {
+                _library[instrument] = entries;
+                Debug.Log($"[InstrumentSampleLibrary] Loaded {entries.Count} real sample(s) for {instrument}.");
+            }
+        }
+
+        /// <summary>Source 1: your own raw WAV recordings, not run through Unity's import pipeline at all.</summary>
+        static void ScanStreamingAssetsWavs(InstrumentType instrument, List<Entry> entries)
+        {
+            string dir = Path.Combine(Application.streamingAssetsPath, "InstrumentSamples", instrument.ToString());
+            if (!Directory.Exists(dir)) return; // no samples supplied for this instrument this way - fine, either the Resources path or NoteAudio covers it
+
             foreach (var path in Directory.GetFiles(dir, "*.wav"))
             {
                 string pitchName = Path.GetFileNameWithoutExtension(path);
@@ -100,11 +144,27 @@ namespace Symphomania.Gameplay
                 var clip = LoadWav(path);
                 if (clip != null) entries.Add(new Entry { Midi = midi, Clip = clip });
             }
+        }
 
-            if (entries.Count > 0)
+        /// <summary>Source 2: already-imported Unity AudioClips (e.g. a purchased instrument pack) under Resources/InstrumentSamples/<Instrument>/.</summary>
+        static void ScanResourcesClips(InstrumentType instrument, List<Entry> entries)
+        {
+            var clips = Resources.LoadAll<AudioClip>("InstrumentSamples/" + instrument);
+            foreach (var clip in clips)
             {
-                _library[instrument] = entries;
-                Debug.Log($"[InstrumentSampleLibrary] Loaded {entries.Count} real sample(s) for {instrument} from '{dir}'.");
+                var match = TrailingNoteLetter.Match(clip.name);
+                if (!match.Success)
+                {
+                    Debug.LogWarning($"[InstrumentSampleLibrary] Couldn't find a trailing note letter (like '_C' or '_F#') in Resources clip '{clip.name}' for {instrument} - skipping it.");
+                    continue;
+                }
+
+                char letter = char.ToUpperInvariant(match.Groups[1].Value[0]);
+                int accidental = match.Groups[2].Success ? 1 : 0; // this regex only ever captures '#', never 'b' - matches this pack's naming
+                if (!TryLetterToSemitone(letter, out int semitoneFromC)) continue;
+
+                int midi = (ResourceOctaveAssumption + 1) * 12 + semitoneFromC + accidental;
+                entries.Add(new Entry { Midi = midi, Clip = clip });
             }
         }
 
@@ -124,19 +184,26 @@ namespace Symphomania.Gameplay
             if (!int.TryParse(pitch.Substring(i), out int octave))
                 throw new FormatException(pitch);
 
-            int semitoneFromC = letter switch
-            {
-                'C' => 0,
-                'D' => 2,
-                'E' => 4,
-                'F' => 5,
-                'G' => 7,
-                'A' => 9,
-                'B' => 11,
-                _ => throw new FormatException(pitch),
-            };
+            if (!TryLetterToSemitone(letter, out int semitoneFromC))
+                throw new FormatException(pitch);
 
             return (octave + 1) * 12 + semitoneFromC + accidental;
+        }
+
+        /// <summary>Shared by both MidiForPitch (full "C4" strings) and ScanResourcesClips (bare trailing letters) so the note-name convention lives in exactly one place.</summary>
+        static bool TryLetterToSemitone(char letter, out int semitoneFromC)
+        {
+            switch (letter)
+            {
+                case 'C': semitoneFromC = 0; return true;
+                case 'D': semitoneFromC = 2; return true;
+                case 'E': semitoneFromC = 4; return true;
+                case 'F': semitoneFromC = 5; return true;
+                case 'G': semitoneFromC = 7; return true;
+                case 'A': semitoneFromC = 9; return true;
+                case 'B': semitoneFromC = 11; return true;
+                default: semitoneFromC = 0; return false;
+            }
         }
 
         /// <summary>
