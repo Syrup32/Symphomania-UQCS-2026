@@ -1,0 +1,23 @@
+{
+  "instrument": "drum_kit",
+  "description": "7 piezo sensors, one hit event per struck note (no sustain/duration, no breath, no check-button convention -- the hit itself is the check, per docs project doc claude/controller_hid_protocol.md). Pad numbering/names below (1-7) are AUTHORITATIVE, matching the physical build's HID report layout exactly (button N = pad N, no offset, since drum-kit has no separate check bit): 1=Kick, 2=Snare, 3=Hi-Hat, 4=High Tom, 5=Floor Tom, 6=Crash, 7=Ride -- keep this file and docs/beatmap_schema.md's drum pad table in sync if either changes. The list order below is NOT the same as pad-number order -- it's sorted by approximate perceptual pitch (kick lowest ... ride highest), which is what the converter's piano-mode bass-clef bucketing walks across low-to-high; each entry still carries its correct authoritative 'index'/'name'. Band mode (a real drum/percussion MusicXML part) is NOT YET matching by percussion instrument name -- it currently falls back to the same pitch-bucketing as piano mode. That's a known gap, worth revisiting once there's an actual drum-kit MusicXML to test against (drum-kit hardware itself isn't built yet either). band_mode_name_map below is prepared for that future work but isn't consulted by convert.py yet.",
+  "pad_count": 7,
+  "pads": [
+    {"index": 1, "name": "kick"},
+    {"index": 5, "name": "floor_tom"},
+    {"index": 4, "name": "high_tom"},
+    {"index": 2, "name": "snare"},
+    {"index": 3, "name": "hihat"},
+    {"index": 6, "name": "crash"},
+    {"index": 7, "name": "ride"}
+  ],
+  "band_mode_name_map": {
+    "kick": ["bass drum", "kick"],
+    "snare": ["snare drum", "snare"],
+    "hihat": ["hi-hat", "hihat", "closed hi-hat"],
+    "high_tom": ["high tom", "hi-mid tom"],
+    "floor_tom": ["floor tom", "low floor tom"],
+    "crash": ["crash cymbal", "crash"],
+    "ride": ["ride cymbal", "ride"]
+  }
+}

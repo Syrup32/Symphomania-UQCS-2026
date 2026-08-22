@@ -1,0 +1,1903 @@
+{
+  "song": {
+    "title": "Happy Birthday to You (Version S)",
+    "composer": "Traditional (public domain)",
+    "source": "hand-built full-length test fixture",
+    "time_signature": "3/4",
+    "tempo_changes": [
+      {
+        "beat": 0.0,
+        "bpm": 110.00000000000001
+      },
+      {
+        "beat": 0.0,
+        "bpm": 110.00000000000001
+      },
+      {
+        "beat": 0.0,
+        "bpm": 110.00000000000001
+      },
+      {
+        "beat": 0.0,
+        "bpm": 110.00000000000001
+      },
+      {
+        "beat": 0.0,
+        "bpm": 110.00000000000001
+      }
+    ],
+    "duration_seconds": 14.7273
+  },
+  "instruments": {
+    "trumpet": {
+      "controller": "trumpet",
+      "notes": [
+        {
+          "id": 1,
+          "measure": 1,
+          "start_beat": 0.0,
+          "start_time": 0.0,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 2,
+          "measure": 1,
+          "start_beat": 0.5,
+          "start_time": 0.2727,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 3,
+          "measure": 1,
+          "start_beat": 1.0,
+          "start_time": 0.5455,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 4,
+          "measure": 1,
+          "start_beat": 2.0,
+          "start_time": 1.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 5,
+          "measure": 2,
+          "start_beat": 3.0,
+          "start_time": 1.6364,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": false,
+              "3": true
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 6,
+          "measure": 2,
+          "start_beat": 4.0,
+          "start_time": 2.1818,
+          "duration_beats": 2.0,
+          "duration_time": 1.0909,
+          "pitch": "B4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": true
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 7,
+          "measure": 3,
+          "start_beat": 6.0,
+          "start_time": 3.2727,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 8,
+          "measure": 3,
+          "start_beat": 6.5,
+          "start_time": 3.5455,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 9,
+          "measure": 3,
+          "start_beat": 7.0,
+          "start_time": 3.8182,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 10,
+          "measure": 3,
+          "start_beat": 8.0,
+          "start_time": 4.3636,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 11,
+          "measure": 4,
+          "start_beat": 9.0,
+          "start_time": 4.9091,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "D5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 12,
+          "measure": 4,
+          "start_beat": 10.0,
+          "start_time": 5.4545,
+          "duration_beats": 2.0,
+          "duration_time": 1.0909,
+          "pitch": "C5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": false,
+              "3": true
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 13,
+          "measure": 5,
+          "start_beat": 12.0,
+          "start_time": 6.5455,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 14,
+          "measure": 5,
+          "start_beat": 12.5,
+          "start_time": 6.8182,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 15,
+          "measure": 5,
+          "start_beat": 13.0,
+          "start_time": 7.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 16,
+          "measure": 5,
+          "start_beat": 14.0,
+          "start_time": 7.6364,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "E5",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 17,
+          "measure": 6,
+          "start_beat": 15.0,
+          "start_time": 8.1818,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": false,
+              "3": true
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 18,
+          "measure": 6,
+          "start_beat": 16.0,
+          "start_time": 8.7273,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "B4",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": true
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 19,
+          "measure": 6,
+          "start_beat": 17.0,
+          "start_time": 9.2727,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 20,
+          "measure": 7,
+          "start_beat": 18.0,
+          "start_time": 9.8182,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 21,
+          "measure": 7,
+          "start_beat": 19.0,
+          "start_time": 10.3636,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "F5",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": false,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 22,
+          "measure": 7,
+          "start_beat": 19.5,
+          "start_time": 10.6364,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "F5",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": false,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 23,
+          "measure": 7,
+          "start_beat": 20.0,
+          "start_time": 10.9091,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "E5",
+          "input": {
+            "valves": {
+              "1": false,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 24,
+          "measure": 8,
+          "start_beat": 21.0,
+          "start_time": 11.4545,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": false,
+              "3": true
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 25,
+          "measure": 8,
+          "start_beat": 22.0,
+          "start_time": 12.0,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "D5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": true,
+              "3": false
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 26,
+          "measure": 8,
+          "start_beat": 23.0,
+          "start_time": 12.5455,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": false,
+              "3": true
+            },
+            "breath": true
+          }
+        },
+        {
+          "id": 27,
+          "measure": 9,
+          "start_beat": 24.0,
+          "start_time": 13.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "valves": {
+              "1": true,
+              "2": false,
+              "3": true
+            },
+            "breath": true
+          }
+        }
+      ]
+    },
+    "saxophone": {
+      "controller": "saxophone",
+      "notes": [
+        {
+          "id": 1,
+          "measure": 1,
+          "start_beat": 0.0,
+          "start_time": 0.0,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 2,
+          "measure": 1,
+          "start_beat": 0.5,
+          "start_time": 0.2727,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 3,
+          "measure": 1,
+          "start_beat": 1.0,
+          "start_time": 0.5455,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 4,
+          "measure": 1,
+          "start_beat": 2.0,
+          "start_time": 1.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 5,
+          "measure": 2,
+          "start_beat": 3.0,
+          "start_time": 1.6364,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 6,
+          "measure": 2,
+          "start_beat": 4.0,
+          "start_time": 2.1818,
+          "duration_beats": 2.0,
+          "duration_time": 1.0909,
+          "pitch": "B4",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 7,
+          "measure": 3,
+          "start_beat": 6.0,
+          "start_time": 3.2727,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 8,
+          "measure": 3,
+          "start_beat": 6.5,
+          "start_time": 3.5455,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 9,
+          "measure": 3,
+          "start_beat": 7.0,
+          "start_time": 3.8182,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 10,
+          "measure": 3,
+          "start_beat": 8.0,
+          "start_time": 4.3636,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 11,
+          "measure": 4,
+          "start_beat": 9.0,
+          "start_time": 4.9091,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "D5",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 12,
+          "measure": 4,
+          "start_beat": 10.0,
+          "start_time": 5.4545,
+          "duration_beats": 2.0,
+          "duration_time": 1.0909,
+          "pitch": "C5",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 13,
+          "measure": 5,
+          "start_beat": 12.0,
+          "start_time": 6.5455,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 14,
+          "measure": 5,
+          "start_beat": 12.5,
+          "start_time": 6.8182,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 15,
+          "measure": 5,
+          "start_beat": 13.0,
+          "start_time": 7.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G5",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 16,
+          "measure": 5,
+          "start_beat": 14.0,
+          "start_time": 7.6364,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "E5",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 17,
+          "measure": 6,
+          "start_beat": 15.0,
+          "start_time": 8.1818,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 18,
+          "measure": 6,
+          "start_beat": 16.0,
+          "start_time": 8.7273,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "B4",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 19,
+          "measure": 6,
+          "start_beat": 17.0,
+          "start_time": 9.2727,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 20,
+          "measure": 7,
+          "start_beat": 18.0,
+          "start_time": 9.8182,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 21,
+          "measure": 7,
+          "start_beat": 19.0,
+          "start_time": 10.3636,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "F5",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 22,
+          "measure": 7,
+          "start_beat": 19.5,
+          "start_time": 10.6364,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "F5",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 23,
+          "measure": 7,
+          "start_beat": 20.0,
+          "start_time": 10.9091,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "E5",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": false,
+            "breath": true
+          }
+        },
+        {
+          "id": 24,
+          "measure": 8,
+          "start_beat": 21.0,
+          "start_time": 11.4545,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 25,
+          "measure": 8,
+          "start_beat": 22.0,
+          "start_time": 12.0,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "D5",
+          "input": {
+            "holes": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 26,
+          "measure": 8,
+          "start_beat": 23.0,
+          "start_time": 12.5455,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        },
+        {
+          "id": 27,
+          "measure": 9,
+          "start_beat": 24.0,
+          "start_time": 13.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "holes": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "register": true,
+            "breath": true
+          }
+        }
+      ]
+    },
+    "violin": {
+      "controller": "violin",
+      "notes": [
+        {
+          "id": 1,
+          "measure": 1,
+          "start_beat": 0.0,
+          "start_time": 0.0,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 2,
+          "measure": 1,
+          "start_beat": 0.5,
+          "start_time": 0.2727,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 3,
+          "measure": 1,
+          "start_beat": 1.0,
+          "start_time": 0.5455,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 4,
+          "measure": 1,
+          "start_beat": 2.0,
+          "start_time": 1.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 5,
+          "measure": 2,
+          "start_beat": 3.0,
+          "start_time": 1.6364,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 6,
+          "measure": 2,
+          "start_beat": 4.0,
+          "start_time": 2.1818,
+          "duration_beats": 2.0,
+          "duration_time": 1.0909,
+          "pitch": "B4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": true,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 7,
+          "measure": 3,
+          "start_beat": 6.0,
+          "start_time": 3.2727,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 8,
+          "measure": 3,
+          "start_beat": 6.5,
+          "start_time": 3.5455,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 9,
+          "measure": 3,
+          "start_beat": 7.0,
+          "start_time": 3.8182,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 10,
+          "measure": 3,
+          "start_beat": 8.0,
+          "start_time": 4.3636,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 11,
+          "measure": 4,
+          "start_beat": 9.0,
+          "start_time": 4.9091,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "D5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 12,
+          "measure": 4,
+          "start_beat": 10.0,
+          "start_time": 5.4545,
+          "duration_beats": 2.0,
+          "duration_time": 1.0909,
+          "pitch": "C5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 13,
+          "measure": 5,
+          "start_beat": 12.0,
+          "start_time": 6.5455,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 14,
+          "measure": 5,
+          "start_beat": 12.5,
+          "start_time": 6.8182,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 15,
+          "measure": 5,
+          "start_beat": 13.0,
+          "start_time": 7.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "G5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 16,
+          "measure": 5,
+          "start_beat": 14.0,
+          "start_time": 7.6364,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "E5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 17,
+          "measure": 6,
+          "start_beat": 15.0,
+          "start_time": 8.1818,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 18,
+          "measure": 6,
+          "start_beat": 16.0,
+          "start_time": 8.7273,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "B4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": true,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 19,
+          "measure": 6,
+          "start_beat": 17.0,
+          "start_time": 9.2727,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 20,
+          "measure": 7,
+          "start_beat": 18.0,
+          "start_time": 9.8182,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "A4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 21,
+          "measure": 7,
+          "start_beat": 19.0,
+          "start_time": 10.3636,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "F5",
+          "input": {
+            "switches": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 22,
+          "measure": 7,
+          "start_beat": 19.5,
+          "start_time": 10.6364,
+          "duration_beats": 0.5,
+          "duration_time": 0.2727,
+          "pitch": "F5",
+          "input": {
+            "switches": {
+              "1": true,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 23,
+          "measure": 7,
+          "start_beat": 20.0,
+          "start_time": 10.9091,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "E5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 24,
+          "measure": 8,
+          "start_beat": 21.0,
+          "start_time": 11.4545,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 25,
+          "measure": 8,
+          "start_beat": 22.0,
+          "start_time": 12.0,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "D5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 26,
+          "measure": 8,
+          "start_beat": 23.0,
+          "start_time": 12.5455,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 27,
+          "measure": 9,
+          "start_beat": 24.0,
+          "start_time": 13.0909,
+          "duration_beats": 1.0,
+          "duration_time": 0.5455,
+          "pitch": "C5",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        }
+      ]
+    },
+    "trombone": {
+      "controller": "trombone",
+      "notes": [
+        {
+          "id": 1,
+          "measure": 1,
+          "start_beat": 0.0,
+          "start_time": 0.0,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 6,
+            "breath": true
+          }
+        },
+        {
+          "id": 2,
+          "measure": 2,
+          "start_beat": 3.0,
+          "start_time": 1.6364,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "G2",
+          "input": {
+            "slide_position": 4,
+            "breath": true
+          }
+        },
+        {
+          "id": 3,
+          "measure": 3,
+          "start_beat": 6.0,
+          "start_time": 3.2727,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 6,
+            "breath": true
+          }
+        },
+        {
+          "id": 4,
+          "measure": 4,
+          "start_beat": 9.0,
+          "start_time": 4.9091,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "G2",
+          "input": {
+            "slide_position": 4,
+            "breath": true
+          }
+        },
+        {
+          "id": 5,
+          "measure": 5,
+          "start_beat": 12.0,
+          "start_time": 6.5455,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 6,
+            "breath": true
+          }
+        },
+        {
+          "id": 6,
+          "measure": 6,
+          "start_beat": 15.0,
+          "start_time": 8.1818,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "F2",
+          "input": {
+            "slide_position": 6,
+            "breath": true
+          }
+        },
+        {
+          "id": 7,
+          "measure": 7,
+          "start_beat": 18.0,
+          "start_time": 9.8182,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 6,
+            "breath": true
+          }
+        },
+        {
+          "id": 8,
+          "measure": 8,
+          "start_beat": 21.0,
+          "start_time": 11.4545,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "G2",
+          "input": {
+            "slide_position": 4,
+            "breath": true
+          }
+        },
+        {
+          "id": 9,
+          "measure": 9,
+          "start_beat": 24.0,
+          "start_time": 13.0909,
+          "duration_beats": 3.0,
+          "duration_time": 1.6364,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 6,
+            "breath": true
+          }
+        }
+      ]
+    },
+    "drum_kit": {
+      "controller": "drum_kit",
+      "hits": [
+        {
+          "id": 1,
+          "measure": 1,
+          "time": 0.0,
+          "beat": 0.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        },
+        {
+          "id": 2,
+          "measure": 2,
+          "time": 1.6364,
+          "beat": 3.0,
+          "pad": 4,
+          "pad_name": "high_tom",
+          "velocity": 0.9
+        },
+        {
+          "id": 3,
+          "measure": 3,
+          "time": 3.2727,
+          "beat": 6.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        },
+        {
+          "id": 4,
+          "measure": 4,
+          "time": 4.9091,
+          "beat": 9.0,
+          "pad": 4,
+          "pad_name": "high_tom",
+          "velocity": 0.9
+        },
+        {
+          "id": 5,
+          "measure": 5,
+          "time": 6.5455,
+          "beat": 12.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        },
+        {
+          "id": 6,
+          "measure": 6,
+          "time": 8.1818,
+          "beat": 15.0,
+          "pad": 1,
+          "pad_name": "kick",
+          "velocity": 0.9
+        },
+        {
+          "id": 7,
+          "measure": 7,
+          "time": 9.8182,
+          "beat": 18.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        },
+        {
+          "id": 8,
+          "measure": 8,
+          "time": 11.4545,
+          "beat": 21.0,
+          "pad": 4,
+          "pad_name": "high_tom",
+          "velocity": 0.9
+        },
+        {
+          "id": 9,
+          "measure": 9,
+          "time": 13.0909,
+          "beat": 24.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        }
+      ]
+    }
+  }
+}

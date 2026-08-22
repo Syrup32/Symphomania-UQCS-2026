@@ -1,0 +1,703 @@
+{
+  "instrument": "violin",
+  "description": "Pressing a button holds down ALL FOUR strings at once, N semitones above each string's own open pitch -- it is a full-row action, not a per-string one. 'buttons' below is the primary/authoritative table: button number -> the exact 4-note row it produces (this is what the physical controller does). 'notes' is a DERIVED reverse index (pitch name -> canonical button+string) built from that table, for looking up what button to chart for a given target pitch. Because one button produces 4 pitches at once, and some pitches are reachable via more than one row-position (adjacent strings overlap by a note at the position boundary), 'notes' just records ONE canonical choice per pitch (preferring the lowest button number / open strings) plus any runner-up(s) in 'alternatives' -- it does not change what the hardware actually does, which is always press the whole row.",
+  "switch_count": 7,
+  "bow_direction_rule": "alternate",
+  "open_strings": {
+    "G": 55,
+    "D": 62,
+    "A": 69,
+    "E": 76
+  },
+  "buttons": {
+    "0": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "row": {
+        "G": "G3",
+        "D": "D4",
+        "A": "A4",
+        "E": "E5"
+      }
+    },
+    "1": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "row": {
+        "G": "G#3",
+        "D": "D#4",
+        "A": "A#4",
+        "E": "F5"
+      }
+    },
+    "2": {
+      "switches": {
+        "1": false,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "row": {
+        "G": "A3",
+        "D": "E4",
+        "A": "B4",
+        "E": "F#5"
+      }
+    },
+    "3": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "row": {
+        "G": "A#3",
+        "D": "F4",
+        "A": "C5",
+        "E": "G5"
+      }
+    },
+    "4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "row": {
+        "G": "B3",
+        "D": "F#4",
+        "A": "C#5",
+        "E": "G#5"
+      }
+    },
+    "5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": true,
+        "6": false,
+        "7": false
+      },
+      "row": {
+        "G": "C4",
+        "D": "G4",
+        "A": "D5",
+        "E": "A5"
+      }
+    },
+    "6": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "row": {
+        "G": "C#4",
+        "D": "G#4",
+        "A": "D#5",
+        "E": "A#5"
+      }
+    },
+    "7": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": true
+      },
+      "row": {
+        "G": "D4",
+        "D": "A4",
+        "A": "E5",
+        "E": "B5"
+      }
+    }
+  },
+  "notes": {
+    "G3": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 0
+    },
+    "G#3": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 1
+    },
+    "Ab3": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 1
+    },
+    "A3": {
+      "switches": {
+        "1": false,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 2
+    },
+    "A#3": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 3
+    },
+    "Bb3": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 3
+    },
+    "B3": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 4
+    },
+    "C4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": true,
+        "6": false,
+        "7": false
+      },
+      "string": "G",
+      "button": 5
+    },
+    "Db4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "G",
+      "button": 6
+    },
+    "C#4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "G",
+      "button": 6
+    },
+    "D4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 0,
+      "alternatives": [
+        {
+          "button": 7,
+          "string": "G"
+        }
+      ]
+    },
+    "D#4": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 1
+    },
+    "Eb4": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 1
+    },
+    "E4": {
+      "switches": {
+        "1": false,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 2
+    },
+    "F4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 3
+    },
+    "Gb4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 4
+    },
+    "F#4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 4
+    },
+    "G4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": true,
+        "6": false,
+        "7": false
+      },
+      "string": "D",
+      "button": 5
+    },
+    "G#4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "D",
+      "button": 6
+    },
+    "Ab4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "D",
+      "button": 6
+    },
+    "A4": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 0,
+      "alternatives": [
+        {
+          "button": 7,
+          "string": "D"
+        }
+      ]
+    },
+    "Bb4": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 1
+    },
+    "A#4": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 1
+    },
+    "B4": {
+      "switches": {
+        "1": false,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 2
+    },
+    "C5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 3
+    },
+    "Db5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 4
+    },
+    "C#5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 4
+    },
+    "D5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": true,
+        "6": false,
+        "7": false
+      },
+      "string": "A",
+      "button": 5
+    },
+    "D#5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "A",
+      "button": 6
+    },
+    "Eb5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "A",
+      "button": 6
+    },
+    "E5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 0,
+      "alternatives": [
+        {
+          "button": 7,
+          "string": "A"
+        }
+      ]
+    },
+    "F5": {
+      "switches": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 1
+    },
+    "Gb5": {
+      "switches": {
+        "1": false,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 2
+    },
+    "F#5": {
+      "switches": {
+        "1": false,
+        "2": true,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 2
+    },
+    "G5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 3
+    },
+    "G#5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 4
+    },
+    "Ab5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 4
+    },
+    "A5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": true,
+        "6": false,
+        "7": false
+      },
+      "string": "E",
+      "button": 5
+    },
+    "A#5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "E",
+      "button": 6
+    },
+    "Bb5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": true,
+        "7": false
+      },
+      "string": "E",
+      "button": 6
+    },
+    "B5": {
+      "switches": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": true
+      },
+      "string": "E",
+      "button": 7
+    }
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "instrument": "trombone",
+  "description": "Built from a real tenor trombone position chart, not a linear approximation. The controller's HID report only ever exposes a discrete slide position 1-7 (one of 7 buttons -- see the firmware's trombone_control_HID.ino) with no continuous axis at all, so 'slide_position' is the only field that needs to be judged against hardware; there is no analog value to show in-game. Covers E2-F4, the full practical range across partials 2-6. Where a pitch is reachable via more than one (position, partial) pair -- adjacent partials overlap by design on a real trombone -- the lowest position number is canonical (matches the real chart's own primary choice in every case checked), with the runner-up kept in 'alternatives'. Two notes above this range (F#4, G4) need an embouchure/lip adjustment beyond plain slide position on a real horn and are deliberately left out -- this simplified controller has no way to express that, so they're out-of-chart the same as any other unreachable note.",
+  "position_count": 7,
+  "min_note": "E2",
+  "max_note": "F4",
+  "notes": {
+    "E2": {
+      "slide_position": 7,
+      "partial": 2
+    },
+    "F2": {
+      "slide_position": 6,
+      "partial": 2
+    },
+    "F#2": {
+      "slide_position": 5,
+      "partial": 2
+    },
+    "Gb2": {
+      "slide_position": 5,
+      "partial": 2
+    },
+    "G2": {
+      "slide_position": 4,
+      "partial": 2
+    },
+    "G#2": {
+      "slide_position": 3,
+      "partial": 2
+    },
+    "Ab2": {
+      "slide_position": 3,
+      "partial": 2
+    },
+    "A2": {
+      "slide_position": 2,
+      "partial": 2
+    },
+    "A#2": {
+      "slide_position": 1,
+      "partial": 2
+    },
+    "Bb2": {
+      "slide_position": 1,
+      "partial": 2
+    },
+    "B2": {
+      "slide_position": 7,
+      "partial": 3
+    },
+    "C3": {
+      "slide_position": 6,
+      "partial": 3
+    },
+    "Db3": {
+      "slide_position": 5,
+      "partial": 3
+    },
+    "C#3": {
+      "slide_position": 5,
+      "partial": 3
+    },
+    "D3": {
+      "slide_position": 4,
+      "partial": 3
+    },
+    "D#3": {
+      "slide_position": 3,
+      "partial": 3
+    },
+    "Eb3": {
+      "slide_position": 3,
+      "partial": 3
+    },
+    "E3": {
+      "slide_position": 2,
+      "partial": 3,
+      "alternatives": [
+        {
+          "slide_position": 7,
+          "partial": 4
+        }
+      ]
+    },
+    "F3": {
+      "slide_position": 1,
+      "partial": 3,
+      "alternatives": [
+        {
+          "slide_position": 6,
+          "partial": 4
+        }
+      ]
+    },
+    "Gb3": {
+      "slide_position": 5,
+      "partial": 4
+    },
+    "F#3": {
+      "slide_position": 5,
+      "partial": 4
+    },
+    "G3": {
+      "slide_position": 4,
+      "partial": 4
+    },
+    "G#3": {
+      "slide_position": 3,
+      "partial": 4,
+      "alternatives": [
+        {
+          "slide_position": 7,
+          "partial": 5
+        }
+      ]
+    },
+    "Ab3": {
+      "slide_position": 3,
+      "partial": 4,
+      "alternatives": [
+        {
+          "slide_position": 7,
+          "partial": 5
+        }
+      ]
+    },
+    "A3": {
+      "slide_position": 2,
+      "partial": 4,
+      "alternatives": [
+        {
+          "slide_position": 6,
+          "partial": 5
+        }
+      ]
+    },
+    "Bb3": {
+      "slide_position": 1,
+      "partial": 4,
+      "alternatives": [
+        {
+          "slide_position": 5,
+          "partial": 5
+        }
+      ]
+    },
+    "A#3": {
+      "slide_position": 1,
+      "partial": 4,
+      "alternatives": [
+        {
+          "slide_position": 5,
+          "partial": 5
+        }
+      ]
+    },
+    "B3": {
+      "slide_position": 4,
+      "partial": 5,
+      "alternatives": [
+        {
+          "slide_position": 7,
+          "partial": 6
+        }
+      ]
+    },
+    "C4": {
+      "slide_position": 3,
+      "partial": 5,
+      "alternatives": [
+        {
+          "slide_position": 6,
+          "partial": 6
+        }
+      ]
+    },
+    "Db4": {
+      "slide_position": 2,
+      "partial": 5,
+      "alternatives": [
+        {
+          "slide_position": 5,
+          "partial": 6
+        }
+      ]
+    },
+    "C#4": {
+      "slide_position": 2,
+      "partial": 5,
+      "alternatives": [
+        {
+          "slide_position": 5,
+          "partial": 6
+        }
+      ]
+    },
+    "D4": {
+      "slide_position": 1,
+      "partial": 5,
+      "alternatives": [
+        {
+          "slide_position": 4,
+          "partial": 6
+        }
+      ]
+    },
+    "Eb4": {
+      "slide_position": 3,
+      "partial": 6
+    },
+    "D#4": {
+      "slide_position": 3,
+      "partial": 6
+    },
+    "E4": {
+      "slide_position": 2,
+      "partial": 6
+    },
+    "F4": {
+      "slide_position": 1,
+      "partial": 6
+    }
+  }
+}

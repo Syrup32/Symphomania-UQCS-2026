@@ -1,0 +1,27 @@
+{
+  "instrument": "saxophone",
+  "description": "SIMPLIFIED 8-switch controller, not a full real sax key layout, but the 8 roles now match the actual hardware build confirmed against a real fingering chart (howtoplaysaxophone.org, checked 2026-08-22): an octave/register key (thumb) + 3 upper main keys (index/middle/ring, holes 1-3) + 3 lower main keys (index/middle/ring, holes 4-6) + the low C half-moon key (hole 7). This gives a clean 2-octave range with no cross-fingerings for chromatic notes -- side/palm keys and the second half-moon key are omitted given the 8-switch limit. FIXED 2026-08-22: earlier version of this file had the hole-covering direction backwards (more holes covered was mapped to a HIGHER pitch). Real woodwinds work the opposite way -- opening more holes shortens the effective tube and raises pitch, so covering more holes LOWERS it, matching how the trumpet's valves work conceptually (more engaged = lower). This file now reflects that: no holes covered = the highest note in the fingered octave, holes 1-6 all covered = the diatonic tonic, and adding hole 7 (low C key) on top of that extends one further diatonic step down to B3 -- a design choice for this simplified model, not a literal transcription of what the low C key does on a real horn. This extension is only used at the very bottom of the range (not mirrored into the upper octave), since the equivalent register+holes1-7 combination there would collide with B5's already-simpler open+register fingering. Chromatic (accidental) notes are still NOT resolvable with this simplified switch set -- the converter flags them as warnings.",
+  "switch_count": 8,
+  "register_key_index": 8,
+  "base_key": "C",
+  "scale": "major",
+  "lower_octave_root": "C4",
+  "upper_octave_root": "C5",
+  "notes": {
+    "B4": {"holes": {"1": false, "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "register": false, "breath": true},
+    "A4": {"holes": {"1": true,  "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "register": false, "breath": true},
+    "G4": {"holes": {"1": true,  "2": true,  "3": false, "4": false, "5": false, "6": false, "7": false}, "register": false, "breath": true},
+    "F4": {"holes": {"1": true,  "2": true,  "3": true,  "4": false, "5": false, "6": false, "7": false}, "register": false, "breath": true},
+    "E4": {"holes": {"1": true,  "2": true,  "3": true,  "4": true,  "5": false, "6": false, "7": false}, "register": false, "breath": true},
+    "D4": {"holes": {"1": true,  "2": true,  "3": true,  "4": true,  "5": true,  "6": false, "7": false}, "register": false, "breath": true},
+    "C4": {"holes": {"1": true,  "2": true,  "3": true,  "4": true,  "5": true,  "6": true,  "7": false}, "register": false, "breath": true},
+    "B3": {"holes": {"1": true,  "2": true,  "3": true,  "4": true,  "5": true,  "6": true,  "7": true },  "register": false, "breath": true},
+    "B5": {"holes": {"1": false, "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "register": true,  "breath": true},
+    "A5": {"holes": {"1": true,  "2": false, "3": false, "4": false, "5": false, "6": false, "7": false}, "register": true,  "breath": true},
+    "G5": {"holes": {"1": true,  "2": true,  "3": false, "4": false, "5": false, "6": false, "7": false}, "register": true,  "breath": true},
+    "F5": {"holes": {"1": true,  "2": true,  "3": true,  "4": false, "5": false, "6": false, "7": false}, "register": true,  "breath": true},
+    "E5": {"holes": {"1": true,  "2": true,  "3": true,  "4": true,  "5": false, "6": false, "7": false}, "register": true,  "breath": true},
+    "D5": {"holes": {"1": true,  "2": true,  "3": true,  "4": true,  "5": true,  "6": false, "7": false}, "register": true,  "breath": true},
+    "C5": {"holes": {"1": true,  "2": true,  "3": true,  "4": true,  "5": true,  "6": true,  "7": false}, "register": true,  "breath": true}
+  }
+}

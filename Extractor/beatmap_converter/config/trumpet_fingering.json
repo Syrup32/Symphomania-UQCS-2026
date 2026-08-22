@@ -1,0 +1,255 @@
+{
+  "instrument": "trumpet",
+  "description": "Pitch is WRITTEN pitch for Bb trumpet (converter transposes concert pitch up a major second before lookup). valves.N = true means valve N is pressed. breath is always true for a sounding note -- the mic just needs to detect airflow above threshold while a note is active.",
+  "switch_count": 3,
+  "notes": {
+    "F#3": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "G3": {
+      "valves": {
+        "1": false,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "G#3": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": true
+      },
+      "breath": true
+    },
+    "A3": {
+      "valves": {
+        "1": true,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "A#3": {
+      "valves": {
+        "1": true,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "B3": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "C4": {
+      "valves": {
+        "1": false,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "C#4": {
+      "valves": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "breath": true
+    },
+    "D4": {
+      "valves": {
+        "1": true,
+        "2": false,
+        "3": true
+      },
+      "breath": true
+    },
+    "D#4": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": true
+      },
+      "breath": true
+    },
+    "E4": {
+      "valves": {
+        "1": true,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "F4": {
+      "valves": {
+        "1": true,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "F#4": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "G4": {
+      "valves": {
+        "1": false,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "G#4": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": true
+      },
+      "breath": true
+    },
+    "A4": {
+      "valves": {
+        "1": true,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "A#4": {
+      "valves": {
+        "1": true,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "B4": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "C5": {
+      "valves": {
+        "1": false,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "C#5": {
+      "valves": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "breath": true
+    },
+    "D5": {
+      "valves": {
+        "1": true,
+        "2": false,
+        "3": true
+      },
+      "breath": true
+    },
+    "D#5": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": true
+      },
+      "breath": true
+    },
+    "E5": {
+      "valves": {
+        "1": true,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "F5": {
+      "valves": {
+        "1": true,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "F#5": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "G5": {
+      "valves": {
+        "1": false,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "G#5": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": true
+      },
+      "breath": true
+    },
+    "A5": {
+      "valves": {
+        "1": true,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "A#5": {
+      "valves": {
+        "1": true,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    },
+    "B5": {
+      "valves": {
+        "1": false,
+        "2": true,
+        "3": false
+      },
+      "breath": true
+    },
+    "C6": {
+      "valves": {
+        "1": false,
+        "2": false,
+        "3": false
+      },
+      "breath": true
+    }
+  }
+}

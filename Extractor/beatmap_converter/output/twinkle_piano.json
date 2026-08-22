@@ -1,0 +1,501 @@
+{
+  "song": {
+    "title": "twinkle_twinkle_piano",
+    "composer": "Traditional",
+    "source": "hand-built sample",
+    "time_signature": "4/4",
+    "tempo_changes": [
+      {
+        "beat": 0.0,
+        "bpm": 100.0
+      }
+    ],
+    "duration_seconds": 9.6
+  },
+  "instruments": {
+    "violin": {
+      "controller": "violin",
+      "notes": [
+        {
+          "id": 1,
+          "measure": 1,
+          "start_beat": 0.0,
+          "start_time": 0.0,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "C4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 2,
+          "measure": 1,
+          "start_beat": 1.0,
+          "start_time": 0.6,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "C4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 3,
+          "measure": 1,
+          "start_beat": 2.0,
+          "start_time": 1.2,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 4,
+          "measure": 1,
+          "start_beat": 3.0,
+          "start_time": 1.8,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 5,
+          "measure": 2,
+          "start_beat": 4.0,
+          "start_time": 2.4,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "A4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 6,
+          "measure": 2,
+          "start_beat": 5.0,
+          "start_time": 3.0,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "A4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 7,
+          "measure": 2,
+          "start_beat": 6.0,
+          "start_time": 3.6,
+          "duration_beats": 2.0,
+          "duration_time": 1.2,
+          "pitch": "G4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 8,
+          "measure": 3,
+          "start_beat": 8.0,
+          "start_time": 4.8,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "F4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 9,
+          "measure": 3,
+          "start_beat": 9.0,
+          "start_time": 5.4,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "F4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": true,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 10,
+          "measure": 3,
+          "start_beat": 10.0,
+          "start_time": 6.0,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "E4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": true,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 11,
+          "measure": 3,
+          "start_beat": 11.0,
+          "start_time": 6.6,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "E4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": true,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 12,
+          "measure": 4,
+          "start_beat": 12.0,
+          "start_time": 7.2,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "D4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        },
+        {
+          "id": 13,
+          "measure": 4,
+          "start_beat": 13.0,
+          "start_time": 7.8,
+          "duration_beats": 1.0,
+          "duration_time": 0.6,
+          "pitch": "D4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": false,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "up"
+          }
+        },
+        {
+          "id": 14,
+          "measure": 4,
+          "start_beat": 14.0,
+          "start_time": 8.4,
+          "duration_beats": 2.0,
+          "duration_time": 1.2,
+          "pitch": "C4",
+          "input": {
+            "switches": {
+              "1": false,
+              "2": false,
+              "3": false,
+              "4": false,
+              "5": true,
+              "6": false,
+              "7": false
+            },
+            "bow_active": true,
+            "suggested_bow_direction": "down"
+          }
+        }
+      ]
+    },
+    "trombone": {
+      "controller": "trombone",
+      "notes": [
+        {
+          "id": 1,
+          "measure": 1,
+          "start_beat": 0.0,
+          "start_time": 0.0,
+          "duration_beats": 2.0,
+          "duration_time": 1.0,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 3,
+            "slide_value_hint": 0.7333,
+            "breath": true
+          }
+        },
+        {
+          "id": 2,
+          "measure": 1,
+          "start_beat": 2.0,
+          "start_time": 1.0,
+          "duration_beats": 2.0,
+          "duration_time": 1.0,
+          "pitch": "G2",
+          "input": {
+            "slide_position": 2,
+            "slide_value_hint": 0.9,
+            "breath": true
+          }
+        },
+        {
+          "id": 3,
+          "measure": 2,
+          "start_beat": 4.0,
+          "start_time": 2.0,
+          "duration_beats": 2.0,
+          "duration_time": 1.0,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 3,
+            "slide_value_hint": 0.7333,
+            "breath": true
+          }
+        },
+        {
+          "id": 4,
+          "measure": 2,
+          "start_beat": 6.0,
+          "start_time": 3.0,
+          "duration_beats": 2.0,
+          "duration_time": 1.0,
+          "pitch": "F2",
+          "input": {
+            "slide_position": 1,
+            "slide_value_hint": 0.9667,
+            "breath": true
+          }
+        },
+        {
+          "id": 5,
+          "measure": 3,
+          "start_beat": 8.0,
+          "start_time": 4.0,
+          "duration_beats": 2.0,
+          "duration_time": 1.0,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 3,
+            "slide_value_hint": 0.7333,
+            "breath": true
+          }
+        },
+        {
+          "id": 6,
+          "measure": 3,
+          "start_beat": 10.0,
+          "start_time": 5.0,
+          "duration_beats": 2.0,
+          "duration_time": 1.0,
+          "pitch": "G2",
+          "input": {
+            "slide_position": 2,
+            "slide_value_hint": 0.9,
+            "breath": true
+          }
+        },
+        {
+          "id": 7,
+          "measure": 4,
+          "start_beat": 12.0,
+          "start_time": 6.0,
+          "duration_beats": 4.0,
+          "duration_time": 2.0,
+          "pitch": "C3",
+          "input": {
+            "slide_position": 3,
+            "slide_value_hint": 0.7333,
+            "breath": true
+          }
+        }
+      ]
+    },
+    "drum_kit": {
+      "controller": "drum_kit",
+      "hits": [
+        {
+          "id": 1,
+          "measure": 1,
+          "time": 0.0,
+          "beat": 0.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        },
+        {
+          "id": 2,
+          "measure": 1,
+          "time": 1.0,
+          "beat": 2.0,
+          "pad": 4,
+          "pad_name": "high_tom",
+          "velocity": 0.9
+        },
+        {
+          "id": 3,
+          "measure": 2,
+          "time": 2.0,
+          "beat": 4.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        },
+        {
+          "id": 4,
+          "measure": 2,
+          "time": 3.0,
+          "beat": 6.0,
+          "pad": 1,
+          "pad_name": "kick",
+          "velocity": 0.9
+        },
+        {
+          "id": 5,
+          "measure": 3,
+          "time": 4.0,
+          "beat": 8.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        },
+        {
+          "id": 6,
+          "measure": 3,
+          "time": 5.0,
+          "beat": 10.0,
+          "pad": 4,
+          "pad_name": "high_tom",
+          "velocity": 0.9
+        },
+        {
+          "id": 7,
+          "measure": 4,
+          "time": 6.0,
+          "beat": 12.0,
+          "pad": 7,
+          "pad_name": "ride",
+          "velocity": 0.9
+        }
+      ]
+    }
+  }
+}
