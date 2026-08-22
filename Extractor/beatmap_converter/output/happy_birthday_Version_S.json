@@ -1830,8 +1830,8 @@
           "measure": 2,
           "time": 1.6364,
           "beat": 3.0,
-          "pad": 4,
-          "pad_name": "high_tom",
+          "pad": 5,
+          "pad_name": "mid_tom",
           "velocity": 0.9
         },
         {
@@ -1848,8 +1848,8 @@
           "measure": 4,
           "time": 4.9091,
           "beat": 9.0,
-          "pad": 4,
-          "pad_name": "high_tom",
+          "pad": 5,
+          "pad_name": "mid_tom",
           "velocity": 0.9
         },
         {
@@ -1866,7 +1866,7 @@
           "measure": 6,
           "time": 8.1818,
           "beat": 15.0,
-          "pad": 1,
+          "pad": 4,
           "pad_name": "kick",
           "velocity": 0.9
         },
@@ -1884,8 +1884,8 @@
           "measure": 8,
           "time": 11.4545,
           "beat": 21.0,
-          "pad": 4,
-          "pad_name": "high_tom",
+          "pad": 5,
+          "pad_name": "mid_tom",
           "velocity": 0.9
         },
         {

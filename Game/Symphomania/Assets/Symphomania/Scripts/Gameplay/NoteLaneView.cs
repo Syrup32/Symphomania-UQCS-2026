@@ -164,21 +164,63 @@ namespace Symphomania.Gameplay
             CreateGridPool();
         }
 
-        // Placeholder colors: an evenly-spread rainbow (red first, progressing
-        // through the hue wheel toward violet) rather than the exact colors of
-        // the real paddles. Gets the left-to-right (or, for the trombone,
-        // top-to-bottom) red->blue/violet direction right, but a real paddle
-        // set (especially anything not a pure spectral hue, like brown) won't
-        // match exactly - swap in the real values here once they're known,
-        // keyed by column (1 = the first fingering bit, i.e. HID button 2).
+        // Real confirmed paddle colors for violin, saxophone, and the drum
+        // kit (reported directly off the physical controllers) - trumpet and
+        // trombone don't have a confirmed set yet, so they still fall back
+        // to a placeholder rainbow spread (red first, progressing through
+        // the hue wheel) below. Column 0 (open/rest) is grey for every
+        // instrument that has one - openColumnColor - which was already the
+        // right call and needed no change.
+        static readonly Color PaddleRed = new Color(0.85f, 0.15f, 0.15f);
+        static readonly Color PaddleOrange = new Color(1f, 0.55f, 0.05f);
+        static readonly Color PaddleYellow = new Color(1f, 0.9f, 0.1f);
+        static readonly Color PaddleGreen = new Color(0.15f, 0.8f, 0.25f);
+        static readonly Color PaddleBlue = new Color(0.15f, 0.4f, 0.95f);
+        static readonly Color PaddlePurple = new Color(0.55f, 0.15f, 0.85f);
+        static readonly Color PaddlePink = new Color(1f, 0.45f, 0.75f);
+        static readonly Color PaddleWhite = new Color(0.95f, 0.95f, 0.95f);
+        static readonly Color PaddleGrey = new Color(0.6f, 0.6f, 0.6f);
+
+        /// <summary>
+        /// Real paddle colors in HID button order - index 0 is the FIRST
+        /// FINGERING BIT, which is HID button 2 for violin/saxophone (button
+        /// 1 is reserved for the check input on those - see
+        /// controller_hid_protocol.md) but is button 1 for the drum kit,
+        /// which has no reserved check button at all ("pad N = button N, no
+        /// offset" - the drum kit's own exception, also why
+        /// CreateReceptors labels its columns differently). Returns null for
+        /// an instrument with no confirmed real colors yet (trumpet,
+        /// trombone), so BuildColumnColors falls back to a placeholder
+        /// rainbow for those.
+        /// </summary>
+        static Color[] FixedPaddleColors(InstrumentType instrument) => instrument switch
+        {
+            // Button 2=red, 3=orange, 4=yellow, 5=green, 6=blue, 7=purple, 8=pink.
+            InstrumentType.Violin => new[] { PaddleRed, PaddleOrange, PaddleYellow, PaddleGreen, PaddleBlue, PaddlePurple, PaddlePink },
+            // Button 2=white, 3=red, 4=orange, 5=yellow, 6=green, 7=blue, 8=purple, 9=pink.
+            InstrumentType.Saxophone => new[] { PaddleWhite, PaddleRed, PaddleOrange, PaddleYellow, PaddleGreen, PaddleBlue, PaddlePurple, PaddlePink },
+            // Crash=green, Snare=red, High Tom=white, Kick=yellow, Mid Tom=grey, Floor Tom=blue, Ride=purple - by PAD IDENTITY, not raw button number, since the button numbering itself just got corrected (see CreateReceptors) and pad identity is unambiguous either way.
+            InstrumentType.DrumKit => new[] { PaddleGreen, PaddleRed, PaddleWhite, PaddleYellow, PaddleGrey, PaddleBlue, PaddlePurple },
+            _ => null,
+        };
+
         void BuildColumnColors()
         {
             _columnColors = new Color[_totalColumns];
             _columnColors[0] = openColumnColor;
+
+            var fixedPalette = FixedPaddleColors(_instrument);
             for (int col = 1; col < _totalColumns; col++)
             {
-                float hue = (float)(col - 1) / _fingeringCount; // spread the bit-columns evenly around the color wheel
-                _columnColors[col] = Color.HSVToRGB(hue, 0.85f, 1f);
+                if (fixedPalette != null && col - 1 < fixedPalette.Length)
+                {
+                    _columnColors[col] = fixedPalette[col - 1];
+                }
+                else
+                {
+                    float hue = (float)(col - 1) / _fingeringCount; // spread the bit-columns evenly around the color wheel
+                    _columnColors[col] = Color.HSVToRGB(hue, 0.85f, 1f);
+                }
             }
         }
 
@@ -217,6 +259,18 @@ namespace Symphomania.Gameplay
         {
             for (int col = 0; col < _totalColumns; col++)
             {
+                // The drum kit never has an all-zero pad mask (every hit sets
+                // exactly one pad bit), so its column 0 (the "open/rest"
+                // column every other instrument uses for a rest note) is dead
+                // space that never lights up - see ColumnsForMask. Drawing it
+                // anyway showed an always-empty ring labeled "-" sitting right
+                // next to the real pad rings, which reads as an 8th pad
+                // option that doesn't exist rather than as "nothing." Skip it
+                // entirely for the drum kit; every other instrument still
+                // gets it, since a rest note genuinely needs somewhere to
+                // land for them.
+                if (_isDrumKit && col == 0) continue;
+
                 var ring = new GameObject($"Receptor_{col}");
                 ring.transform.SetParent(transform, false);
                 ring.transform.localPosition = LocalPos(judgeLinePos, SecondaryPos(col));
@@ -241,11 +295,19 @@ namespace Symphomania.Gameplay
                 // against a moving background. Placed just beyond the judge
                 // line on the far side from where notes spawn (below it for a
                 // vertical lane, left of it for the trombone's lane).
+                //
+                // The drum kit does NOT get the +1 offset above - it has no
+                // reserved check button at all ("pad N = button N, no
+                // offset" per controller_hid_protocol.md's drum-kit section),
+                // so column c IS button c directly (bit 0 = Crash = pad 1 =
+                // button 1). This was previously wrong here (every drum
+                // column showed one HID button number higher than the real
+                // paddle it represents) until this fix.
                 var labelGO = new GameObject("Label");
                 labelGO.transform.SetParent(transform, false);
                 labelGO.transform.localPosition = LocalPos(judgeLinePos - circleDiameter * 0.9f, SecondaryPos(col));
                 var tm = labelGO.AddComponent<TextMesh>();
-                tm.text = col == 0 ? "-" : (col + 1).ToString();
+                tm.text = col == 0 ? "-" : (_isDrumKit ? col.ToString() : (col + 1).ToString());
                 tm.anchor = TextAnchor.MiddleCenter;
                 tm.alignment = TextAlignment.Center;
                 tm.characterSize = 0.1f;

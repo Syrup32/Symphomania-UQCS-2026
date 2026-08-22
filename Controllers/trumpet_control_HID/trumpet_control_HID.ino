@@ -104,7 +104,7 @@ ValveInput valves[3] = {
 
 #define THRESH_ON   3700000   // must exceed this to START a blow
 #define THRESH_OFF  1500000   // must drop below this to release
-#define RELEASE_MS  40        // must stay low this long before releasing
+#define RELEASE_MS  5        // must stay low this long before releasing
 #define SUSTAIN     3         // consecutive reads above THRESH_ON to start
 
 i2s_chan_handle_t rx_chan;

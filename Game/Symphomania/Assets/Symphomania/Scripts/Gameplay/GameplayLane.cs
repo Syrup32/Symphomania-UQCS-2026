@@ -24,6 +24,9 @@ namespace Symphomania.Gameplay
         public InstrumentType Instrument { get; private set; }
         public NoteLaneView View { get; private set; }
 
+        /// <summary>This lane's on-screen viewport (normalized, same rect its camera renders through) - GameplayBootstrap's per-lane GUI (instrument name header, confined stats box) is positioned from this.</summary>
+        public Rect Viewport { get; private set; }
+
         HitJudge _judge;
         RhythmConductor _conductor;
         Action<InstrumentType, JudgeEvent> _onJudged;
@@ -47,6 +50,7 @@ namespace Symphomania.Gameplay
                                 Action<InstrumentType, JudgeEvent> onJudged)
         {
             Instrument = slot.Instrument;
+            Viewport = slot.Viewport;
             _conductor = conductor;
             _onJudged = onJudged;
 
@@ -136,12 +140,25 @@ namespace Symphomania.Gameplay
                 // note's own pitch back, confirming "you timed and keyed that correctly."
                 if (evt.Judgement != NoteJudgement.Miss)
                 {
+                    if (Instrument == InstrumentType.DrumKit)
+                    {
+                        // Pad-keyed, not pitch-keyed (see JudgeEvent.Mask /
+                        // InstrumentSampleLibrary.TryGetForDrumPad) - a drum
+                        // pad is a specific sound, not a note on a scale.
+                        // These come from a "one shots" style pack, already
+                        // short by design, so no trim/fade needed the way
+                        // held-note samples require - straight PlayOneShot.
+                        if (InstrumentSampleLibrary.TryGetForDrumPad(evt.Mask, out var drumClip))
+                            _audio.PlayOneShot(drumClip);
+                        else
+                            _audio.PlayOneShot(NoteAudio.DrumClick());
+                    }
                     // Prefer a real recorded/licensed sample if one's been
                     // dropped in for this instrument (see
                     // InstrumentSampleLibrary's doc comment for where those
                     // live); otherwise fall back to NoteAudio's synthesized
                     // voice for this instrument.
-                    if (InstrumentSampleLibrary.TryGetNearest(Instrument, evt.Pitch, out var sampleClip, out var playbackPitch))
+                    else if (InstrumentSampleLibrary.TryGetNearest(Instrument, evt.Pitch, out var sampleClip, out var playbackPitch))
                     {
                         if (_sampleTrimRoutine != null) StopCoroutine(_sampleTrimRoutine);
                         _sampleTrimRoutine = StartCoroutine(PlayTrimmedSample(sampleClip, playbackPitch));

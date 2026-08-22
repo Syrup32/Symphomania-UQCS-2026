@@ -70,7 +70,14 @@ namespace Symphomania.Diagnostics
 
                 int warnings = 0;
                 foreach (var note in track.Notes)
-                    if (!string.IsNullOrEmpty(note.Warning)) warnings++;
+                {
+                    if (string.IsNullOrEmpty(note.Warning)) continue;
+                    warnings++;
+                    // Logged individually rather than only via First/Last
+                    // below - a flagged note in the middle of a track would
+                    // otherwise never actually show up in the Console.
+                    Debug.LogWarning($"    {instrument,-10} note id={note.Id} t={note.StartTime:0.00}s pitch={note.Pitch}: {note.Warning}");
+                }
                 totalWarnings += warnings;
 
                 Debug.Log($"    {instrument,-10} - {track.Notes.Count} note(s), {warnings} flagged with a converter warning. " +

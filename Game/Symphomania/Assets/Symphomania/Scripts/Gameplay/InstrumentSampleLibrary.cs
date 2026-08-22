@@ -62,6 +62,26 @@ namespace Symphomania.Gameplay
         // Matches a trailing "_<letter><optional #>" - e.g. "...02_C#" -> ("C", "#").
         static readonly Regex TrailingNoteLetter = new Regex(@"_([A-Ga-g])(#)?$", RegexOptions.Compiled);
 
+        /// <summary>
+        /// Fixed bit-index -> filename mapping for the drum kit, matching
+        /// controller_hid_protocol.md's pad order exactly (bit 0 = Crash,
+        /// bit 1 = Snare, ... bit 6 = Ride). A drum pad has no pitch to
+        /// fuzzy-match against the way a melodic note does - it's a specific
+        /// sound, not a note somewhere on a scale - so this expects an exact
+        /// resource name per pad rather than TryGetNearest's nearest-available
+        /// search. Put (or rename copies of) your percussion one-shots at
+        /// Resources/InstrumentSamples/DrumKit/<Name>.wav using these exact
+        /// names; any pad left out just falls back to NoteAudio's synthesized
+        /// click for that pad.
+        /// </summary>
+        static readonly string[] DrumPadResourceNames =
+        {
+            "Crash", "Snare", "HighTom", "Kick", "MidTom", "FloorTom", "Ride",
+        };
+
+        static readonly Dictionary<int, AudioClip> _drumPads = new Dictionary<int, AudioClip>(); // bit index -> clip
+        static bool _drumPadsScanned;
+
         class Entry
         {
             public int Midi;
@@ -106,6 +126,47 @@ namespace Symphomania.Gameplay
             clip = best.Clip;
             playbackPitch = Mathf.Pow(2f, (targetMidi - best.Midi) / 12f);
             return true;
+        }
+
+        /// <summary>
+        /// Looks up a real sample for a struck drum pad (or pads - see below),
+        /// keyed by DrumPadResourceNames rather than pitch. If padMask has
+        /// more than one bit set (a beatmap hit striking several pads at
+        /// once), only the lowest-numbered pad WITH an available sample
+        /// plays - simultaneous multi-pad real-sample layering isn't
+        /// supported, a reasonable simplification since a JudgeEvent only
+        /// carries one clip slot. Returns false (leaving clip null) if no
+        /// pad in the mask has a loaded sample, so the caller can fall back
+        /// to NoteAudio.DrumClick().
+        /// </summary>
+        public static bool TryGetForDrumPad(uint padMask, out AudioClip clip)
+        {
+            clip = null;
+            if (padMask == 0) return false;
+
+            EnsureDrumPadsScanned();
+
+            for (int bit = 0; bit < DrumPadResourceNames.Length; bit++)
+            {
+                if ((padMask & (1u << bit)) == 0) continue;
+                if (_drumPads.TryGetValue(bit, out clip)) return true;
+            }
+            return false;
+        }
+
+        static void EnsureDrumPadsScanned()
+        {
+            if (_drumPadsScanned) return;
+            _drumPadsScanned = true;
+
+            for (int bit = 0; bit < DrumPadResourceNames.Length; bit++)
+            {
+                var clip = Resources.Load<AudioClip>("InstrumentSamples/DrumKit/" + DrumPadResourceNames[bit]);
+                if (clip != null) _drumPads[bit] = clip;
+            }
+
+            if (_drumPads.Count > 0)
+                Debug.Log($"[InstrumentSampleLibrary] Loaded {_drumPads.Count}/{DrumPadResourceNames.Length} real drum pad sample(s).");
         }
 
         static void EnsureScanned(InstrumentType instrument)

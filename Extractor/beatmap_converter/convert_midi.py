@@ -35,11 +35,14 @@ Two modes, matching convert.py:
 
   piano  A single MIDI file. Since MIDI has no clef concept, "treble" and
          "bass" parts are picked automatically by average pitch: whichever
-         track has notes and the highest average pitch is treble (feeds
-         --treble-instrument), whichever has the lowest average pitch is
-         bass (feeds trombone + drum-kit, same as convert.py). If the file
-         has more than 2 note-bearing tracks, everything except the
-         highest/lowest is skipped with a warning -- that's usually a
+         track has notes and the highest average pitch is treble, whichever
+         has the lowest average pitch is bass. The treble part feeds
+         trumpet, saxophone, AND violin all at once (same melody line,
+         three instruments -- not a choice of one, matching convert.py),
+         and the bass part feeds trombone + drum-kit simultaneously. Every
+         piano-mode beatmap therefore always has all 5 instrument tracks.
+         If the file has more than 2 note-bearing tracks, everything except
+         the highest/lowest is skipped with a warning -- that's usually a
          percussion or doubling track in a real downloaded piano MIDI, but
          double check the warning to be sure nothing you wanted got
          dropped. Use --treble-track/--bass-track (0-indexed into the
@@ -48,8 +51,7 @@ Two modes, matching convert.py:
 
 Usage:
   python3 convert_midi.py --mode band  --input samples/song.mid --output output/song.json
-  python3 convert_midi.py --mode piano --input samples/song.mid --output output/song.json \\
-      --treble-instrument violin
+  python3 convert_midi.py --mode piano --input samples/song.mid --output output/song.json
 
 Merging multiple single-instrument files (band mode only), same as
 convert.py:
@@ -318,30 +320,34 @@ def pick_treble_bass_parts(score, warnings, treble_idx, bass_idx):
     return treble_part, bass_part
 
 
-def convert_piano_mode(score, treble_instrument, warnings, treble_idx, bass_idx):
+def convert_piano_mode(score, warnings, treble_idx, bass_idx):
+    # Same rule as convert.py: treble feeds trumpet, saxophone, AND violin
+    # all at once (not a choice of one instrument), bass feeds trombone AND
+    # drum-kit at once. See this module's docstring.
     treble_part, bass_part = pick_treble_bass_parts(score, warnings, treble_idx, bass_idx)
 
     instruments_out = {}
     bow_state = {"dir": "down"}
     treble_notes = notes_with_time(treble_part)
-    out_notes = []
+
+    trumpet_notes, sax_notes, violin_notes = [], [], []
     for i, n in enumerate(treble_notes):
         p = n["pitch_obj"]
-        if treble_instrument == "trumpet":
-            inp, _ = map_trumpet(p, warnings, input_is_concert_pitch=True)
-        elif treble_instrument == "saxophone":
-            inp, _ = map_saxophone(p, warnings, input_is_concert_pitch=True)
-        elif treble_instrument == "violin":
-            inp = map_violin(p, warnings, bow_state)
-        else:
-            raise ValueError(f"--treble-instrument must be trumpet, saxophone, or violin, got {treble_instrument}")
-        out_notes.append({
+        base = {
             "id": i + 1, "measure": n["measure"],
             "start_beat": n["start_beat"], "start_time": n["start_time"],
             "duration_beats": n["duration_beats"], "duration_time": n["duration_time"],
-            "pitch": pname(p), "input": inp,
-        })
-    instruments_out[treble_instrument] = {"controller": treble_instrument, "notes": out_notes}
+        }
+        trumpet_inp, _ = map_trumpet(p, warnings, input_is_concert_pitch=True)
+        trumpet_notes.append({**base, "pitch": pname(p), "input": trumpet_inp})
+        sax_inp, _ = map_saxophone(p, warnings, input_is_concert_pitch=True)
+        sax_notes.append({**base, "pitch": pname(p), "input": sax_inp})
+        violin_inp = map_violin(p, warnings, bow_state)
+        violin_notes.append({**base, "pitch": pname(p), "input": violin_inp})
+
+    instruments_out["trumpet"] = {"controller": "trumpet", "notes": trumpet_notes}
+    instruments_out["saxophone"] = {"controller": "saxophone", "notes": sax_notes}
+    instruments_out["violin"] = {"controller": "violin", "notes": violin_notes}
 
     bass_notes = notes_with_time(bass_part)
     trombone_notes = []
@@ -382,19 +388,17 @@ def main():
                           "single-instrument MIDI files of the same song into one beatmap.")
     ap.add_argument("--output", required=True, help="Path to write beatmap JSON")
     ap.add_argument("--mode", choices=["band", "piano"], required=True)
-    ap.add_argument("--treble-instrument", choices=["trumpet", "saxophone", "violin"],
-                     help="piano mode only: which instrument the treble (highest-average-pitch) part feeds")
     ap.add_argument("--treble-track", type=int, default=None,
-                     help="piano mode only: override auto-pick -- 0-indexed part number to use as treble")
+                     help="piano mode only: override auto-pick -- 0-indexed part number to use as treble "
+                          "(feeds trumpet, saxophone, and violin all at once)")
     ap.add_argument("--bass-track", type=int, default=None,
-                     help="piano mode only: override auto-pick -- 0-indexed part number to use as bass")
+                     help="piano mode only: override auto-pick -- 0-indexed part number to use as bass "
+                          "(feeds trombone and drum-kit at once)")
     ap.add_argument("--title", help="Override song title (MIDI files rarely carry one -- defaults to the filename)")
     ap.add_argument("--composer", help="Override composer (MIDI files rarely carry one)")
     ap.add_argument("--source", default="", help="Where this MIDI file came from (for your own reference)")
     args = ap.parse_args()
 
-    if args.mode == "piano" and not args.treble_instrument:
-        ap.error("--treble-instrument is required in piano mode")
     if args.mode == "piano" and len(args.input) != 1:
         ap.error("piano mode takes exactly one --input file (multi-file merging is band mode only)")
     if args.mode == "band" and (args.treble_track is not None or args.bass_track is not None):
@@ -408,8 +412,7 @@ def main():
         input_label = str(paths[0])
     else:
         score = m21converter.parse(str(paths[0]))
-        instruments_out = convert_piano_mode(score, args.treble_instrument, warnings,
-                                              args.treble_track, args.bass_track)
+        instruments_out = convert_piano_mode(score, warnings, args.treble_track, args.bass_track)
         input_label = str(paths[0])
 
     title = args.title or (score.metadata.bestTitle if score.metadata and score.metadata.bestTitle else Path(input_label).stem)

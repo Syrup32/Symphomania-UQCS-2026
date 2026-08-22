@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Symphomania.Beatmaps;
 using Symphomania.Controllers;
@@ -37,6 +38,28 @@ namespace Symphomania.Session
         public static bool IsFrozen { get; private set; }
 
         /// <summary>
+        /// Instruments the player has manually switched off in instrument
+        /// entry this round, even though they're otherwise playable (real
+        /// controller connected, or standing in via the keyboard fallback) -
+        /// e.g. five controllers plugged in, but tonight's session only wants
+        /// three of them active. RefreshPlan removes anything in this set from
+        /// the "available" list before intersecting it against the beatmap, so
+        /// an excluded instrument reads exactly like it was never connected at
+        /// all for scoring/screen-layout purposes - it just isn't unplugged.
+        /// </summary>
+        public static readonly HashSet<InstrumentType> ManuallyDisabled = new HashSet<InstrumentType>();
+
+        /// <summary>True if the player has manually switched this instrument off for the current round.</summary>
+        public static bool IsManuallyDisabled(InstrumentType instrument) => ManuallyDisabled.Contains(instrument);
+
+        /// <summary>Toggle one instrument's manual on/off state - called from instrument entry's per-controller buttons.</summary>
+        public static void SetManuallyDisabled(InstrumentType instrument, bool disabled)
+        {
+            if (disabled) ManuallyDisabled.Add(instrument);
+            else ManuallyDisabled.Remove(instrument);
+        }
+
+        /// <summary>
         /// Wipes all state at the start of every Play session, same reason
         /// VirtualBandInput does - with "Enter Play Mode Options" domain
         /// reload disabled, statics otherwise survive from the previous Play
@@ -49,9 +72,22 @@ namespace Symphomania.Session
             CurrentBeatmap = null;
             CurrentPlan = null;
             IsFrozen = false;
+            ManuallyDisabled.Clear();
         }
 
-        /// <summary>Call from song select. Clears any frozen plan from a previous song.</summary>
+        /// <summary>
+        /// Call from song select, AND from GameplayBootstrap.Begin() right
+        /// before gameplay actually starts (it re-parses the same file into a
+        /// fresh Beatmap instance and calls this again to be self-contained -
+        /// see its own doc comment). Deliberately does NOT touch
+        /// ManuallyDisabled: that field represents the player's instrument
+        /// entry choice for the song about to be played, and Begin()'s
+        /// re-call happens after that choice was made - clearing it here
+        /// would silently discard the player's exclusions the instant they
+        /// pressed Start Song. Call ClearManualOverridesForNewSong() instead,
+        /// from the place a NEW song is actually being picked (song select),
+        /// where "start fresh" is the correct behavior.
+        /// </summary>
         public static void SetBeatmap(Beatmap beatmap)
         {
             CurrentBeatmap = beatmap;
@@ -60,11 +96,28 @@ namespace Symphomania.Session
         }
 
         /// <summary>
+        /// Call when the player picks a (possibly different) song from song
+        /// select - resets manual per-instrument on/off toggles and the
+        /// keyboard-fallback-standing-in choice isn't touched (that's a
+        /// player/keyboard setting, not a per-song one), so instrument entry
+        /// starts each new song with everything physically available switched
+        /// on, rather than silently carrying over an exclusion picked for a
+        /// different song. Do not call this from Begin()'s own SetBeatmap
+        /// re-call - see SetBeatmap's doc comment for why.
+        /// </summary>
+        public static void ClearManualOverridesForNewSong()
+        {
+            ManuallyDisabled.Clear();
+        }
+
+        /// <summary>
         /// Rebuilds CurrentPlan from CurrentBeatmap against whichever
-        /// instruments are playable right now. No-ops (logs a warning) if no
-        /// beatmap has been chosen yet, or if the plan is already frozen -
-        /// call UnfreezePlan first if you genuinely need to rebuild after
-        /// freezing (e.g. the player backed out of the confirm screen).
+        /// instruments are playable right now, minus anything the player has
+        /// manually switched off via SetManuallyDisabled. No-ops (logs a
+        /// warning) if no beatmap has been chosen yet, or if the plan is
+        /// already frozen - call UnfreezePlan first if you genuinely need to
+        /// rebuild after freezing (e.g. the player backed out of the confirm
+        /// screen).
         /// </summary>
         public static SessionPlan RefreshPlan(bool includeKeyboardFallback = true)
         {
@@ -80,9 +133,18 @@ namespace Symphomania.Session
                 return CurrentPlan;
             }
 
-            var available = includeKeyboardFallback
+            var source = includeKeyboardFallback
                 ? VirtualBandInput.PlayableInstruments()
                 : VirtualBandInput.ConnectedInstruments();
+
+            List<InstrumentType> available = source;
+            if (ManuallyDisabled.Count > 0)
+            {
+                available = new List<InstrumentType>(source.Count);
+                foreach (var instrument in source)
+                    if (!ManuallyDisabled.Contains(instrument))
+                        available.Add(instrument);
+            }
 
             CurrentPlan = SessionSetup.Build(CurrentBeatmap, available);
             return CurrentPlan;

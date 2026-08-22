@@ -16,10 +16,9 @@ Two separate scripts, same output schema:
 - `convert.py` — reads MusicXML (`.musicxml`/`.xml`).
 - `convert_midi.py` — reads MIDI (`.mid`/`.midi`). Use this one when a MIDI
   file was easier to find than a MusicXML file for a given song. Same
-  `--mode band|piano`, same `--treble-instrument`, same `--title`/
-  `--composer`/`--source`, same multi-file merge support, same output
-  filename/title version-tagging (see below) — it's a drop-in sibling, not
-  a different tool to learn.
+  `--mode band|piano`, same `--title`/`--composer`/`--source`, same
+  multi-file merge support, same output filename/title version-tagging
+  (see below) — it's a drop-in sibling, not a different tool to learn.
 
 **The one thing that's genuinely different between them, and matters:**
 MIDI note numbers always encode the pitch that actually sounds — there's no
@@ -44,7 +43,10 @@ note-bearing part = treble, lowest = bass) instead of by clef, since MIDI
 has no clef metadata to read — override with `--treble-track`/
 `--bass-track` (0-indexed part numbers) if a file has more than two
 note-bearing parts and it guesses wrong (it'll warn you which parts it
-picked and which it skipped either way). Band mode's per-track instrument
+picked and which it skipped either way). Same as `convert.py`, the treble
+part feeds trumpet, saxophone, AND violin simultaneously and the bass part
+feeds trombone and drum-kit simultaneously — piano mode always produces
+all 5 tracks. Band mode's per-track instrument
 detection is also best-effort for MIDI specifically for drum/percussion
 tracks: General MIDI percussion is conventionally selected by channel 10 +
 note number rather than a program-change instrument name, so a percussion
@@ -63,13 +65,15 @@ python3 convert.py --mode band --input samples/twinkle_twinkle_trumpet.musicxml 
     --output output/twinkle_trumpet.json --source "where this came from"
 ```
 
-**Piano mode** — a 2-staff piano score. Treble clef feeds trumpet, sax, or
-violin (your choice via `--treble-instrument`); bass clef feeds trombone
-*and* drum-kit at the same time:
+**Piano mode** — a 2-staff piano score. Treble clef feeds trumpet, sax,
+*and* violin all at the same time (same melody line, all three
+instruments — matching the project's own design, not a choice of one);
+bass clef feeds trombone *and* drum-kit at the same time. A piano-mode
+beatmap therefore always has all 5 instrument tracks:
 
 ```
 python3 convert.py --mode piano --input samples/twinkle_twinkle_piano.musicxml \
-    --output output/twinkle_piano.json --treble-instrument violin
+    --output output/twinkle_piano.json
 ```
 
 Try it now — both sample commands above run against the included Twinkle
@@ -89,7 +93,7 @@ needs to be authoritative. Try them:
 
 ```
 python3 convert.py --mode piano --input samples/happy_birthday/happy_birthday_piano.musicxml \
-    --output output/happy_birthday_piano.json --treble-instrument trumpet
+    --output output/happy_birthday_piano.json
 python3 convert.py --mode band --input samples/happy_birthday/happy_birthday_band.musicxml \
     --output output/happy_birthday_band.json --source test
 ```
@@ -108,10 +112,24 @@ re-running the same command, it isn't duplicated.)
 beatmap is also distinguishable from the MusicXML-derived beatmap of the
 same song and mode: `python3 convert_midi.py --mode piano --input
 hot_cross_buns.mid --output output/hot_cross_buns.json --title "Hot Cross
-Buns" --treble-instrument violin` writes `song.title` as `"Hot Cross Buns
-MIDI (Version P)"` and the file as `output/hot_cross_buns_MIDI_Version_P.json`.
-`convert.py` (MusicXML) never adds the `MIDI` tag — its output is
-unchanged, e.g. `"Hot Cross Buns (Version P)"`.
+Buns"` writes `song.title` as `"Hot Cross Buns MIDI (Version P)"` and the
+file as `output/hot_cross_buns_MIDI_Version_P.json`. `convert.py`
+(MusicXML) never adds the `MIDI` tag — its output is unchanged, e.g.
+`"Hot Cross Buns (Version P)"`.
+
+## Piano mode: one melody line, three instruments at once
+
+This is worth calling out because it's easy to assume otherwise: piano
+mode doesn't pick *one* instrument for the treble clef. Per the project's
+own design (treble clef → violin, trumpet, and saxophone; bass clef →
+trombone and drum-kit), every treble-clef note is fed to trumpet,
+saxophone, *and* violin simultaneously, and every bass-clef note is fed to
+trombone *and* drum-kit simultaneously — so a piano-mode beatmap always
+comes out with all 5 instrument tracks, all playing the same underlying
+melody/bass line through their own instrument's fingering chart. (An
+earlier version of this converter had `--treble-instrument` let you pick
+just one of the three treble instruments per run — that's gone now; piano
+mode always produces all three.)
 
 Band mode on all three currently prints saxophone warnings for some notes
 — that's the documented diatonic-chart limitation below, not a bug: these
@@ -188,11 +206,17 @@ extend fingerings:
   at all), so `input.slide_position` is the only field that gets judged —
   there's no analog value in the game at all now (the earlier
   `slide_value_hint` cosmetic field has been removed).
-- `drumkit_config.json` — pad numbering (1=Kick, 2=Snare, 3=Hi-Hat, 4=High
-  Tom, 5=Floor Tom, 6=Crash, 7=Ride) is authoritative, matching the actual
-  HID report layout. Band mode doesn't yet match real percussion notation
-  by name (drum-kit hardware isn't built yet either) — both modes currently
-  bucket by pitch height.
+- `drumkit_config.json` — pad numbering (1=Crash, 2=Snare, 3=High Tom,
+  4=Kick, 5=Mid Tom, 6=Floor Tom, 7=Ride) is authoritative, matching the
+  actual built controller's HID report layout (`drumkit_control_HID.ino`).
+  **2026-08-22 update**: this replaces an earlier placeholder set (1=Kick,
+  2=Snare, 3=Hi-Hat, 4=High Tom, 5=Floor Tom, 6=Crash, 7=Ride) decided
+  before the physical 7-piezo kit was finalized — that kit has no hi-hat
+  pad, so Mid Tom takes its place, and the numbering now follows the
+  controller's physical left-to-right wiring order instead. Band mode
+  doesn't yet match real percussion notation by name (no real drum-kit
+  MusicXML/MIDI part has been tested against the converters yet) — both
+  modes and both input formats currently bucket by pitch height instead.
 - `violin_fingering.json` — real first-position chart (generated by
   `gen_violin_chart.py`, MIDI 55–83 / G3–B5). Its primary structure is
   `buttons`: button number → the exact 4-note row it produces (button 0 =

@@ -65,6 +65,9 @@ namespace Symphomania.Gameplay
         public int Id;
         public string Pitch;
 
+        /// <summary>The Judgeable's own fingering/pad mask - null concept for non-drum audio, but for a drum hit this is the struck pad(s), needed by GameplayLane to pick which real drum sample to play (see InstrumentSampleLibrary.TryGetForDrumPad).</summary>
+        public uint Mask;
+
         /// <summary>Seconds late (positive) or early (negative) the matching input landed. 0 for a Miss.</summary>
         public float TimingErrorSeconds;
     }
@@ -157,6 +160,7 @@ namespace Symphomania.Gameplay
                     Judgement = NoteJudgement.Miss,
                     Id = missed.Id,
                     Pitch = missed.Pitch,
+                    Mask = missed.Mask,
                     TimingErrorSeconds = 0f,
                 });
                 _index++;
@@ -193,6 +197,7 @@ namespace Symphomania.Gameplay
                         Judgement = quality,
                         Id = item.Id,
                         Pitch = item.Pitch,
+                        Mask = item.Mask,
                         TimingErrorSeconds = error,
                     });
 

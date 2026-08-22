@@ -1168,7 +1168,7 @@
           "measure": 2,
           "time": 2.4,
           "beat": 4.0,
-          "pad": 1,
+          "pad": 4,
           "pad_name": "kick",
           "velocity": 0.9
         },

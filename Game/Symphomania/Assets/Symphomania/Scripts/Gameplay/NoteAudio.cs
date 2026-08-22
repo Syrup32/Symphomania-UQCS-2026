@@ -30,6 +30,7 @@ namespace Symphomania.Gameplay
         // caching on pitch alone would have every instrument reuse whichever
         // one synthesized that pitch first.
         static readonly Dictionary<string, AudioClip> _toneCache = new Dictionary<string, AudioClip>();
+        static readonly Dictionary<string, AudioClip> _pianoCache = new Dictionary<string, AudioClip>(); // separate from _toneCache - see PianoClip
         static AudioClip _drumClick;
 
         /// <summary>Returns this instrument's voice for this concert pitch (cached per instrument+pitch), or the drum click for the drum kit / a null-pitch event.</summary>
@@ -42,6 +43,24 @@ namespace Symphomania.Gameplay
 
             var clip = BuildToneClip(FrequencyForPitch(pitch), Timbre.For(instrument));
             if (clip != null) _toneCache[key] = clip; // don't cache a failure - let the next call retry
+            return clip;
+        }
+
+        /// <summary>
+        /// The background piano guide track's own voice (see
+        /// PianoGuideTrack) - deliberately a separate cache and a separate
+        /// Timbre from every band instrument's, so the reconstructed-piano
+        /// reference track is never mistaken by ear for one of the live,
+        /// judged instruments' own hit-confirmation tone.
+        /// </summary>
+        public static AudioClip PianoClip(string pitch)
+        {
+            if (string.IsNullOrEmpty(pitch)) return null;
+
+            if (_pianoCache.TryGetValue(pitch, out var cached) && cached != null) return cached;
+
+            var clip = BuildToneClip(FrequencyForPitch(pitch), Timbre.Piano);
+            if (clip != null) _pianoCache[pitch] = clip;
             return clip;
         }
 
@@ -134,6 +153,14 @@ namespace Symphomania.Gameplay
                     decayRate = 3f,
                 },
                 _ => new Timbre { harmonicAmps = new[] { 1f, 0.5f, 0.25f }, attackSeconds = 0.01f, decayRate = 4f },
+            };
+
+            /// <summary>The background piano guide track's voice (see PianoGuideTrack/NoteAudio.PianoClip) - rounder and softer-onset than any of the 5 band instruments' timbres above, deliberately unlike all of them so the guide never gets mistaken for a live hit.</summary>
+            public static readonly Timbre Piano = new Timbre
+            {
+                harmonicAmps = new[] { 1f, 0.35f, 0.5f, 0.15f, 0.2f, 0.08f },
+                attackSeconds = 0.005f,
+                decayRate = 2f,
             };
         }
 

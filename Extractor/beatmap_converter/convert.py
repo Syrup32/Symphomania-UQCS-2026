@@ -13,17 +13,18 @@ Two modes:
          merged into one beatmap. See "Merging multiple single-instrument
          files" below.
 
-  piano  A single piano score. The treble clef staff feeds one of
-         trumpet/saxophone/violin (pick with --treble-instrument), and the
-         bass clef staff feeds both trombone and drum-kit simultaneously
-         (drum hits are derived from the same bass-clef notes, bucketed by
-         pitch height -- see config/drumkit_config.json). Exactly one input
+  piano  A single piano score. The treble clef staff feeds trumpet,
+         saxophone, AND violin all at once (same melody line, three
+         instruments -- not a choice of one), and the bass clef staff
+         feeds both trombone and drum-kit simultaneously (drum hits are
+         derived from the same bass-clef notes, bucketed by pitch height
+         -- see config/drumkit_config.json). Every piano-mode beatmap
+         therefore always has all 5 instrument tracks. Exactly one input
          file only.
 
 Usage:
   python3 convert.py --mode band  --input samples/song.musicxml --output output/song.json
-  python3 convert.py --mode piano --input samples/song.musicxml --output output/song.json \
-      --treble-instrument violin
+  python3 convert.py --mode piano --input samples/song.musicxml --output output/song.json
 
 Merging multiple single-instrument files (band mode only):
   python3 convert.py --mode band \
@@ -241,7 +242,14 @@ def convert_band_mode(score, warnings):
     return instruments_out
 
 
-def convert_piano_mode(score, treble_instrument, warnings):
+def convert_piano_mode(score, warnings):
+    # Per the project's own design (treble clef -> violin, trumpet, AND
+    # saxophone simultaneously; bass clef -> trombone AND drum-kit
+    # simultaneously), piano mode assigns every treble-clef note to all
+    # three treble instruments at once and every bass-clef note to both
+    # bass instruments at once -- it does NOT pick just one instrument per
+    # clef. All 5 instrument tracks are always produced from one 2-staff
+    # piano score.
     parts = list(score.parts)
     if len(parts) < 2:
         # Some piano MusicXML exports use one part with two voices/staves instead of two parts.
@@ -254,25 +262,27 @@ def convert_piano_mode(score, treble_instrument, warnings):
     instruments_out = {}
     bow_state = {"dir": "down"}
     treble_notes = notes_with_time(treble_part)
-    out_notes = []
+
+    trumpet_notes, sax_notes, violin_notes = [], [], []
     for i, n in enumerate(treble_notes):
         p = n["pitch_obj"]
-        if treble_instrument == "trumpet":
-            # piano mode: treble clef is concert pitch (piano doesn't transpose).
-            inp, _ = map_trumpet(p, warnings, input_is_concert_pitch=True)
-        elif treble_instrument == "saxophone":
-            inp, _ = map_saxophone(p, warnings, input_is_concert_pitch=True)
-        elif treble_instrument == "violin":
-            inp = map_violin(p, warnings, bow_state)
-        else:
-            raise ValueError(f"--treble-instrument must be trumpet, saxophone, or violin, got {treble_instrument}")
-        out_notes.append({
+        base = {
             "id": i + 1, "measure": n["measure"],
             "start_beat": n["start_beat"], "start_time": n["start_time"],
             "duration_beats": n["duration_beats"], "duration_time": n["duration_time"],
-            "pitch": pname(p), "input": inp,
-        })
-    instruments_out[treble_instrument] = {"controller": treble_instrument, "notes": out_notes}
+        }
+        # piano mode: treble clef is concert pitch (piano doesn't transpose),
+        # so input_is_concert_pitch=True for both transposing instruments.
+        trumpet_inp, _ = map_trumpet(p, warnings, input_is_concert_pitch=True)
+        trumpet_notes.append({**base, "pitch": pname(p), "input": trumpet_inp})
+        sax_inp, _ = map_saxophone(p, warnings, input_is_concert_pitch=True)
+        sax_notes.append({**base, "pitch": pname(p), "input": sax_inp})
+        violin_inp = map_violin(p, warnings, bow_state)
+        violin_notes.append({**base, "pitch": pname(p), "input": violin_inp})
+
+    instruments_out["trumpet"] = {"controller": "trumpet", "notes": trumpet_notes}
+    instruments_out["saxophone"] = {"controller": "saxophone", "notes": sax_notes}
+    instruments_out["violin"] = {"controller": "violin", "notes": violin_notes}
 
     bass_notes = notes_with_time(bass_part)
     trombone_notes = []
@@ -313,15 +323,11 @@ def main():
                           "single-instrument scores of the same song into one beatmap.")
     ap.add_argument("--output", required=True, help="Path to write beatmap JSON")
     ap.add_argument("--mode", choices=["band", "piano"], required=True)
-    ap.add_argument("--treble-instrument", choices=["trumpet", "saxophone", "violin"],
-                     help="piano mode only: which instrument the treble clef line feeds")
     ap.add_argument("--title", help="Override song title (defaults to MusicXML metadata)")
     ap.add_argument("--composer", help="Override composer (defaults to MusicXML metadata)")
     ap.add_argument("--source", default="", help="Where this sheet music came from (for your own reference)")
     args = ap.parse_args()
 
-    if args.mode == "piano" and not args.treble_instrument:
-        ap.error("--treble-instrument is required in piano mode")
     if args.mode == "piano" and len(args.input) != 1:
         ap.error("piano mode takes exactly one --input file (multi-file merging is band mode only)")
 
@@ -334,7 +340,7 @@ def main():
     else:
         paths = resolve_input_paths(args.input)
         score = m21converter.parse(str(paths[0]))
-        instruments_out = convert_piano_mode(score, args.treble_instrument, warnings)
+        instruments_out = convert_piano_mode(score, warnings)
         input_label = str(paths[0])
 
     title = args.title or (score.metadata.bestTitle if score.metadata and score.metadata.bestTitle else Path(input_label).stem)
