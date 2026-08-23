@@ -13,7 +13,10 @@ pip install music21 --break-system-packages
 
 Two separate scripts, same output schema:
 
-- `convert.py` — reads MusicXML (`.musicxml`/`.xml`).
+- `convert.py` — reads MusicXML, either the plain XML form (`.musicxml`/
+  `.xml`) or the compressed/zipped form (`.mxl`) that most sheet-music
+  sites (MuseScore.com, IMSLP downloads, etc.) actually hand out — no extra
+  steps needed, music21 picks the right reader off the file extension.
 - `convert_midi.py` — reads MIDI (`.mid`/`.midi`). Use this one when a MIDI
   file was easier to find than a MusicXML file for a given song. Same
   `--mode band|piano`, same `--title`/`--composer`/`--source`, same
@@ -58,7 +61,11 @@ percussion, kit) to catch this.
 ## Usage
 
 **Band mode** — a real instrument part (trumpet, sax, violin, trombone, or a
-percussion/drum part) exported straight from notation software:
+percussion/drum part) exported straight from notation software. If a score
+has several parts for the same game instrument (a big-band chart's
+Trumpet 1-4, or Alto/Tenor/Bari Sax), only the first one in score order is
+used — the rest are skipped with a warning, since this project has one
+controller per instrument family, not several:
 
 ```
 python3 convert.py --mode band --input samples/twinkle_twinkle_trumpet.musicxml \
@@ -78,6 +85,31 @@ python3 convert.py --mode piano --input samples/twinkle_twinkle_piano.musicxml \
 
 Try it now — both sample commands above run against the included Twinkle
 Twinkle Little Star test files and work out of the box.
+
+**Hybrid mode** — a real, multi-part score (a jazz/big-band/orchestral
+arrangement downloaded as one `.mxl`, say) that has real parts for *some*
+of the 5 game instruments but not all of them, and also happens to include
+a piano part/reduction. Real parts win wherever they exist, exactly like
+band mode (including: if a family has several parts, like a big-band
+chart's Trumpet 1-4, only the first one is used, with a warning for the
+rest — this project has one controller per instrument family, not four).
+Whichever of the 5 instruments the score has *no* real part for get filled
+in from that same file's own piano part instead, using the same
+treble/bass-clef logic piano mode uses, restricted to just what's missing.
+If an instrument is missing and the file has no usable piano part either,
+that instrument is simply left out of the beatmap — same as band mode
+already does when a score just doesn't have a part for something. One
+input file only (real parts and the piano fallback need to live in the
+same score):
+
+```
+python3 convert.py --mode hybrid --input samples/big_band_chart.mxl \
+    --output output/big_band_chart.json
+```
+
+This is genuinely different from plugging the same file into band mode —
+band mode alone would just silently drop whichever instruments the score
+has no part for; hybrid mode tries the piano first.
 
 **Full-length test songs** — `samples/twinkle_twinkle/`,
 `samples/hot_cross_buns/`, and `samples/happy_birthday/` each hold a
@@ -99,13 +131,13 @@ python3 convert.py --mode band --input samples/happy_birthday/happy_birthday_ban
 ```
 
 Every beatmap the converter writes is tagged with which source rendition it
-came from, so a piano-derived beatmap and a band-derived beatmap of the
-same song are never mixed up in a song list: piano mode appends
-`(Version P)` to `song.title` and `_Version_P` to the output filename;
-band mode appends `(Version S)` / `_Version_S` the same way. This happens
-automatically — `--output output/twinkle.json` in piano mode actually
-writes `output/twinkle_Version_P.json`, no extra flag needed. (If your
-`--output` or `--title` already contains the tag, e.g. because you're
+came from, so beatmaps from different modes of the same song are never
+mixed up in a song list: piano mode appends `(Version P)` to `song.title`
+and `_Version_P` to the output filename; band mode appends `(Version S)` /
+`_Version_S`; hybrid mode appends `(Version H)` / `_Version_H`. This
+happens automatically — `--output output/twinkle.json` in piano mode
+actually writes `output/twinkle_Version_P.json`, no extra flag needed. (If
+your `--output` or `--title` already contains the tag, e.g. because you're
 re-running the same command, it isn't duplicated.)
 
 `convert_midi.py` adds one more tag on top of that, so a MIDI-derived
@@ -214,9 +246,29 @@ extend fingerings:
   before the physical 7-piezo kit was finalized — that kit has no hi-hat
   pad, so Mid Tom takes its place, and the numbering now follows the
   controller's physical left-to-right wiring order instead. Band mode
-  doesn't yet match real percussion notation by name (no real drum-kit
-  MusicXML/MIDI part has been tested against the converters yet) — both
-  modes and both input formats currently bucket by pitch height instead.
+  doesn't yet match real percussion notation by name — it still buckets by
+  (staff/notated) height instead, same as piano mode's bass clef.
+  `band_mode_name_map` is prepared for that future work but isn't wired up
+  yet.
+- **2026-08-23: real percussion notation now actually produces hits.**
+  A hand-built drum part (this project's own sample fixtures) uses ordinary
+  `note.Note`/`chord.Chord` objects in music21, but a real percussion part
+  exported from notation software (Finale, Sibelius, MuseScore, etc.) comes
+  through as `note.Unpitched`/`percussion.PercussionChord` instead — MusicXML
+  notates a drum part by staff position (which line/space = which drum
+  sound), not by a real sounding pitch, and music21 mirrors that with its
+  own classes. `convert.py`'s note-extraction only recognized the pitched
+  classes before this fix, so a real percussion part silently produced
+  *zero* hits — the part was "detected" (matched to `drum_kit` by
+  instrument name) but contributed nothing. Fixed: unpitched notes/chords
+  are now handled the same way as their pitched equivalents (a
+  `PercussionChord`'s highest notehead, same "one controller reads one
+  note" rule as a pitched chord), using the notated staff position in place
+  of pitch for `bucket_drum_pad`'s height-based bucketing — which is exactly
+  what that bucketing already treated pitch as a stand-in for. This affects
+  band mode and hybrid mode only (piano mode's drum track is always derived
+  from the bass clef's real pitches, and `convert_midi.py`'s percussion
+  detection was already note-number-based, unaffected by this).
 
 ## Held drum notes ("rolls")
 

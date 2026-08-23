@@ -82,6 +82,31 @@ namespace Symphomania.Gameplay
         static readonly Dictionary<int, AudioClip> _drumPads = new Dictionary<int, AudioClip>(); // bit index -> clip
         static bool _drumPadsScanned;
 
+        /// <summary>
+        /// Wipes every scan cache at the start of every Play session, same
+        /// reason VirtualBandInput/GameSessionContext already do this - with
+        /// "Enter Play Mode Options" domain reload disabled, these statics
+        /// otherwise survive from the previous Play session. Without this,
+        /// the FIRST Play session after adding this file (before any real
+        /// samples existed under Resources/StreamingAssets) would scan an
+        /// empty folder, cache "nothing found" into _scanned/_pianoScanned/
+        /// _drumPadsScanned, and then every subsequent Play session would
+        /// keep reusing that stale empty result forever - even long after
+        /// real samples were dropped in - since EnsureScanned/
+        /// EnsurePianoGuideScanned/EnsureDrumPadsScanned only ever check
+        /// "have I scanned before", never "has anything changed since".
+        /// </summary>
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatics()
+        {
+            _library.Clear();
+            _scanned.Clear();
+            _pianoLibrary.Clear();
+            _pianoScanned = false;
+            _drumPads.Clear();
+            _drumPadsScanned = false;
+        }
+
         class Entry
         {
             public int Midi;
@@ -90,6 +115,69 @@ namespace Symphomania.Gameplay
 
         static readonly Dictionary<InstrumentType, List<Entry>> _library = new Dictionary<InstrumentType, List<Entry>>();
         static readonly HashSet<InstrumentType> _scanned = new HashSet<InstrumentType>();
+
+        /// <summary>
+        /// The piano guide track's own real-sample cache, parallel to
+        /// _library but keyed by a fixed folder name ("Piano") instead of an
+        /// InstrumentType, since there's no InstrumentType for "the
+        /// reconstructed piano/song guide track" - it isn't one of the five
+        /// playable instruments. Scans the exact same two locations
+        /// (StreamingAssets WAVs, Resources clips) via the folder-name
+        /// overloads below, so dropping a Toy Keyboard-style piano voice
+        /// pack at Resources/InstrumentSamples/Piano/ (same trailing
+        /// "_C"/"_F#" naming convention as any other instrument) is picked
+        /// up automatically.
+        /// </summary>
+        const string PianoGuideFolder = "Piano";
+        static readonly List<Entry> _pianoLibrary = new List<Entry>();
+        static bool _pianoScanned;
+
+        /// <summary>
+        /// Same lookup as TryGetNearest, but for PianoGuideTrack's
+        /// reconstructed guide rendition rather than a live instrument's own
+        /// hit-confirmation audio - see _pianoLibrary's doc comment. Returns
+        /// false (leaving clip null) if no piano sample pack has been
+        /// supplied, so the caller (PianoGuideTrack) should fall back to
+        /// NoteAudio's synthesized piano sustain in that case.
+        /// </summary>
+        public static bool TryGetNearestPianoGuide(string pitch, out AudioClip clip, out float playbackPitch)
+        {
+            clip = null;
+            playbackPitch = 1f;
+            if (string.IsNullOrEmpty(pitch)) return false;
+
+            EnsurePianoGuideScanned();
+            if (_pianoLibrary.Count == 0) return false;
+
+            int targetMidi;
+            try { targetMidi = MidiForPitch(pitch); }
+            catch (FormatException) { return false; }
+
+            Entry best = null;
+            int bestDistance = int.MaxValue;
+            foreach (var e in _pianoLibrary)
+            {
+                int d = Mathf.Abs(e.Midi - targetMidi);
+                if (d < bestDistance) { bestDistance = d; best = e; }
+            }
+            if (best == null) return false;
+
+            clip = best.Clip;
+            playbackPitch = Mathf.Pow(2f, (targetMidi - best.Midi) / 12f);
+            return true;
+        }
+
+        static void EnsurePianoGuideScanned()
+        {
+            if (_pianoScanned) return;
+            _pianoScanned = true;
+
+            ScanStreamingAssetsWavs(PianoGuideFolder, _pianoLibrary);
+            ScanResourcesClips(PianoGuideFolder, _pianoLibrary);
+
+            if (_pianoLibrary.Count > 0)
+                Debug.Log($"[InstrumentSampleLibrary] Loaded {_pianoLibrary.Count} real piano guide sample(s).");
+        }
 
         /// <summary>
         /// Looks up the closest available real sample for this pitch. Returns
@@ -175,8 +263,8 @@ namespace Symphomania.Gameplay
             _scanned.Add(instrument);
 
             var entries = new List<Entry>();
-            ScanStreamingAssetsWavs(instrument, entries);
-            ScanResourcesClips(instrument, entries);
+            ScanStreamingAssetsWavs(instrument.ToString(), entries);
+            ScanResourcesClips(instrument.ToString(), entries);
 
             if (entries.Count > 0)
             {
@@ -185,11 +273,17 @@ namespace Symphomania.Gameplay
             }
         }
 
-        /// <summary>Source 1: your own raw WAV recordings, not run through Unity's import pipeline at all.</summary>
-        static void ScanStreamingAssetsWavs(InstrumentType instrument, List<Entry> entries)
+        /// <summary>
+        /// Source 1: your own raw WAV recordings, not run through Unity's
+        /// import pipeline at all. Takes a plain folder name rather than an
+        /// InstrumentType so this same scan also serves the piano guide
+        /// track's own sample folder (see _pianoLibrary/PianoGuideFolder),
+        /// which isn't one of the five playable InstrumentType values.
+        /// </summary>
+        static void ScanStreamingAssetsWavs(string folderName, List<Entry> entries)
         {
-            string dir = Path.Combine(Application.streamingAssetsPath, "InstrumentSamples", instrument.ToString());
-            if (!Directory.Exists(dir)) return; // no samples supplied for this instrument this way - fine, either the Resources path or NoteAudio covers it
+            string dir = Path.Combine(Application.streamingAssetsPath, "InstrumentSamples", folderName);
+            if (!Directory.Exists(dir)) return; // no samples supplied this way - fine, either the Resources path or the synthesized fallback covers it
 
             foreach (var path in Directory.GetFiles(dir, "*.wav"))
             {
@@ -207,16 +301,21 @@ namespace Symphomania.Gameplay
             }
         }
 
-        /// <summary>Source 2: already-imported Unity AudioClips (e.g. a purchased instrument pack) under Resources/InstrumentSamples/<Instrument>/.</summary>
-        static void ScanResourcesClips(InstrumentType instrument, List<Entry> entries)
+        /// <summary>
+        /// Source 2: already-imported Unity AudioClips (e.g. a purchased
+        /// instrument pack) under Resources/InstrumentSamples/&lt;folderName&gt;/.
+        /// Takes a plain folder name for the same reason ScanStreamingAssetsWavs
+        /// does - see that method's doc comment.
+        /// </summary>
+        static void ScanResourcesClips(string folderName, List<Entry> entries)
         {
-            var clips = Resources.LoadAll<AudioClip>("InstrumentSamples/" + instrument);
+            var clips = Resources.LoadAll<AudioClip>("InstrumentSamples/" + folderName);
             foreach (var clip in clips)
             {
                 var match = TrailingNoteLetter.Match(clip.name);
                 if (!match.Success)
                 {
-                    Debug.LogWarning($"[InstrumentSampleLibrary] Couldn't find a trailing note letter (like '_C' or '_F#') in Resources clip '{clip.name}' for {instrument} - skipping it.");
+                    Debug.LogWarning($"[InstrumentSampleLibrary] Couldn't find a trailing note letter (like '_C' or '_F#') in Resources clip '{clip.name}' for {folderName} - skipping it.");
                     continue;
                 }
 

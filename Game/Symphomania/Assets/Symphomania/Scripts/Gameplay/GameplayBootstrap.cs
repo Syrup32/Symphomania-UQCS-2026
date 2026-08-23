@@ -140,10 +140,10 @@ namespace Symphomania.Gameplay
             _conductor = conductorGO.AddComponent<RhythmConductor>();
             _conductor.Initialize(_beatmap.Song, leadInSeconds);
 
-            if (IsPianoDerived(_beatmap))
+            if (HasGuideTrackSource(_beatmap))
             {
                 conductorGO.AddComponent<PianoGuideTrack>().Initialize(_conductor, _beatmap);
-                Debug.Log("[GameplayBootstrap] Piano-derived beatmap (\"Version P\") - background piano guide track enabled.");
+                Debug.Log($"[GameplayBootstrap] '{_beatmap.Song.Title}' qualifies for a background guide track (piano-derived and/or MIDI-derived) - enabled.");
             }
 
             for (int i = 0; i < plan.Slots.Count; i++)
@@ -204,16 +204,21 @@ namespace Symphomania.Gameplay
 
         /// <summary>
         /// Both converter scripts append "Version P" (piano mode) or
-        /// "Version S" (band mode) to song.title automatically - see
-        /// beatmap_schema.md's "beatmap version tagging" section - so this is
-        /// just reading that tag back, not re-deriving anything. Only a
-        /// piano-mode beatmap has a real single-piano origin for
-        /// PianoGuideTrack to reconstruct; a "Version S" chart is genuine
-        /// separate per-instrument sheet music with no such source to play
-        /// back, so this deliberately returns false for it.
+        /// "Version S" (band mode) to song.title automatically, and
+        /// convert_midi.py additionally inserts a "MIDI" tag - see
+        /// beatmap_schema.md's "beatmap version tagging" section - so this
+        /// is just reading those tags back, not re-deriving anything.
+        /// PianoGuideTrack gets created for either reason (see that class's
+        /// own doc comment for why each qualifies): "Version P" always has
+        /// a real single-source rendition to reconstruct regardless of
+        /// input format, and a "MIDI" tag means there's an underlying MIDI
+        /// file that plausibly represents the whole song even in "Version
+        /// S" (band) mode. Only a non-MIDI "Version S" beatmap - genuine
+        /// separate per-instrument sheet music with no such single source -
+        /// has neither tag and returns false here.
         /// </summary>
-        static bool IsPianoDerived(Beatmap beatmap) =>
-            beatmap.Song.Title.Contains("Version P");
+        static bool HasGuideTrackSource(Beatmap beatmap) =>
+            beatmap.Song.Title.Contains("Version P") || beatmap.Song.Title.Contains("MIDI");
 
         /// <summary>Points awarded per judgement - Perfect 300, Good 100, Miss 0, matching this round's spec exactly.</summary>
         static int PointsFor(NoteJudgement judgement) => judgement switch

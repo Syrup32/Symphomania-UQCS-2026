@@ -204,11 +204,24 @@ def get_tempo_changes(score):
     return changes
 
 
+# mode -> (title tag, filename suffix). "hybrid" (2026-08-23) is a real
+# multi-part score (band-mode part detection) that fills in any of the 5
+# game instruments it doesn't have a real part for from that same file's
+# piano part, instead of just skipping them -- see convert_hybrid_mode in
+# convert.py. It gets its own tag/suffix so a hybrid beatmap is never
+# mistaken for a pure band-mode one (which has NO piano fallback -- a
+# missing instrument there is just absent) or a pure piano-mode one (which
+# has no real instrument parts at all).
+_VERSION_TAGS = {"piano": "Version P", "band": "Version S", "hybrid": "Version H"}
+_VERSION_SUFFIXES = {"piano": "_Version_P", "band": "_Version_S", "hybrid": "_Version_H"}
+
+
 def apply_version_tag(title, mode, format_tag=None):
     """Piano-derived beatmaps get '(Version P)' appended to the title;
-    band-derived beatmaps get '(Version S)'. Shared by convert.py and
-    convert_midi.py so a beatmap's source rendition is always tagged the
-    same way regardless of which script produced it.
+    band-derived beatmaps get '(Version S)'; hybrid beatmaps (real parts +
+    piano fallback for the rest) get '(Version H)'. Shared by convert.py
+    and convert_midi.py so a beatmap's source rendition is always tagged
+    the same way regardless of which script produced it.
 
     format_tag, when given (convert_midi.py passes "MIDI"), is inserted
     right before the version tag -- e.g. "Hot Cross Buns MIDI (Version P)"
@@ -217,7 +230,7 @@ def apply_version_tag(title, mode, format_tag=None):
     band. convert.py doesn't pass this (MusicXML is the original/default
     format), so its titles are unchanged: "Hot Cross Buns (Version P)".
     """
-    tag = "Version P" if mode == "piano" else "Version S"
+    tag = _VERSION_TAGS[mode]
     if f"({tag})" not in title:
         if format_tag and format_tag not in title:
             title = f"{title} {format_tag}"
@@ -226,7 +239,7 @@ def apply_version_tag(title, mode, format_tag=None):
 
 
 def version_suffixed_path(out_path, mode, format_tag=None):
-    suffix = "_Version_P" if mode == "piano" else "_Version_S"
+    suffix = _VERSION_SUFFIXES[mode]
     if suffix.lower() not in out_path.stem.lower():
         if format_tag and format_tag.lower() not in out_path.stem.lower():
             out_path = out_path.with_name(f"{out_path.stem}_{format_tag}{out_path.suffix}")
