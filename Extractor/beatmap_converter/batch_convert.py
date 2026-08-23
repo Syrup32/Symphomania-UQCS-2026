@@ -51,12 +51,34 @@ there's no per-file --title/--composer override here. If a specific file
 needs a metadata correction, convert the file individually with
 convert.py/convert_midi.py's own --title/--composer flags instead.
 
+*** Files that stall (2026-08-23) ***
+A very small number of real-world MIDI files make the underlying music21
+library itself extremely slow, or effectively hang, while parsing --
+independent of anything this converter does. This has been seen with files
+that pack many overlapping same-pitch NOTE_ON events on a single
+channel/track without clean NOTE_OFFs in between (a pattern some drum-kit
+MIDI arrangements use for fast repeated hits) -- music21's note-pairing/
+voice-separation logic can blow up on that instead of just parsing it, and
+there is no reliable way for this converter to avoid triggering that (it's
+inside music21's own parser, before this script's code ever sees any
+notes). Since one bad file blocking the whole batch defeats the point of
+batch conversion, every file gets a hard wall-clock budget (`--timeout`,
+default 120 seconds) to parse AND convert in. A file that doesn't finish in
+time is killed and skipped with a `[skip] ... took longer than Ns` message
+-- the rest of the batch keeps going. If you hit this on a real file you
+need converted, your best options are: convert that one file by itself
+with a longer `--timeout`, or open it in a MIDI editor (e.g. MuseScore,
+which can import and re-export MIDI) and re-export it -- that usually
+normalizes the overlapping-note pattern that trips music21 up.
+
 Usage:
   python3 batch_convert.py --input-dir samples/downloaded --output-dir output
   python3 batch_convert.py --input-dir samples/downloaded --output-dir output --source "downloaded from IMSLP"
+  python3 batch_convert.py --input-dir samples/downloaded --output-dir output --timeout 300
 """
 import argparse
 import json
+import multiprocessing as mp
 import sys
 from pathlib import Path
 
@@ -195,12 +217,65 @@ def process_midi(path, out_dir, source_label):
     return written
 
 
+# ---------------------------------------------------------------------------
+# Per-file timeout guard -- see the "Files that stall" section of the module
+# docstring for why this exists (a small number of real MIDI files make
+# music21's own parser extremely slow or effectively hang, independent of
+# anything in this converter). Runs each file's parse+convert in its own
+# subprocess so a hung file can actually be killed -- a thread can't be
+# force-stopped in Python, and this needs to survive music21 being stuck
+# inside a tight C-level or pure-Python loop with no cooperative check-in
+# point this script could hook into.
+# ---------------------------------------------------------------------------
+
+def _subprocess_entry(target, path_str, out_dir_str, source_label, queue):
+    try:
+        written = target(Path(path_str), Path(out_dir_str), source_label)
+        queue.put(("ok", [str(p) for p in written]))
+    except Exception as e:
+        queue.put(("error", f"{type(e).__name__}: {e}"))
+
+
+def run_with_timeout(target, path, out_dir, source_label, timeout_s):
+    queue = mp.Queue()
+    proc = mp.Process(target=_subprocess_entry, args=(target, str(path), str(out_dir), source_label, queue))
+    proc.start()
+    proc.join(timeout_s)
+
+    if proc.is_alive():
+        proc.terminate()
+        proc.join(5)
+        if proc.is_alive():
+            proc.kill()
+            proc.join()
+        print(f"  [skip] {path.name}: took longer than {timeout_s}s to parse/convert -- this is almost "
+              f"always music21 itself getting stuck on an unusual MIDI/MusicXML structure, not a bug in "
+              f"this converter (see the module docstring's 'Files that stall' note) -- skipping so the "
+              f"rest of the batch can continue. Try --timeout with a larger value, or re-export the file "
+              f"from a MIDI/notation editor first.", file=sys.stderr)
+        return []
+
+    if queue.empty():
+        print(f"  [skip] {path.name}: conversion process ended unexpectedly with no result "
+              f"(it may have crashed) -- skipping", file=sys.stderr)
+        return []
+
+    status, payload = queue.get()
+    if status == "error":
+        print(f"  [skip] {path.name}: crashed during conversion ({payload})", file=sys.stderr)
+        return []
+    return [Path(p) for p in payload]
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--input-dir", required=True,
                      help="Folder of .musicxml/.xml/.mxl and/or .mid/.midi files -- one song per file")
     ap.add_argument("--output-dir", required=True, help="Folder to write beatmap JSON files into")
     ap.add_argument("--source", default="", help="Applied to every beatmap's song.source field")
+    ap.add_argument("--timeout", type=int, default=120,
+                     help="Max seconds to spend parsing+converting a single file before skipping it and "
+                          "moving on (default 120) -- see the module docstring's 'Files that stall' note")
     args = ap.parse_args()
 
     in_dir = Path(args.input_dir)
@@ -220,10 +295,10 @@ def main():
     total_written = []
     for path in xml_files:
         print(f"\n{path.name} (MusicXML)")
-        total_written.extend(process_musicxml(path, out_dir, args.source))
+        total_written.extend(run_with_timeout(process_musicxml, path, out_dir, args.source, args.timeout))
     for path in midi_files:
         print(f"\n{path.name} (MIDI)")
-        total_written.extend(process_midi(path, out_dir, args.source))
+        total_written.extend(run_with_timeout(process_midi, path, out_dir, args.source, args.timeout))
 
     print(f"\nDone. {len(xml_files) + len(midi_files)} source file(s) processed, "
           f"{len(total_written)} beatmap JSON file(s) written to {out_dir}/:")

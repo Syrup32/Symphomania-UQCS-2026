@@ -166,6 +166,32 @@ several single-instrument files of the *same* song into one beatmap (see
 above); `batch_convert.py` is for converting many *different* songs, one
 beatmap-set per file, in one pass.
 
+**If a file makes the batch stall (2026-08-23):** a small number of real
+MIDI files make the underlying `music21` library itself extremely slow or
+effectively hang while parsing — seen with files that pack many
+overlapping same-pitch `NOTE_ON` events on one track without clean
+`NOTE_OFF`s in between (a pattern some drum-kit MIDI arrangements use for
+fast repeated hits). This happens inside music21's own parser before this
+converter's code ever sees a note, so there's no way for the converter to
+detect or avoid it in advance. To keep one bad file from blocking an
+entire batch, every file gets a hard time budget to parse and convert in
+(`--timeout`, default 120 seconds); a file that blows through it is killed
+and skipped with a `[skip] ... took longer than Ns` message, and the rest
+of the batch keeps going:
+
+```
+python3 batch_convert.py --input-dir samples/downloaded --output-dir output --timeout 300
+```
+
+If a specific file keeps timing out and you need it converted, try a
+longer `--timeout` on just that run, or open the file in a MIDI/notation
+editor (MuseScore works well for this) and re-export it — that usually
+normalizes whatever overlapping-note pattern was tripping music21 up.
+`convert.py`/`convert_midi.py` run on a single file directly don't have
+this timeout guard (there's nothing else running for them to protect), so
+the same stuck-file symptom there just looks like the command never
+finishing — Ctrl+C to cancel it and try the fix above.
+
 **Full-length test songs** — `samples/twinkle_twinkle/`,
 `samples/hot_cross_buns/`, and `samples/happy_birthday/` each hold a
 complete (not excerpted) melody, in both forms: `<song>_piano.musicxml`
