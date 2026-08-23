@@ -111,6 +111,61 @@ This is genuinely different from plugging the same file into band mode —
 band mode alone would just silently drop whichever instruments the score
 has no part for; hybrid mode tries the piano first.
 
+## Batch conversion: a whole folder at once
+
+If you've got a folder of downloaded `.musicxml`/`.xml`/`.mxl`/`.mid`/
+`.midi` files — one song per file — `batch_convert.py` converts all of them
+in one command, without you having to run `convert.py`/`convert_midi.py`
+by hand per file and decide `--mode` each time:
+
+```
+python3 batch_convert.py --input-dir samples/downloaded --output-dir output
+```
+
+Mode is picked automatically, per file, by what the file actually
+contains — the rule is "prefer real instrument parts, but always also try
+piano mode independently, and don't bother producing a beatmap the file's
+own content can't support":
+
+- **MusicXML/`.mxl`**: real-instrument-part detection runs first (same
+  detection hybrid mode's first pass uses). If it finds a real part for at
+  least one of the 5 game instruments, a **hybrid** beatmap (`Version H`)
+  is written — real parts plus a piano-clef fallback for anything still
+  missing, same as `--mode hybrid`. If it finds *no* real part at all,
+  hybrid mode is skipped for that file (a file with zero real-instrument
+  matches isn't behaving like a real arrangement, so hybrid has nothing to
+  add over plain piano mode). Independently of that, if the file also has
+  a usable 2-staff piano part, a standalone **piano** beatmap (`Version P`)
+  is *also* written, whether or not the hybrid one was. So: a real
+  arrangement that also has a piano reduction (common for orchestral/
+  big-band scores) gets both `Version H` and `Version P`; a plain piano
+  score gets only `Version P`; a real arrangement with no piano reduction
+  gets only `Version H`. A file with neither — no real parts and no usable
+  piano part — is skipped entirely with a warning explaining why.
+- **MIDI**: there's no hybrid mode for MIDI (see `convert_midi.py`'s
+  docstring — MIDI can't reliably distinguish "real instrument part" from
+  "piano reduction" the way MusicXML's instrument tags can), so the same
+  fallback *principle* applies using `convert_midi.py`'s actual two modes:
+  a **band** beatmap (`Version S`, MIDI-tagged) is written if real parts
+  matched anything, and a standalone **piano** beatmap (`Version P`,
+  MIDI-tagged) is attempted independently either way. There's no
+  piano-fills-the-gaps merge step for MIDI, since `convert_midi.py` doesn't
+  have one.
+
+Every beatmap uses the source file's own embedded title/composer (falling
+back to the filename if it has none) — there's no per-file `--title`/
+`--composer` override in batch mode; convert a file individually with
+`convert.py`/`convert_midi.py` if one needs a metadata correction.
+`--source "..."` (optional) is applied to every beatmap written this way.
+Files with an extension the converters don't handle are listed and
+skipped, not treated as errors.
+
+This is a genuinely different thing from either script's own directory
+support (`--input samples/twinkle_multi/`) — that one is for MERGING
+several single-instrument files of the *same* song into one beatmap (see
+above); `batch_convert.py` is for converting many *different* songs, one
+beatmap-set per file, in one pass.
+
 **Full-length test songs** — `samples/twinkle_twinkle/`,
 `samples/hot_cross_buns/`, and `samples/happy_birthday/` each hold a
 complete (not excerpted) melody, in both forms: `<song>_piano.musicxml`

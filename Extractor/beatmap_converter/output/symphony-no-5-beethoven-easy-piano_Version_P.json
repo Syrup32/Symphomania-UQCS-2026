@@ -1,0 +1,37 @@
+{
+  "song": {
+    "title": "Nocturne No. 1 (Version P)",
+    "composer": "Gabriel Faur\u00e9",
+    "source": "",
+    "time_signature": "2/4",
+    "tempo_changes": [
+      {
+        "beat": 0.0,
+        "bpm": 180.0
+      }
+    ],
+    "duration_seconds": 0.0
+  },
+  "instruments": {
+    "trumpet": {
+      "controller": "trumpet",
+      "notes": []
+    },
+    "saxophone": {
+      "controller": "saxophone",
+      "notes": []
+    },
+    "violin": {
+      "controller": "violin",
+      "notes": []
+    },
+    "trombone": {
+      "controller": "trombone",
+      "notes": []
+    },
+    "drum_kit": {
+      "controller": "drum_kit",
+      "hits": []
+    }
+  }
+}
