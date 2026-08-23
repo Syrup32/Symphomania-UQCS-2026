@@ -184,7 +184,7 @@ namespace Symphomania.Menu
         // ---- GUIStyles, built once - OnGUI runs every IMGUI event, so
         // building fresh GUIStyle objects every call would just be avoidable
         // garbage (same reasoning as GameplayBootstrap's own EnsureGUIStyles). ----
-        GUIStyle _titleStyle, _bigButtonStyle, _listButtonStyle, _headerStyle, _bodyStyle, _errorStyle, _toggleOnStyle, _toggleOffStyle;
+        GUIStyle _titleStyle, _bigButtonStyle, _listButtonStyle, _headerStyle, _bodyStyle, _errorStyle, _toggleOnStyle, _toggleOffStyle, _speedButtonStyle, _speedLabelStyle;
 
         void EnsureStyles()
         {
@@ -197,6 +197,8 @@ namespace Symphomania.Menu
             _errorStyle = new GUIStyle(GUI.skin.label) { fontSize = 16, normal = { textColor = new Color(1f, 0.4f, 0.4f) } };
             _toggleOnStyle = new GUIStyle(GUI.skin.button) { fontSize = 16, fixedHeight = 44, fontStyle = FontStyle.Bold, normal = { textColor = Color.black, background = GUI.skin.button.active.background } };
             _toggleOffStyle = new GUIStyle(GUI.skin.button) { fontSize = 16, fixedHeight = 44 };
+            _speedButtonStyle = new GUIStyle(GUI.skin.button) { fontSize = 18, fontStyle = FontStyle.Bold, fixedHeight = 36 };
+            _speedLabelStyle = new GUIStyle(GUI.skin.label) { fontSize = 15, alignment = TextAnchor.MiddleCenter, normal = { textColor = Color.white } };
         }
 
         void OnGUI()
@@ -369,6 +371,36 @@ namespace Symphomania.Menu
                 GUI.enabled = true;
             }
             y += 50f;
+
+            // Per-player DDR-style scroll speed: a straight ×0.25-increment
+            // multiplier on top of that lane's own base scroll speed (see
+            // GameSessionContext.ScrollSpeedMultiplier's doc comment) - the
+            // rhythmic timing/judging is completely unaffected, this only
+            // changes how fast notes visually travel down that one player's
+            // own portion of the screen, so e.g. the drummer can run x1.50
+            // while the violinist stays at x1.00. Aligned under the same
+            // 150px-per-instrument columns as the row above so it's obvious
+            // which speed control belongs to which controller. Kept editable
+            // even for an instrument currently sitting out/not present, so a
+            // player can pre-set their preferred speed before plugging in or
+            // re-enabling.
+            GUI.Label(new Rect(20, y, 500, 24), "Scroll speed:", _bodyStyle);
+            y += 26f;
+            for (int i = 0; i < AllInstruments.Length; i++)
+            {
+                var instrument = AllInstruments[i];
+                float colX = 20 + i * 150;
+                float speed = GameSessionContext.GetScrollSpeedMultiplier(instrument);
+
+                if (GUI.Button(new Rect(colX, y, 36, 36), "-", _speedButtonStyle))
+                    GameSessionContext.AdjustScrollSpeedMultiplier(instrument, -GameSessionContext.ScrollSpeedMultiplierStep);
+
+                GUI.Label(new Rect(colX + 38, y, 62, 36), $"x{speed:0.00}", _speedLabelStyle);
+
+                if (GUI.Button(new Rect(colX + 102, y, 36, 36), "+", _speedButtonStyle))
+                    GameSessionContext.AdjustScrollSpeedMultiplier(instrument, GameSessionContext.ScrollSpeedMultiplierStep);
+            }
+            y += 46f;
 
             GUI.Label(new Rect(20, y, 500, 24), "Active this round:", _bodyStyle);
             y += 26f;

@@ -25,12 +25,22 @@ namespace Symphomania.Gameplay
         const float ToneDuration = 0.35f;
         const float ClickDuration = 0.12f;
 
+        /// <summary>
+        /// Target length (before rounding to a whole number of fundamental
+        /// periods - see BuildSustainClip) for a loopable hold-note/guide
+        /// voice. Short is fine: AudioSource.loop just repeats it seamlessly
+        /// for however long the note is actually held.
+        /// </summary>
+        const float SustainLoopSeconds = 0.25f;
+
         // Keyed by "Instrument|Pitch", not just pitch - the whole point is
         // that the same concert pitch sounds different per instrument, so
         // caching on pitch alone would have every instrument reuse whichever
         // one synthesized that pitch first.
         static readonly Dictionary<string, AudioClip> _toneCache = new Dictionary<string, AudioClip>();
         static readonly Dictionary<string, AudioClip> _pianoCache = new Dictionary<string, AudioClip>(); // separate from _toneCache - see PianoClip
+        static readonly Dictionary<string, AudioClip> _sustainCache = new Dictionary<string, AudioClip>(); // see SustainClipForPitch
+        static readonly Dictionary<string, AudioClip> _pianoSustainCache = new Dictionary<string, AudioClip>(); // see PianoSustainClip
         static AudioClip _drumClick;
 
         /// <summary>Returns this instrument's voice for this concert pitch (cached per instrument+pitch), or the drum click for the drum kit / a null-pitch event.</summary>
@@ -65,6 +75,46 @@ namespace Symphomania.Gameplay
         }
 
         public static AudioClip DrumClick() => _drumClick != null ? _drumClick : (_drumClick = BuildClickClip());
+
+        /// <summary>
+        /// A loopable version of this instrument's voice for this concert
+        /// pitch - unlike ClipForPitch, this has no attack/decay baked in (see
+        /// BuildSustainClip), so a caller can AudioSource.loop it for as long
+        /// as a hold note is actually held and fade it out at release,
+        /// instead of playing a fixed-length one-shot. Null for the drum kit
+        /// or a null pitch - drums never hold (see Judgeable.IsHold, always
+        /// false for a drum hit), so this should never actually be called for
+        /// one.
+        /// </summary>
+        public static AudioClip SustainClipForPitch(InstrumentType instrument, string pitch)
+        {
+            if (instrument == InstrumentType.DrumKit || string.IsNullOrEmpty(pitch)) return null;
+
+            string key = instrument.ToString() + "|" + pitch;
+            if (_sustainCache.TryGetValue(key, out var cached) && cached != null) return cached;
+
+            var clip = BuildSustainClip(FrequencyForPitch(pitch), Timbre.For(instrument));
+            if (clip != null) _sustainCache[key] = clip;
+            return clip;
+        }
+
+        /// <summary>
+        /// The background piano guide track's own loopable sustain voice -
+        /// same Timbre.Piano as PianoClip, but built for AudioSource.loop
+        /// instead of a fixed-length one-shot, so PianoGuideTrack can hold
+        /// each guide note audibly for its own real notated duration instead
+        /// of a fixed-length blip regardless of how long the note actually is.
+        /// </summary>
+        public static AudioClip PianoSustainClip(string pitch)
+        {
+            if (string.IsNullOrEmpty(pitch)) return null;
+
+            if (_pianoSustainCache.TryGetValue(pitch, out var cached) && cached != null) return cached;
+
+            var clip = BuildSustainClip(FrequencyForPitch(pitch), Timbre.Piano);
+            if (clip != null) _pianoSustainCache[pitch] = clip;
+            return clip;
+        }
 
         /// <summary>
         /// Scientific pitch notation ("C4", "F#4", "Bb2") -> Hz, via MIDI note
@@ -190,6 +240,47 @@ namespace Symphomania.Gameplay
             }
 
             var clip = AudioClip.Create($"tone_{frequency:0}", samples, 1, SampleRate, false);
+            clip.SetData(data, 0);
+            return clip;
+        }
+
+        /// <summary>
+        /// Builds a short, seamlessly loopable waveform for this frequency/
+        /// timbre - rounded to a whole number of FUNDAMENTAL periods, so
+        /// every harmonic (each an integer multiple of the fundamental) lines
+        /// up in phase again exactly at the loop point, and AudioSource.loop
+        /// can repeat it indefinitely with no audible click. Deliberately
+        /// carries no attack/decay envelope, unlike BuildToneClip - baking a
+        /// decay in here would make the volume visibly dip and rebuild every
+        /// single loop cycle (an audible "pulsing"/tremolo artifact) once
+        /// looped. The attack feel and the eventual cutoff at release are
+        /// instead handled by the caller fading AudioSource.volume directly
+        /// (see GameplayLane's hold-note playback and PianoGuideTrack's
+        /// sustain voices) - this clip itself just holds at a constant level.
+        /// </summary>
+        static AudioClip BuildSustainClip(float frequency, Timbre timbre)
+        {
+            int periods = Mathf.Max(1, Mathf.RoundToInt(SustainLoopSeconds * frequency));
+            int samples = Mathf.Max(2, Mathf.RoundToInt(periods * SampleRate / frequency));
+            var data = new float[samples];
+
+            for (int n = 0; n < samples; n++)
+            {
+                float t = n / (float)SampleRate;
+
+                float vibrato = timbre.vibratoDepth > 0f
+                    ? 1f + timbre.vibratoDepth * Mathf.Sin(2f * Mathf.PI * timbre.vibratoRateHz * t)
+                    : 1f;
+                float f = frequency * vibrato;
+
+                float sample = 0f;
+                for (int h = 0; h < timbre.harmonicAmps.Length; h++)
+                    sample += timbre.harmonicAmps[h] * Mathf.Sin(2f * Mathf.PI * f * (h + 1) * t);
+
+                data[n] = sample * 0.18f; // same headroom factor as BuildToneClip, for the same reason
+            }
+
+            var clip = AudioClip.Create($"sustain_{frequency:0}", samples, 1, SampleRate, false);
             clip.SetData(data, 0);
             return clip;
         }

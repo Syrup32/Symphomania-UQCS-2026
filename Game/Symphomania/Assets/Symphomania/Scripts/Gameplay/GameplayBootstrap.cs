@@ -237,7 +237,7 @@ namespace Symphomania.Gameplay
             int points = PointsFor(evt.Judgement);
             _score[instrument] = (_score.TryGetValue(instrument, out var s) ? s : 0) + points;
 
-            Debug.Log($"[Judge] {instrument} note id={evt.Id} pitch={evt.Pitch ?? "-"} -> {evt.Judgement} " +
+            Debug.Log($"[Judge] {instrument} note id={evt.Id}{(evt.IsHoldRelease ? " (release)" : "")} pitch={evt.Pitch ?? "-"} -> {evt.Judgement} " +
                       $"(error={evt.TimingErrorSeconds * 1000:+0;-0}ms, +{points} pts, total {_score[instrument]})");
         }
 

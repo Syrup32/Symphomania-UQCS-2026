@@ -352,10 +352,31 @@ namespace Symphomania.Gameplay
             }
         }
 
-        /// <summary>Call this with every JudgeEvent HitJudge produces for this lane, so the matching note reacts immediately instead of just scrolling past unremarked.</summary>
+        /// <summary>
+        /// Call this with every JudgeEvent HitJudge produces for this lane, so
+        /// the matching note reacts immediately instead of just scrolling past
+        /// unremarked. A hold note's marker survives its own head event (a
+        /// successful one, at least - only the head's dots tint, and the
+        /// marker stays in _activeMarkers) since its tail is still scrolling
+        /// toward a release judgement of its own; every other case (a plain
+        /// tap, a missed head, or the release event itself, whatever its
+        /// quality) ends the marker's life here exactly like before this
+        /// feature existed.
+        /// </summary>
         public void OnJudged(JudgeEvent evt)
         {
             if (!_activeMarkers.TryGetValue(evt.Id, out var go)) return; // never spawned (very tight lead-in) - nothing to react with, harmless
+
+            var item = FindItem(evt.Id);
+
+            if (item.IsHold && !evt.IsHoldRelease && evt.Judgement != NoteJudgement.Miss)
+            {
+                var head = go.transform.Find("Head");
+                if (head != null)
+                    foreach (var sr in head.GetComponentsInChildren<SpriteRenderer>())
+                        sr.color = hitColor;
+                return; // keep the marker alive - see HitJudge's "HOLD NOTES" section
+            }
 
             _activeMarkers.Remove(evt.Id);
 
@@ -427,7 +448,8 @@ namespace Symphomania.Gameplay
             List<int> toForceRemove = null;
             foreach (var kv in _activeMarkers)
             {
-                float primary = ScrollPrimary(FindTime(kv.Key), currentTime);
+                var item = FindItem(kv.Key);
+                float primary = ScrollPrimary(item.Time, currentTime);
                 kv.Value.transform.localPosition = LocalPos(primary, 0f);
 
                 // Safety net: should never actually fire, since HitJudge retires a
@@ -436,7 +458,17 @@ namespace Symphomania.Gameplay
                 // beyond the judge line in the direction of travel (primary grows
                 // as currentTime overtakes the note's own Time) - NOT the spawn
                 // side, which is where every note starts out.
-                if (scrollDirection * (primary - judgeLinePos) > despawnMarginPrimary)
+                //
+                // For a hold note this has to be measured from its own END
+                // (head time + HoldDurationSeconds), not its head - a hold's
+                // HEAD legitimately travels well past the judge line while
+                // still armed (that's the whole point: the tail keeps feeding
+                // through the line until release), so checking only the head
+                // here would force-destroy every hold note seconds before its
+                // own release ever gets judged.
+                float endTime = item.IsHold ? item.Time + item.HoldDurationSeconds : item.Time;
+                float endPrimary = ScrollPrimary(endTime, currentTime);
+                if (scrollDirection * (endPrimary - judgeLinePos) > despawnMarginPrimary)
                 {
                     (toForceRemove ??= new List<int>()).Add(kv.Key);
                 }
@@ -452,20 +484,26 @@ namespace Symphomania.Gameplay
             }
         }
 
-        float FindTime(int id)
+        /// <summary>
+        /// Small linear scan over the still-relevant window; the active set at
+        /// any moment is tiny (usually 0-1, rarely a handful for dense drum
+        /// charts), so this is cheaper than maintaining a second index. Safe
+        /// to call after HitJudge has already consumed/removed its own copy of
+        /// this note - this is NoteLaneView's own separate list (see the class
+        /// doc comment), never mutated by judging, so every id spawned during
+        /// this song stays findable here for its whole lifetime.
+        /// </summary>
+        Judgeable FindItem(int id)
         {
-            // Small linear scan over the still-relevant window; the active set
-            // at any moment is tiny (usually 0-1, rarely a handful for dense
-            // drum charts), so this is cheaper than maintaining a second index.
             for (int i = 0; i < _items.Count; i++)
-                if (_items[i].Id == id) return _items[i].Time;
-            return currentTimeFallback;
-        }
+                if (_items[i].Id == id) return _items[i];
 
-        // Only reached if a marker's originating item somehow isn't found
-        // (shouldn't happen - ids are unique per BeatmapLoader). Freezes the
-        // marker in place rather than throwing.
-        float currentTimeFallback => _conductor != null ? _conductor.CurrentTime : 0f;
+            // Only reached if a marker's originating item somehow isn't found
+            // (shouldn't happen - ids are unique per BeatmapLoader). Falls
+            // back to "right now" so callers freeze the marker in place rather
+            // than throwing or teleporting it somewhere nonsensical.
+            return new Judgeable { Time = _conductor != null ? _conductor.CurrentTime : 0f };
+        }
 
         void SpawnNote(Judgeable item)
         {
@@ -473,10 +511,18 @@ namespace Symphomania.Gameplay
             go.transform.SetParent(transform, false);
             go.transform.localPosition = LocalPos(ScrollPrimary(item.Time, _conductor.CurrentTime), 0f);
 
-            foreach (var column in ColumnsForMask(item.Mask))
+            // Grouped under its own "Head" child (rather than directly under
+            // go, like before this feature) so OnJudged can tint just these
+            // dots for a hold note's head hit without touching the tail -
+            // see OnJudged's doc comment.
+            var head = new GameObject("Head");
+            head.transform.SetParent(go.transform, false);
+
+            var columns = ColumnsForMask(item.Mask);
+            foreach (var column in columns)
             {
                 var dot = new GameObject($"Dot_col{column}");
-                dot.transform.SetParent(go.transform, false);
+                dot.transform.SetParent(head.transform, false);
                 dot.transform.localPosition = LocalPos(0f, SecondaryPos(column));
                 dot.transform.localScale = new Vector3(circleDiameter, circleDiameter, 1f);
                 var sr = dot.AddComponent<SpriteRenderer>();
@@ -485,7 +531,57 @@ namespace Symphomania.Gameplay
                 sr.sortingOrder = 5;
             }
 
+            if (item.IsHold)
+                SpawnTail(go, item, columns);
+
             _activeMarkers[item.Id] = go;
+        }
+
+        /// <summary>
+        /// A hold note's tail: one bar per active column stretching from the
+        /// head back toward the spawn side, plus a ring at the far end
+        /// marking exactly where the release is judged - the classic DDR/
+        /// rhythm-game "freeze" bar shape. Parented under the same root as
+        /// the head dots, so it scrolls as one rigid unit with them every
+        /// frame for free (both head and tail move at the same scrollSpeed,
+        /// so their relative offset never changes once computed here).
+        /// </summary>
+        void SpawnTail(GameObject go, Judgeable item, List<int> columns)
+        {
+            // Later event times map to a MORE spawn-ward primary coordinate
+            // (see ScrollPrimary) - this offset is the release time's
+            // position relative to the head's, in this root's own local
+            // space, and it's what makes the tail trail behind the head as
+            // both scroll together toward the judge line.
+            float tailLocalOffset = -scrollDirection * scrollSpeed * item.HoldDurationSeconds;
+
+            var tail = new GameObject("Tail");
+            tail.transform.SetParent(go.transform, false);
+
+            foreach (var column in columns)
+            {
+                var bar = new GameObject($"TailBar_col{column}");
+                bar.transform.SetParent(tail.transform, false);
+                bar.transform.localPosition = LocalPos(tailLocalOffset * 0.5f, SecondaryPos(column));
+                float thickness = circleDiameter * 0.7f;
+                float length = Mathf.Abs(tailLocalOffset);
+                bar.transform.localScale = _horizontal ? new Vector3(length, thickness, 1f) : new Vector3(thickness, length, 1f);
+                var barSr = bar.AddComponent<SpriteRenderer>();
+                barSr.sprite = RuntimeSprite.WhiteSquare();
+                var barColor = _columnColors[column];
+                barColor.a = 0.55f; // dimmer than the head dot/receptor - a sustain indicator, not another button to press
+                barSr.color = barColor;
+                barSr.sortingOrder = 4; // just behind the head dots (5) and receptors (10)
+
+                var releaseDot = new GameObject($"ReleaseDot_col{column}");
+                releaseDot.transform.SetParent(tail.transform, false);
+                releaseDot.transform.localPosition = LocalPos(tailLocalOffset, SecondaryPos(column));
+                releaseDot.transform.localScale = new Vector3(circleDiameter * 0.8f, circleDiameter * 0.8f, 1f);
+                var releaseSr = releaseDot.AddComponent<SpriteRenderer>();
+                releaseSr.sprite = RuntimeSprite.RingCircle();
+                releaseSr.color = _columnColors[column];
+                releaseSr.sortingOrder = 6;
+            }
         }
 
         void UpdateGrid(float currentTime)

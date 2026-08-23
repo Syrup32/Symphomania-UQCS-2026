@@ -60,6 +60,44 @@ namespace Symphomania.Session
         }
 
         /// <summary>
+        /// Per-instrument DDR-style scroll speed preference - a plain
+        /// multiplier applied on top of NoteLaneView's own base scrollSpeed
+        /// (see GameplayLane.Initialize), NOT tied to the song's BPM in any
+        /// way (NoteLaneView's scrollSpeed is a fixed world-units-per-second
+        /// constant regardless of tempo). Deliberately a per-PLAYER comfort
+        /// setting rather than a per-SONG one - unlike ManuallyDisabled, this
+        /// is never cleared by ClearManualOverridesForNewSong, so a player's
+        /// chosen speed carries over from one song to the next in the same
+        /// play session rather than resetting every time someone picks a new
+        /// song. Only ResetStatics (a fresh Play session) clears it.
+        /// Missing entries read as ScrollSpeedMultiplierDefault (x1.00).
+        /// </summary>
+        public static readonly Dictionary<InstrumentType, float> ScrollSpeedMultiplier = new Dictionary<InstrumentType, float>();
+
+        public const float ScrollSpeedMultiplierMin = 0.5f;
+        public const float ScrollSpeedMultiplierMax = 3.0f;
+        public const float ScrollSpeedMultiplierStep = 0.25f;
+        public const float ScrollSpeedMultiplierDefault = 1.0f;
+
+        /// <summary>This instrument's current scroll-speed multiplier, or the x1.00 default if the player hasn't touched it.</summary>
+        public static float GetScrollSpeedMultiplier(InstrumentType instrument) =>
+            ScrollSpeedMultiplier.TryGetValue(instrument, out var multiplier) ? multiplier : ScrollSpeedMultiplierDefault;
+
+        /// <summary>
+        /// Nudges one instrument's scroll-speed multiplier by delta (pass
+        /// ±ScrollSpeedMultiplierStep from the instrument entry screen's -/+
+        /// buttons), clamped to [Min, Max] and re-snapped to the nearest
+        /// 0.25 step so repeated clicks can't drift off-grid from float
+        /// accumulation (e.g. landing on 1.2500001 instead of 1.25).
+        /// </summary>
+        public static void AdjustScrollSpeedMultiplier(InstrumentType instrument, float delta)
+        {
+            float next = Mathf.Clamp(GetScrollSpeedMultiplier(instrument) + delta, ScrollSpeedMultiplierMin, ScrollSpeedMultiplierMax);
+            next = Mathf.Round(next / ScrollSpeedMultiplierStep) * ScrollSpeedMultiplierStep;
+            ScrollSpeedMultiplier[instrument] = next;
+        }
+
+        /// <summary>
         /// Wipes all state at the start of every Play session, same reason
         /// VirtualBandInput does - with "Enter Play Mode Options" domain
         /// reload disabled, statics otherwise survive from the previous Play
@@ -73,6 +111,7 @@ namespace Symphomania.Session
             CurrentPlan = null;
             IsFrozen = false;
             ManuallyDisabled.Clear();
+            ScrollSpeedMultiplier.Clear();
         }
 
         /// <summary>

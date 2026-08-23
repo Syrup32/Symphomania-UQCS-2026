@@ -72,7 +72,7 @@ from music21 import note, chord
 
 from common import (
     load_config, pname, Warnings,
-    map_trumpet, map_saxophone, map_violin, map_trombone, bucket_drum_pad,
+    map_trumpet, map_saxophone, map_violin, map_trombone, bucket_drum_pad, expand_drum_hit,
     get_tempo_changes, apply_version_tag, version_suffixed_path,
 )
 
@@ -209,12 +209,11 @@ def convert_band_mode(score, warnings):
             else:
                 lo_midi = hi_midi = 60
             hits = []
-            for i, n in enumerate(notes):
+            for roll_group_id, n in enumerate(notes):
                 pad = bucket_drum_pad(n["pitch_obj"], lo_midi, hi_midi, pads)
-                hits.append({
-                    "id": i + 1, "measure": n["measure"], "time": n["start_time"], "beat": n["start_beat"],
-                    "pad": pad["index"], "pad_name": pad["name"], "velocity": 0.9,
-                })
+                hits.extend(expand_drum_hit(n, pad, roll_group_id))
+            for i, h in enumerate(hits):
+                h["id"] = i + 1
             instruments_out["drum_kit"] = {"controller": "drum_kit", "hits": hits}
             continue
 
@@ -370,12 +369,11 @@ def convert_piano_mode(score, warnings, treble_idx, bass_idx):
     else:
         lo_midi = hi_midi = 48
     hits = []
-    for i, n in enumerate(bass_notes):
+    for roll_group_id, n in enumerate(bass_notes):
         pad = bucket_drum_pad(n["pitch_obj"], lo_midi, hi_midi, pads)
-        hits.append({
-            "id": i + 1, "measure": n["measure"], "time": n["start_time"], "beat": n["start_beat"],
-            "pad": pad["index"], "pad_name": pad["name"], "velocity": 0.9,
-        })
+        hits.extend(expand_drum_hit(n, pad, roll_group_id))
+    for i, h in enumerate(hits):
+        h["id"] = i + 1
     instruments_out["drum_kit"] = {"controller": "drum_kit", "hits": hits}
     return instruments_out
 

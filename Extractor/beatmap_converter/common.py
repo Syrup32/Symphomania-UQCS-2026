@@ -145,6 +145,56 @@ def bucket_drum_pad(p, lo_midi, hi_midi, pads):
     return pads[idx]
 
 
+# A drum-kit pad has no way to report a held press -- the piezo sensors
+# only ever detect a momentary strike (firmware pulses the HID bit high for
+# HOLD_MS and auto-releases; see controller_hid_protocol.md). So a "held"
+# note in the source sheet music (a half/whole note on a percussion line)
+# can't become a single sustained hit the way a valve or slide position
+# can stay held -- the only physically honest way to ask a player to
+# sustain a drum sound is a roll: a series of real, separate strikes close
+# together in time. DRUM_ROLL_THRESHOLD_BEATS is the cutoff above which a
+# note gets rolled instead of staying a single instant hit (1 beat = a
+# quarter note in most of this project's 4/4 test songs);
+# DRUM_ROLL_INTERVAL_BEATS is the spacing between roll strikes once rolled
+# (an eighth note -- fast enough to read as a sustained roll, slow enough
+# to stay inside the ~150ms hit-judging timing window documented in
+# beatmap_schema.md's "Hit detection & audio feedback" section).
+DRUM_ROLL_THRESHOLD_BEATS = 1.0
+DRUM_ROLL_INTERVAL_BEATS = 0.5
+
+
+def expand_drum_hit(n, pad, roll_group_id):
+    """Given one bucketed drum note (with start_beat/start_time/
+    duration_beats/duration_time) and the pad it maps to, return a list of
+    hit dicts (WITHOUT 'id' -- the caller numbers hits sequentially across
+    the whole track after flattening). A note at or under
+    DRUM_ROLL_THRESHOLD_BEATS is a single instant hit, same shape as
+    before. A longer note becomes `roll_group_id` (all its
+    hits share this token so the game can render/count them as one
+    logical roll) and a real, discrete strike is emitted every
+    DRUM_ROLL_INTERVAL_BEATS across the note's duration -- 'roll_index'/
+    'roll_length' say where each strike falls in that sequence. Timing
+    within the roll is linearly interpolated across the note's own
+    start_time/duration_time, which is exact as long as tempo doesn't
+    change mid-note (true for every note in practice)."""
+    dur_beats = n["duration_beats"]
+    base = {"measure": n["measure"], "pad": pad["index"], "pad_name": pad["name"], "velocity": 0.9}
+    if dur_beats <= DRUM_ROLL_THRESHOLD_BEATS:
+        return [{**base, "time": n["start_time"], "beat": n["start_beat"]}]
+
+    num_hits = max(2, round(dur_beats / DRUM_ROLL_INTERVAL_BEATS))
+    hits = []
+    for i in range(num_hits):
+        frac = i / num_hits
+        hits.append({
+            **base,
+            "time": round(n["start_time"] + frac * n["duration_time"], 4),
+            "beat": n["start_beat"] + frac * dur_beats,
+            "roll_group": roll_group_id, "roll_index": i, "roll_length": num_hits,
+        })
+    return hits
+
+
 def get_tempo_changes(score):
     changes = []
     for mm in score.flatten().getElementsByClass("MetronomeMark"):
